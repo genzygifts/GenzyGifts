@@ -1,9 +1,13 @@
-[
-    {
-        "Product Name": "Portable Fresh Juice Blender Bottle",
-        "Description": "Compact, lightweight, travel-friendly.Perfect gifting.",
-        "Price": "999",
-        "COD_Price": "1150",
-        "Media Link": "1.jpg,2.jpg,3.jpg,4.jpg" 
-    }
-]
+{
+    "Product Name": "Customised Diwali Gift Box",
+    "Description": "Experience the joy of giving with our exclusive Diwali gift box, curated with love and tradition. Order Premium to save ₹200!",
+    "Premium_Price": 999,
+    "COD_Price": 1299,
+    
+    // --- MEDIA CONFIGURATION ---
+    // (A) Has_Video: true/false. Set to 'true' if you want to show '1.mp4'
+    // (B) Media_Count: Number of images (1.jpg, 2.jpg, 3.jpg, ...) or 1 for video.
+    
+    "Has_Video": false,
+    "Media_Count": 4
+}
