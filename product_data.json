@@ -1,8 +1,8 @@
 {
-    "Product Name": "Customised Diwali Gift Box",
-    "Description": "Experience the joy of giving with our exclusive Diwali gift box, curated with love and tradition. Order Premium to save ₹200!",
-    "Premium_Price": 999,
-    "COD_Price": 1299,
-    "Has_Video": false,
-    "Media_Count": 4
+  "Product Name": "Customised Special Diwali Gift Box 🎁",
+  "Premium_Price": "999",
+  "COD_Price": "1299",
+  "Description": "Experience the joy of giving with our exclusive Diwali gift box. Order Premium to save ₹300! Limited Stock available.",
+  "Media_Count": 4,
+  "Has_Video": false
 }
