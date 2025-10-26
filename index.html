@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 
 <style>
-/* --- STYLES (NO CHANGES) --- */
+/* --- STYLES (UPDATED FOR MEDIA FIT) --- */
 :root {
 --color-bg-dark: #5C1A00;
 --color-bg-darker: #2C0A0A;
@@ -78,7 +78,7 @@ animation: pulse 2s infinite alternate;
 0% { transform: scale(1); opacity: 0.9; }
 100% { transform: scale(1.1); opacity: 1; }
 }
-/* Header - COMPRESSED */
+/* Header */
 #top-header-wish {
 text-align: center;
 padding: 25px 0 5px 0;
@@ -166,29 +166,30 @@ gap: 6px;
 }
 .stars { font-size: 15px; }
 .review-count { color: #666; font-size: 9px; font-weight: 600; }
+
+/* 💡 FIX 1: Fixed Height for Universal Media Fit */
 #media-box {
-width: 100%;
-padding-top: 56.25%;
-height: 0;
-margin-bottom: 8px;
-border: 1px solid #ddd;
-position: relative;
-border-radius: 8px;
-overflow: hidden;
-background: #f0f0f0;
+    width: 100%;
+    height: 200px; /* फिक्स्ड ऊँचाई */
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f0f0f0;
 }
-.carousel-image, product-media-video {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-object-fit: contain;
-opacity: 0;
-transition: opacity 0.5s ease-in-out;
+/* 💡 FIX 2: Object-fit: contain (no cropping) */
+.carousel-image, .product-media-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* पूरी मीडिया दिखाई देगी */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 .carousel-image.active, .product-media-video { opacity: 1; }
-.product-media-video { object-fit: contain; }
 .media-loading {
 position: absolute;
 top: 50%;
@@ -215,7 +216,7 @@ cursor: pointer;
 transition: all 0.3s;
 }
 .dot.active { background: var(--color-primary-btn); transform: scale(1.3); }
-/* Price Section - SIMPLE TEXT ONLY */
+/* Price Section */
 #price-section {
 display: flex;
 justify-content: center;
@@ -264,7 +265,7 @@ font-weight: 500;
 text-align: center;
 line-height: 1.3;
 }
-/* Buttons - SMALLER */
+/* Buttons */
 .btn-base {
 width: 100%;
 padding: 8px 12px;
@@ -309,7 +310,7 @@ align-items: center;
 gap: 5px;
 color: #fff;
 }
-/* Timer - SMALLER */
+/* Timer */
 #offer-timer-share {
 display: flex;
 align-items: center;
@@ -344,7 +345,7 @@ font-size: 13px;
 font-weight: 900;
 color: #fff;
 }
-/* Input Row - EK LINE MEIN */
+/* Input Row */
 .share-input-row {
 display: flex;
 gap: 8px;
@@ -588,7 +589,7 @@ Name" autocomplete="off" value="Ram">
 </div>
 </div>
 <script>
-// === CONFIGURATION (FIXED) ===
+// === CONFIGURATION (FINAL) ===
 const CONFIG = {
     ORDER_SUBMIT_API:
         "https://script.google.com/macros/s/AKfycbyQoweTvVkWVWQRo72rNrJI_Qk4uw2TcLTRJwkvlr0ZWXrf6U3jnDOA9MKo7WPyEco8/exec",
@@ -599,7 +600,7 @@ const CONFIG = {
     PRODUCT_JSON_FILE: "product_data.json"
 };
 let currentProduct = null, audioPlayed = false, carouselTimer = null, currentMediaIndex = 0;
-// === UTILITY FUNCTIONS (NO CHANGES) ===
+// === UTILITY FUNCTIONS ===
 function checkKey(e) {
     if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 83))
         || (e.ctrlKey && e.keyCode === 85)) {
@@ -625,7 +626,7 @@ function showModal(content) {
 function hideModal() {
     document.getElementById("modal").classList.add("hidden");
 }
-// === TIMER WITH LOCALSTORAGE (NO CHANGES) ===
+// === TIMER WITH LOCALSTORAGE ===
 function startCountdown() {
     const TIMER_KEY = 'diwali_offer_timer';
     let countDownDate;
@@ -656,7 +657,7 @@ function startCountdown() {
                 < 10 ? "0" + seconds : seconds) + "S";
     }, 1000);
 }
-// === AUDIO LOGIC (FIXED) ===
+// === AUDIO LOGIC ===
 function generateTtsUrl(receiverName, senderName) {
     const TTS_ENDPOINT =
         "https://corsproxy.io/?https://translate.google.com/translate_tts?ie=UTF-8&tl=hi&client=tw-ob&q=";
@@ -678,7 +679,8 @@ function playAudio(receiverName) {
     const audio = document.getElementById("tts-audio");
     audio.src = generateTtsUrl(receiverName, senderName);
     audio.onended = () => { audioPlayed = true; };
-    audio.play().catch(() => { audioPlayed = false; });
+    // Audio play requires user interaction in most browsers, catch block prevents errors
+    audio.play().catch(() => { audioPlayed = false; }); 
 }
 function playAudioManually() {
     const params = getUrlParams();
@@ -686,7 +688,7 @@ function playAudioManually() {
     audioPlayed = false;
     playAudio(receiverName);
 }
-// === FETCH PRODUCT DATA (NO CHANGES) ===
+// === FETCH PRODUCT DATA ===
 async function fetchProductData() {
     try {
         const response = await fetch(CONFIG.PRODUCT_JSON_FILE);
@@ -701,7 +703,7 @@ async function fetchProductData() {
         document.getElementById("buy-now-btn").disabled = true;
     }
 }
-// === UPDATE STORE UI (FIXED JSON KEYS) ===
+// === UPDATE STORE UI (FINAL JSON KEYS) ===
 function updateStoreUI() {
     if (!currentProduct) return;
     const params = getUrlParams(), finalReceiverName = params.sender ?
@@ -709,7 +711,7 @@ function updateStoreUI() {
     
     document.getElementById("receiver-display-top").textContent = finalReceiverName;
     
-    // 💡 FIXED JSON KEYS
+    // FINAL JSON KEYS
     document.getElementById("product-name-static").textContent = currentProduct.productName || "Diwali Gift Box";
     document.getElementById("price-premium").textContent = currentProduct.premiumPrice || "999";
     document.getElementById("price-cod").textContent = currentProduct.codPrice || "1150";
@@ -728,9 +730,10 @@ function updateStoreUI() {
     
     startMediaDisplay();
     startCountdown();
+    // Play audio after a slight delay
     setTimeout(() => { if (!audioPlayed) playAudio(finalReceiverName); }, 1000);
 }
-// === MEDIA DISPLAY (FIXED JSON KEYS) ===
+// === MEDIA DISPLAY (FINAL CODE FOR UNIVERSAL FIT) ===
 function startMediaDisplay() {
     const mediaContainer = document.getElementById("media-carousel"), dotsContainer =
         document.getElementById("carousel-dots");
@@ -746,11 +749,18 @@ function startMediaDisplay() {
         const video = document.createElement("video");
         video.src = mediaUrl;
         video.className = "product-media-video";
+        // 💡 Cross-Browser Autoplay Fixes
         video.setAttribute("loop", "");
         video.setAttribute("autoplay", "");
         video.setAttribute("playsinline", "");
         video.setAttribute("muted", "");
-        video.onerror = () => { video.remove(); startImageCarousel(galleryImages, mediaContainer, dotsContainer); };
+        
+        video.onerror = () => { 
+            console.warn("Video failed to load. Switching to image carousel.");
+            video.remove(); 
+            startImageCarousel(galleryImages, mediaContainer, dotsContainer); 
+        };
+        
         mediaContainer.appendChild(video);
     } else if (galleryImages.length > 0) {
         startImageCarousel(galleryImages, mediaContainer, dotsContainer);
@@ -787,10 +797,9 @@ function changeImage(index) {
     dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
     currentMediaIndex = index;
 }
-// === ORDER FLOW (FIXED JSON KEYS) ===
+// === ORDER FLOW (FINAL) ===
 function handleBuyNow() {
     if (!currentProduct) return alert("Loading...");
-    // FIXED JSON KEYS
     const codPrice = currentProduct.codPrice || "1150", premiumPrice =
         currentProduct.premiumPrice || "999"; 
     showModal(`
@@ -839,7 +848,7 @@ function submitOrder(event, isPrepaid, price, paymentMode, senderName) {
     const form = document.getElementById("order-form");
     const formData = new FormData(form);
     const data = {
-        "Product Name": currentProduct.productName || "Unknown", // FIXED JSON KEY
+        "Product Name": currentProduct.productName || "Unknown", 
         "Price": price,
         "Payment Mode": paymentMode,
         "Wish Sender": senderName
@@ -956,7 +965,7 @@ function handleShare() {
     initiateWhatsAppShare(CONFIG.BASE_STORE_URL, senderName, receiverName, false);
 }
 function initiateWhatsAppShare(baseShareUrl, senderName, receiverName, isBought) {
-    // 💡 FIXED: URL प्रोटोकॉल यहां जोड़ा जाता है ताकि शेयरिंग काम करे
+    // 💡 Cross-Browser Fix: सुनिश्चित करता है कि URL https:// के साथ शुरू हो
     const fullBaseUrl = 'https://' + baseShareUrl;
 
     let finalShareUrl = fullBaseUrl;
@@ -970,6 +979,7 @@ function initiateWhatsAppShare(baseShareUrl, senderName, receiverName, isBought)
 गणेश जी की कृपा आप पर सदा बनी रहे🌷!!`;
     const shareText = `*${senderName.toUpperCase()}*\n\n${customWishText}\n\n${finalShareUrl}`;
     
+    // Fallback logic ensures sharing works on all browsers
     if (navigator.share) {
         navigator.share({ text: shareText, url: finalShareUrl })
             .catch(() => window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`,
@@ -982,8 +992,9 @@ function handleBuyScript() {
     const msg = `Hello! मझु े₹${CONFIG.SCRIPT_PRICE} में viral wishing store script खरीदनी है।`;
     window.open(`https://wa.me/${CONFIG.ADMIN_WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
 }
-// === INITIALIZATION (FIXED: checkDomain removed) ===
+// === INITIALIZATION (FINAL) ===
 function init() {
+    // checkDomain() को हटा दिया गया है
     fetchProductData();
     document.getElementById("buy-now-btn").addEventListener("click", handleBuyNow);
     document.getElementById("share-btn").addEventListener("click", handleShare);
@@ -1000,5 +1011,3 @@ document.addEventListener("DOMContentLoaded", init);
 
 
 
-
-        
