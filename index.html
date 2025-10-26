@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 
 <style>
-/* --- STYLES (Pages 1-13) --- */
+/* --- STYLES (NO CHANGES) --- */
 :root {
 --color-bg-dark: #5C1A00;
 --color-bg-darker: #2C0A0A;
@@ -520,7 +520,7 @@ Happy Diwali ✨
 <h4 id="product-name-static" class="product-name-main">Loading Product...</h4>
 <div id="review-bar">
 <span class="stars">⭐⭐⭐⭐⭐</span>
-<span class="review-count">(154 Reviews | 4.8/5)</span>
+<span class="review-count">(Loading Reviews...)</span>
 </div>
 <div id="media-box">
 <div id="media-carousel"></div>
@@ -588,221 +588,219 @@ Name" autocomplete="off" value="Ram">
 </div>
 </div>
 <script>
-// === CONFIGURATION ===
+// === CONFIGURATION (FIXED) ===
 const CONFIG = {
-ORDER_SUBMIT_API:
-"https://script.google.com/macros/s/AKfycbyQoweTvVkWVWQRo72rNrJI_Qk4uw2TcLTRJwkvlr0ZWXrf6U3jnDOA9MKo7WPyEco8/exec",
-ADMIN_WHATSAPP: "919226949557",
-// BASE_STORE_URL को आपके GitHub Pages URL पर सेट किया गया है
-BASE_STORE_URL: "https://genzygifts.github.io/GenzyGifts/",
-SCRIPT_PRICE: 1999,
-PRODUCT_JSON_FILE: "product_data.json"
+    ORDER_SUBMIT_API:
+        "https://script.google.com/macros/s/AKfycbyQoweTvVkWVWQRo72rNrJI_Qk4uw2TcLTRJwkvlr0ZWXrf6U3jnDOA9MKo7WPyEco8/exec",
+    ADMIN_WHATSAPP: "919226949557",
+    // 💡 FIXED: Share URL के लिए केवल होस्ट और पाथ
+    BASE_STORE_URL: "genzygifts.github.io/GenzyGifts/",
+    SCRIPT_PRICE: 1999,
+    PRODUCT_JSON_FILE: "product_data.json"
 };
 let currentProduct = null, audioPlayed = false, carouselTimer = null, currentMediaIndex = 0;
-// === UTILITY FUNCTIONS ===
+// === UTILITY FUNCTIONS (NO CHANGES) ===
 function checkKey(e) {
-if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 83))
-|| (e.ctrlKey && e.keyCode === 85)) {
-e.preventDefault();
-return false;
+    if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 83))
+        || (e.ctrlKey && e.keyCode === 85)) {
+        e.preventDefault();
+        return false;
+    }
+    if (e.key === 'Escape') hideModal();
+    return true;
 }
-if (e.key === 'Escape') hideModal();
-return true;
-}
-// 🔒 NOTE: checkDomain() फ़ंक्शन को init() से हटा दिया गया है ताकि डेटा फ़ेचिंग हमेशा काम करे।
-function checkDomain() {
-const currentHost = window.location.host, expectedHost = (new URL(CONFIG.BASE_STORE_URL)).host;
-if (currentHost !== expectedHost) {
-document.getElementById("buy-now-btn").style.pointerEvents = "none";
-document.getElementById("buy-now-btn").textContent = "🔒 LOCKED";
-document.getElementById("share-btn").style.pointerEvents = "none";
-document.getElementById("share-btn").textContent = "🔒 Locked";
-document.getElementById("script-purchase-box").classList.add("hidden");
-return false;
-}
-return true;
-}
+
 function getUrlParams() {
-const params = {};
-window.location.search.substring(1).split("&").forEach(pair => {
-const [key, value] = pair.split("=").map(decodeURIComponent);
-if (key) params[key] = value;
-});
-return params;
+    const params = {};
+    window.location.search.substring(1).split("&").forEach(pair => {
+        const [key, value] = pair.split("=").map(decodeURIComponent);
+        if (key) params[key] = value;
+    });
+    return params;
 }
 function showModal(content) {
-document.getElementById("modal-body").innerHTML = content;
-document.getElementById("modal").classList.remove("hidden");
+    document.getElementById("modal-body").innerHTML = content;
+    document.getElementById("modal").classList.remove("hidden");
 }
 function hideModal() {
-document.getElementById("modal").classList.add("hidden");
+    document.getElementById("modal").classList.add("hidden");
 }
-// === TIMER WITH LOCALSTORAGE ===
+// === TIMER WITH LOCALSTORAGE (NO CHANGES) ===
 function startCountdown() {
-const TIMER_KEY = 'diwali_offer_timer';
-let countDownDate;
-const saved = localStorage.getItem(TIMER_KEY);
-if (saved) {
-countDownDate = parseInt(saved);
-} else {
-const minutes = Math.floor(Math.random() * 6) + 10;
-countDownDate = new Date().getTime() + minutes * 60 * 1000;
-localStorage.setItem(TIMER_KEY, countDownDate.toString());
+    const TIMER_KEY = 'diwali_offer_timer';
+    let countDownDate;
+    const saved = localStorage.getItem(TIMER_KEY);
+    if (saved) {
+        countDownDate = parseInt(saved);
+    } else {
+        const minutes = Math.floor(Math.random() * 6) + 10;
+        countDownDate = new Date().getTime() + minutes * 60 * 1000;
+        localStorage.setItem(TIMER_KEY, countDownDate.toString());
+    }
+    const countdownElement = document.getElementById("countdown"), buyBtn =
+        document.getElementById("buy-now-btn");
+    const x = setInterval(() => {
+        const now = new Date().getTime(), distance = countDownDate - now;
+        if (distance < 0) {
+            clearInterval(x);
+            countdownElement.innerHTML = "EXPIRED!";
+            if (buyBtn) { buyBtn.textContent = "⏰ Offer Ended!"; buyBtn.disabled = true; }
+            localStorage.removeItem(TIMER_KEY);
+            return;
+        }
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        countdownElement.innerHTML = (hours < 10 ? "0" + hours : hours) + "H : " + (minutes < 10 ?
+            "0" + minutes : minutes) + "M : " + (seconds
+                < 10 ? "0" + seconds : seconds) + "S";
+    }, 1000);
 }
-const countdownElement = document.getElementById("countdown"), buyBtn =
-document.getElementById("buy-now-btn");
-const x = setInterval(() => {
-const now = new Date().getTime(), distance = countDownDate - now;
-if (distance < 0) {
-clearInterval(x);
-countdownElement.innerHTML = "EXPIRED!";
-if (buyBtn) { buyBtn.textContent = "⏰ Offer Ended!"; buyBtn.disabled = true; }
-localStorage.removeItem(TIMER_KEY);
-return;
-}
-const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-countdownElement.innerHTML = (hours < 10 ? "0" + hours : hours) + "H : " + (minutes < 10 ?
-"0" + minutes : minutes) + "M : " + (seconds 
-< 10 ? "0" + seconds : seconds) + "S";
-}, 1000);
-}
-// === AUDIO LOGIC ===
+// === AUDIO LOGIC (FIXED) ===
 function generateTtsUrl(receiverName, senderName) {
-const TTS_ENDPOINT =
-"https://corsproxy.io/?https://translate.google.com/translate_tts?ie=UTF-8&tl=hi&client=tw-ob&q
-=";
-const params = getUrlParams(), shareStatus = params.status;
-let ttsMessage;
-if (shareStatus === "bought") {
-ttsMessage = `नमस्ते${receiverName}! आपके दोस्त ${senderName} नेभी इसेअभी-अभी order कि या
-है।`;
-} else if (params.sender && "Priya" !== params.sender) {
-ttsMessage = `नमस्ते${receiverName}!
-${senderName} की ओर सेयह special offer आपके लि ए है।`;
-} else {
-ttsMessage = `नमस्ते${receiverName}!
-अपना name डालके Wish share करें।`;
-}
-return TTS_ENDPOINT + encodeURIComponent(ttsMessage);
+    const TTS_ENDPOINT =
+        "https://corsproxy.io/?https://translate.google.com/translate_tts?ie=UTF-8&tl=hi&client=tw-ob&q=";
+    const params = getUrlParams(), shareStatus = params.status;
+    let ttsMessage;
+
+    if (shareStatus === "bought") {
+        ttsMessage = `नमस्ते${receiverName}! आपके दोस्त ${senderName} ने भी इसे अभी-अभी order किया है।`;
+    } else if (params.sender) { 
+        ttsMessage = `नमस्ते${receiverName}! ${senderName} की ओर से यह special offer आपके लिए है।`;
+    } else {
+        ttsMessage = `नमस्ते${receiverName}! अपना name डालके Wish share करें।`;
+    }
+    return TTS_ENDPOINT + encodeURIComponent(ttsMessage);
 }
 function playAudio(receiverName) {
-if (audioPlayed || !currentProduct) return;
-const params = getUrlParams(), senderName = params.sender || "Priya";
-const audio = document.getElementById("tts-audio");
-audio.src = generateTtsUrl(receiverName, senderName);
-audio.onended = () => { audioPlayed = true; };
-audio.play().catch(() => { audioPlayed = false; });
+    if (audioPlayed || !currentProduct) return;
+    const params = getUrlParams(), senderName = params.sender || "Priya"; 
+    const audio = document.getElementById("tts-audio");
+    audio.src = generateTtsUrl(receiverName, senderName);
+    audio.onended = () => { audioPlayed = true; };
+    audio.play().catch(() => { audioPlayed = false; });
 }
 function playAudioManually() {
-const params = getUrlParams();
-const receiverName = params.sender ? decodeURIComponent(params.sender) : "Priya";
-audioPlayed = false;
-playAudio(receiverName);
+    const params = getUrlParams();
+    const receiverName = params.sender || "Priya"; 
+    audioPlayed = false;
+    playAudio(receiverName);
 }
-// === FETCH PRODUCT DATA ===
+// === FETCH PRODUCT DATA (NO CHANGES) ===
 async function fetchProductData() {
-try {
-const response = await fetch(CONFIG.PRODUCT_JSON_FILE);
-if (!response.ok) throw new Error("Failed");
-const data = await response.json();
-currentProduct = data;
-updateStoreUI();
-} catch (error) {
-console.error("Error:", error);
-document.getElementById("product-name-static").textContent = "Error Loading";
-document.getElementById("buy-now-btn").disabled = true;
+    try {
+        const response = await fetch(CONFIG.PRODUCT_JSON_FILE);
+        if (!response.ok) throw new Error("Failed to fetch product_data.json");
+        const data = await response.json();
+        currentProduct = data;
+        updateStoreUI();
+    } catch (error) {
+        console.error("Error fetching or parsing product data:", error);
+        document.getElementById("product-name-static").textContent = "Error Loading Data";
+        document.getElementById("buy-now-btn").textContent = "Data Error";
+        document.getElementById("buy-now-btn").disabled = true;
+    }
 }
-}
+// === UPDATE STORE UI (FIXED JSON KEYS) ===
 function updateStoreUI() {
-if (!currentProduct) return;
-const params = getUrlParams(), finalReceiverName = params.sender ?
-decodeURIComponent(params.sender) : "Priya";
-document.getElementById("receiver-display-top").textContent = finalReceiverName;
-document.getElementById("product-name-static").textContent = currentProduct["Product
-Name"] ||
-"Diwali Gift Box";
-document.getElementById("price-premium").textContent = currentProduct.Premium_Price ||
-"999";
-document.getElementById("price-cod").textContent = currentProduct.COD_Price || "1150";
-document.getElementById("description-text").textContent = currentProduct.Description ||
-"Experience the joy...";
-document.getElementById("script-price-display").textContent = CONFIG.SCRIPT_PRICE;
-document.getElementById("buy-now-btn").textContent = `🛒 Buy Now
-₹${currentProduct.Premium_Price || "999"}`;
-document.getElementById("buy-now-btn").disabled = false;
-startMediaDisplay();
-startCountdown();
-setTimeout(() => { if (!audioPlayed) playAudio(finalReceiverName); }, 1000);
+    if (!currentProduct) return;
+    const params = getUrlParams(), finalReceiverName = params.sender ?
+        decodeURIComponent(params.sender) : "Priya";
+    
+    document.getElementById("receiver-display-top").textContent = finalReceiverName;
+    
+    // 💡 FIXED JSON KEYS
+    document.getElementById("product-name-static").textContent = currentProduct.productName || "Diwali Gift Box";
+    document.getElementById("price-premium").textContent = currentProduct.premiumPrice || "999";
+    document.getElementById("price-cod").textContent = currentProduct.codPrice || "1150";
+    
+    // Rating/Review update
+    const reviewBar = document.querySelector('#review-bar .review-count');
+    if(reviewBar) reviewBar.textContent = `(${currentProduct.reviews || 0} Reviews | ${currentProduct.rating || 4.5}/5)`;
+
+    // Description update (Array to String)
+    const descText = currentProduct.description ? currentProduct.description.join(' ') : "Experience the joy...";
+    document.getElementById("description-text").textContent = descText;
+
+    document.getElementById("script-price-display").textContent = CONFIG.SCRIPT_PRICE;
+    document.getElementById("buy-now-btn").textContent = `🛒 Buy Now ₹${currentProduct.premiumPrice || "999"}`;
+    document.getElementById("buy-now-btn").disabled = false;
+    
+    startMediaDisplay();
+    startCountdown();
+    setTimeout(() => { if (!audioPlayed) playAudio(finalReceiverName); }, 1000);
 }
-// === MEDIA DISPLAY ===
+// === MEDIA DISPLAY (FIXED JSON KEYS) ===
 function startMediaDisplay() {
-const mediaContainer = document.getElementById("media-carousel"), dotsContainer =
-document.getElementById("carousel-dots");
-mediaContainer.innerHTML = "";
-dotsContainer.innerHTML = "";
-clearInterval(carouselTimer);
-const mediaCount = parseInt(currentProduct.Media_Count || 0), hasVideo =
-currentProduct.Has_Video === true;
-if (hasVideo && mediaCount > 0) {
-const video = document.createElement("video");
-video.src = "1.mp4";
-video.className = "product-media-video";
-video.setAttribute("loop", "");
-video.setAttribute("autoplay", "");
-video.setAttribute("playsinline", "");
-video.setAttribute("muted", "");
-video.onerror = () => { video.remove(); startImageCarousel(mediaCount, mediaContainer,
-dotsContainer); };
-mediaContainer.appendChild(video);
-} else if (mediaCount > 0) {
-startImageCarousel(mediaCount, mediaContainer, dotsContainer);
-} else {
-mediaContainer.innerHTML = '<div class="media-loading">🎁</div>';
+    const mediaContainer = document.getElementById("media-carousel"), dotsContainer =
+        document.getElementById("carousel-dots");
+    mediaContainer.innerHTML = "";
+    dotsContainer.innerHTML = "";
+    clearInterval(carouselTimer);
+    
+    const mediaType = currentProduct.mediaType || 'image';
+    const mediaUrl = currentProduct.mediaUrl;
+    const galleryImages = currentProduct.galleryImages || [];
+
+    if (mediaType === 'video' && mediaUrl) {
+        const video = document.createElement("video");
+        video.src = mediaUrl;
+        video.className = "product-media-video";
+        video.setAttribute("loop", "");
+        video.setAttribute("autoplay", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("muted", "");
+        video.onerror = () => { video.remove(); startImageCarousel(galleryImages, mediaContainer, dotsContainer); };
+        mediaContainer.appendChild(video);
+    } else if (galleryImages.length > 0) {
+        startImageCarousel(galleryImages, mediaContainer, dotsContainer);
+    } else {
+        mediaContainer.innerHTML = '<div class="media-loading">🎁</div>';
+    }
 }
-}
-function startImageCarousel(count, container, dotsContainer) {
-for (let i = 1; i <= count; i++) {
-const img = document.createElement("img");
-img.className = "carousel-image";
-img.src = `${i}.jpg`;
-if (i === 1) img.classList.add('active');
-container.appendChild(img);
-const dot = document.createElement("div");
-dot.className = "dot" + (i === 1 ? " active" : "");
-dot.onclick = () => changeImage(i - 1);
-dotsContainer.appendChild(dot);
-}
-if (count > 1) {
-currentMediaIndex = 0;
-carouselTimer = setInterval(() => {
-currentMediaIndex = (currentMediaIndex + 1) % count;
-changeImage(currentMediaIndex);
-}, 3000);
-}
+function startImageCarousel(imageUrls, container, dotsContainer) {
+    imageUrls.forEach((url, i) => {
+        const img = document.createElement("img");
+        img.className = "carousel-image";
+        img.src = url;
+        if (i === 0) img.classList.add('active');
+        container.appendChild(img);
+        
+        const dot = document.createElement("div");
+        dot.className = "dot" + (i === 0 ? " active" : "");
+        dot.onclick = () => changeImage(i);
+        dotsContainer.appendChild(dot);
+    });
+
+    if (imageUrls.length > 1) {
+        currentMediaIndex = 0;
+        carouselTimer = setInterval(() => {
+            currentMediaIndex = (currentMediaIndex + 1) % imageUrls.length;
+            changeImage(currentMediaIndex);
+        }, 3000);
+    }
 }
 function changeImage(index) {
-const images = document.querySelectorAll('.carousel-image'), dots =
-document.querySelectorAll('.dot');
-images.forEach((img, i) => img.classList.toggle('active', i === index));
-dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-currentMediaIndex = index;
+    const images = document.querySelectorAll('.carousel-image'), dots =
+        document.querySelectorAll('.dot');
+    images.forEach((img, i) => img.classList.toggle('active', i === index));
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    currentMediaIndex = index;
 }
-// === ORDER FLOW ===
+// === ORDER FLOW (FIXED JSON KEYS) ===
 function handleBuyNow() {
-if (!currentProduct) return alert("Loading...");
-const codPrice = currentProduct.COD_Price || "1150", premiumPrice =
-currentProduct.Premium_Price || "999";
-showModal(`
+    if (!currentProduct) return alert("Loading...");
+    // FIXED JSON KEYS
+    const codPrice = currentProduct.codPrice || "1150", premiumPrice =
+        currentProduct.premiumPrice || "999"; 
+    showModal(`
 <h3 style="color: var(--color-primary-btn);">Select Payment</h3>
 <p style="margin-bottom: 20px; text-align: center;">Choose your payment method:</p>
 <button class="btn-base"
 style="background: var(--color-price-premium); color: white; margin-bottom: 15px;"
 onclick="showOrderForm(true, '${premiumPrice}');">
 ⭐ Premium Pay (₹${premiumPrice})
-<p style="font-size: 0.8em; margin: 5px 0 0 0;">(Fast Delivery, Save ₹${codPrice -
-premiumPrice})</p>
+<p style="font-size: 0.8em; margin: 5px 0 0 0;">(Fast Delivery, Save ₹${codPrice - premiumPrice})</p>
 </button>
 <button class="btn-base"
 style="background: var(--color-price-cod); color: white;"
@@ -813,9 +811,9 @@ onclick="showOrderForm(false, '${codPrice}');">
 `);
 }
 function showOrderForm(isPrepaid, price) {
-const paymentMode = isPrepaid ? "PREMIUM" : "COD";
-const senderName = document.getElementById("receiver-display-top").textContent || "Direct";
-showModal(`
+    const paymentMode = isPrepaid ? "PREMIUM" : "COD";
+    const senderName = document.getElementById("receiver-display-top").textContent || "Direct";
+    showModal(`
 <h3 style="color: var(--color-price-premium);">${paymentMode} Order Form</h3>
 <p style="font-weight: 700; margin-bottom: 15px; text-align: center;">Final Price: ₹${price}</p>
 <form id="order-form" onsubmit="submitOrder(event, ${isPrepaid}, '${price}', '${paymentMode}',
@@ -837,24 +835,24 @@ required>
 `);
 }
 function submitOrder(event, isPrepaid, price, paymentMode, senderName) {
-event.preventDefault();
-const form = document.getElementById("order-form");
-const formData = new FormData(form);
-const data = {
-"Product Name": currentProduct["Product Name"] || "Unknown",
-"Price": price,
-"Payment Mode": paymentMode,
-"Wish Sender": senderName
-};
-formData.forEach((value, key) => { data[key] = value; });
-if (isPrepaid) {
-showQRPayment(data);
-} else {
-finalSubmitOrder(data);
-}
+    event.preventDefault();
+    const form = document.getElementById("order-form");
+    const formData = new FormData(form);
+    const data = {
+        "Product Name": currentProduct.productName || "Unknown", // FIXED JSON KEY
+        "Price": price,
+        "Payment Mode": paymentMode,
+        "Wish Sender": senderName
+    };
+    formData.forEach((value, key) => { data[key] = value; });
+    if (isPrepaid) {
+        showQRPayment(data);
+    } else {
+        finalSubmitOrder(data);
+    }
 }
 function showQRPayment(data) {
-showModal(`
+    showModal(`
 <h3 style="color: var(--color-price-premium);">⭐ Premium Payment</h3>
 <p style="font-weight: 700; margin-bottom: 15px; text-align: center;">Amount:
 ₹${data.Price}</p>
@@ -876,21 +874,21 @@ onclick='finalSubmitOrder(${JSON.stringify(data)});'>
 `);
 }
 function finalSubmitOrder(data) {
-if (typeof data === 'string') data = JSON.parse(data);
-document.getElementById("modal-body").innerHTML = `
+    if (typeof data === 'string') data = JSON.parse(data);
+    document.getElementById("modal-body").innerHTML = `
 <h3 style="color: var(--color-primary-btn);">
 <span class="loading-spinner"></span> Processing...
 </h3>
 <p>Please wait...</p>
 `;
-const params = new URLSearchParams();
-for (const key in data) params.append(key, data[key]);
-fetch(CONFIG.ORDER_SUBMIT_API, { method: "POST", body: params })
-.then(response => response.json())
-.then(result => {
-if (result.result === "success") {
-const customerName = data["Customer Name"] || "Customer";
-document.getElementById("modal-body").innerHTML = `
+    const params = new URLSearchParams();
+    for (const key in data) params.append(key, data[key]);
+    fetch(CONFIG.ORDER_SUBMIT_API, { method: "POST", body: params })
+        .then(response => response.json())
+        .then(result => {
+            if (result.result === "success") {
+                const customerName = data["Customer Name"] || "Customer";
+                document.getElementById("modal-body").innerHTML = `
 <h3 style="color: var(--color-price-premium);">🎉 Order Placed!</h3>
 <p style="margin-bottom: 20px;">Your order is confirmed! We'll contact you on WhatsApp.</p>
 <button class="primary-btn btn-base"
@@ -899,21 +897,21 @@ onclick="hideModal(); showPostPurchaseShareModal('${customerName}');">
 📤 Share with Friends
 </button>
 `;
-} else {
-throw new Error(result.error || "Error");
-}
-})
-.catch(error => {
-console.error("Error:", error);
-document.getElementById("modal-body").innerHTML = `
+            } else {
+                throw new Error(result.error || "Error");
+            }
+        })
+        .catch(error => {
+            console.error("Error submitting order:", error);
+            document.getElementById("modal-body").innerHTML = `
 <h3 style="color: var(--color-price-cod);">❌ Failed</h3>
-<p>Network error. Please try again.</p>
+<p>Network error or API failure. Please try again.</p>
 <button class="primary-btn btn-base" onclick="hideModal();">Close</button>
 `;
-});
+        });
 }
 function showPostPurchaseShareModal(senderName) {
-showModal(`
+    showModal(`
 <h3 style="color: var(--color-price-premium); text-align: center;">🎉 Thank You!</h3>
 <p style="margin-bottom: 15px; text-align: center; font-weight: 600;">Share this deal with
 friends!</p>
@@ -935,56 +933,57 @@ onclick="handleShareFromModal();">
 `);
 }
 function handleShareFromModal() {
-const senderName = document.getElementById("modal-share-sender-input").value.trim();
-const receiverName = document.getElementById("modal-share-receiver-input").value.trim();
-if (!senderName || !receiverName || receiverName === "Friend Name") {
-alert("Please enter friend's name!");
-return;
-}
-hideModal();
-initiateWhatsAppShare(CONFIG.BASE_STORE_URL, senderName, receiverName, true);
+    const senderName = document.getElementById("modal-share-sender-input").value.trim();
+    const receiverName = document.getElementById("modal-share-receiver-input").value.trim();
+    if (!senderName || !receiverName || receiverName === "Friend Name") {
+        alert("Please enter friend's name!");
+        return;
+    }
+    hideModal();
+    initiateWhatsAppShare(CONFIG.BASE_STORE_URL, senderName, receiverName, true);
 }
 function handleShare() {
-const senderName = document.getElementById("share-sender-input").value.trim();
-const receiverName = document.getElementById("share-receiver-input").value.trim();
-if (!senderName || senderName === "Your Name") {
-alert("कृपया अपना नाम डालें!");
-return;
-}
-if (!receiverName || receiverName === "Friend Name") {
-alert("कृपया दोस्त का नाम डालें!");
-return;
-}
-initiateWhatsAppShare(CONFIG.BASE_STORE_URL, senderName, receiverName, false);
+    const senderName = document.getElementById("share-sender-input").value.trim();
+    const receiverName = document.getElementById("share-receiver-input").value.trim();
+    if (!senderName || senderName === "Your Name") {
+        alert("कृपया अपना नाम डालें!");
+        return;
+    }
+    if (!receiverName || receiverName === "Friend Name") {
+        alert("कृपया दोस्त का नाम डालें!");
+        return;
+    }
+    initiateWhatsAppShare(CONFIG.BASE_STORE_URL, senderName, receiverName, false);
 }
 function initiateWhatsAppShare(baseShareUrl, senderName, receiverName, isBought) {
-let finalShareUrl = baseShareUrl;
-if (isBought) {
-finalShareUrl = baseShareUrl +
-`?sender=${encodeURIComponent(receiverName)}&status=bought`;
-} else {
-finalShareUrl = baseShareUrl + `?sender=${encodeURIComponent(receiverName)}`;
-}
-const customWishText = `!!
-आपको और आपके परि वार को मेरी ओर सेशभु दीपावली !!\nमांलक्ष्मी और
+    // 💡 FIXED: URL प्रोटोकॉल यहां जोड़ा जाता है ताकि शेयरिंग काम करे
+    const fullBaseUrl = 'https://' + baseShareUrl;
+
+    let finalShareUrl = fullBaseUrl;
+    if (isBought) {
+        finalShareUrl = fullBaseUrl +
+            `?sender=${encodeURIComponent(receiverName)}&status=bought`;
+    } else {
+        finalShareUrl = fullBaseUrl + `?sender=${encodeURIComponent(receiverName)}`;
+    }
+    const customWishText = `!! आपको और आपके परिवार को मेरी ओर से शभु दीपावली !!\nमां लक्ष्मी और
 गणेश जी की कृपा आप पर सदा बनी रहे🌷!!`;
-const shareText = `*${senderName.toUpperCase()}*\n\n${customWishText}\n\n${finalShareUrl}`;
-if (navigator.share) {
-navigator.share({ text: shareText, url: finalShareUrl })
-.catch(() => window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`,
-"_blank"));
-} else {
-window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank");
-}
+    const shareText = `*${senderName.toUpperCase()}*\n\n${customWishText}\n\n${finalShareUrl}`;
+    
+    if (navigator.share) {
+        navigator.share({ text: shareText, url: finalShareUrl })
+            .catch(() => window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`,
+                "_blank"));
+    } else {
+        window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank");
+    }
 }
 function handleBuyScript() {
-const msg = `Hello! मझु े₹${CONFIG.SCRIPT_PRICE} मेंviral wishing store script खरीदनी है।`;
-window.open(`https://wa.me/${CONFIG.ADMIN_WHATSAPP}?text=${encodeURIComponent(m
-sg)}`, "_blank");
+    const msg = `Hello! मझु े₹${CONFIG.SCRIPT_PRICE} में viral wishing store script खरीदनी है।`;
+    window.open(`https://wa.me/${CONFIG.ADMIN_WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
 }
-// === INITIALIZATION ===
+// === INITIALIZATION (FIXED: checkDomain removed) ===
 function init() {
-    // 💡 FIX APPLIED: checkDomain() की निर्भरता हटाई गई है।
     fetchProductData();
     document.getElementById("buy-now-btn").addEventListener("click", handleBuyNow);
     document.getElementById("share-btn").addEventListener("click", handleShare);
@@ -1001,3 +1000,5 @@ document.addEventListener("DOMContentLoaded", init);
 
 
 
+
+        
