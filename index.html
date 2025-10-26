@@ -4,15 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Diwali Special Wish and Gift Offer</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-<meta property="og:title" content="Happy Diwali! Special Gift Offer"> 
-<meta property="og:description" content="शुभ दीपावली! Exclusive Diwali gift with amazing offers. Limited time only!">
-<meta property="og:image" content="https://genzygifts.github.io/GenzyGifts/diwali.gif"> 
+<meta property="og:title" content="Happy Diwali! Special Gift Offer">
+<meta property="og:description" content="शुभ दीपावली ! Exclusive Diwali gift with amazing offers. Limited time only!">
+<meta property="og:image" content="https://genzygifts.github.io/GenzyGifts/diwali.gif">
 <meta property="og:url" content="https://genzygifts.github.io/GenzyGifts/">
 <meta property="og:type" content="website">
+
 <style>
+/* --- STYLES (Pages 1-13) --- */
 :root {
 --color-bg-dark: #5C1A00;
 --color-bg-darker: #2C0A0A;
@@ -24,33 +25,30 @@
 --color-gold: #FFD700;
 --color-brown: #8B4513;
 }
-
-* { 
-box-sizing: border-box; 
-margin: 0; 
-padding: 0; 
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
 font-family: 'Poppins', sans-serif;
 -webkit-tap-highlight-color: transparent;
 user-select: none;
 }
-
-html, body { 
-height: 100%; 
-display: flex; 
-justify-content: center; 
-align-items: center; 
-overflow: hidden; 
+html, body {
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
 background: #000;
 }
-
-#app-container { 
+#app-container {
 width: 100vw;
 height: 100vh;
 max-width: min(100vw, 56.25vh);
-max-height: min(100vh, 177.78vw);
+max-height: min (100vh, 177.78vw);
 margin: auto;
-display: flex; 
-flex-direction: column; 
+display: flex;
+flex-direction: column;
 background: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-darker) 100%);
 box-shadow: 0 0 40px rgba(255, 107, 53, 0.6);
 color: var(--color-primary-text);
@@ -58,18 +56,16 @@ position: relative;
 overflow-y: auto;
 overflow-x: hidden;
 }
-
-#content-area { 
+#content-area {
 padding: 0 8px;
 text-align: center;
 flex-grow: 1;
 display: flex;
 flex-direction: column;
 }
-
 /* Decorations */
-.diya-decoration { 
-position: absolute; 
+.diya-decoration {
+position: absolute;
 top: 8px;
 font-size: 18px;
 z-index: 20;
@@ -78,14 +74,12 @@ animation: pulse 2s infinite alternate;
 }
 .diya-left { left: 15px; transform: rotate(-15deg); }
 .diya-right { right: 15px; transform: rotate(15deg); }
-
 @keyframes pulse {
 0% { transform: scale(1); opacity: 0.9; }
 100% { transform: scale(1.1); opacity: 1; }
 }
-
 /* Header - COMPRESSED */
-#top-header-wish { 
+#top-header-wish {
 text-align: center;
 padding: 25px 0 5px 0;
 color: #FFE4B5;
@@ -93,7 +87,7 @@ font-weight: 600;
 position: relative;
 z-index: 10;
 }
-.receiver-header { 
+.receiver-header {
 font-size: 22px;
 font-weight: 900;
 color: var(--color-gold);
@@ -101,7 +95,7 @@ text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
 font-family: cursive;
 margin-bottom: 3px;
 }
-.festival-text { 
+.festival-text {
 font-size: 13px;
 font-weight: 700;
 margin: 3px 0;
@@ -122,7 +116,7 @@ justify-content: center;
 cursor: pointer;
 font-size: 11px;
 }
-.store-title-top { 
+.store-title-top {
 font-size: 10px;
 font-style: italic;
 font-weight: 600;
@@ -130,9 +124,8 @@ letter-spacing: 1px;
 color: #FFE4B5;
 opacity: 0.8;
 }
-
 /* Product Card */
-#product-card { 
+#product-card {
 background-color: var(--color-card-bg);
 border-radius: 15px;
 padding: 12px;
@@ -143,9 +136,8 @@ flex-shrink: 0;
 border: 3px solid var(--color-brown);
 position: relative;
 }
-
 #product-card::before {
-content: '';
+content: "";
 position: absolute;
 top: 5px;
 left: 5px;
@@ -156,15 +148,13 @@ border-radius: 12px;
 pointer-events: none;
 opacity: 0.6;
 }
-
-.product-name-main { 
+.product-name-main {
 font-size: 12px;
 font-weight: 700;
 margin-bottom: 5px;
 text-align: center;
 }
-
-#review-bar { 
+#review-bar {
 text-align: center;
 margin-bottom: 8px;
 color: var(--color-gold);
@@ -174,11 +164,9 @@ align-items: center;
 justify-content: center;
 gap: 6px;
 }
-
 .stars { font-size: 15px; }
 .review-count { color: #666; font-size: 9px; font-weight: 600; }
-
-#media-box { 
+#media-box {
 width: 100%;
 padding-top: 56.25%;
 height: 0;
@@ -189,8 +177,7 @@ border-radius: 8px;
 overflow: hidden;
 background: #f0f0f0;
 }
-
-.carousel-image, .product-media-video { 
+.carousel-image, product-media-video {
 position: absolute;
 top: 0;
 left: 0;
@@ -200,10 +187,8 @@ object-fit: contain;
 opacity: 0;
 transition: opacity 0.5s ease-in-out;
 }
-
 .carousel-image.active, .product-media-video { opacity: 1; }
 .product-media-video { object-fit: contain; }
-
 .media-loading {
 position: absolute;
 top: 50%;
@@ -212,7 +197,6 @@ transform: translate(-50%, -50%);
 font-size: 50px;
 color: #bbb;
 }
-
 .carousel-dots {
 position: absolute;
 bottom: 5px;
@@ -222,7 +206,6 @@ display: flex;
 gap: 10px;
 z-index: 5;
 }
-
 .dot {
 width: 7px;
 height: 7px;
@@ -231,23 +214,19 @@ background: #ccc;
 cursor: pointer;
 transition: all 0.3s;
 }
-
 .dot.active { background: var(--color-primary-btn); transform: scale(1.3); }
-
 /* Price Section - SIMPLE TEXT ONLY */
-#price-section { 
+#price-section {
 display: flex;
 justify-content: center;
 align-items: center;
 margin-bottom: 8px;
 gap: 12px;
 }
-
 .price-item {
 text-align: center;
 }
-
-.price-item-label { 
+.price-item-label {
 font-size: 8px;
 font-weight: 600;
 text-transform: uppercase;
@@ -256,34 +235,28 @@ margin-bottom: 2px;
 letter-spacing: 0.5px;
 opacity: 0.8;
 }
-
-#price-cod-display .price-item-label { color: var(--color-price-cod); }
-#price-premium-display .price-item-label { color: var(--color-price-premium); }
-
-.price-item-value { 
+#price-cod-display.price-item-label { color: var(--color-price-cod); }
+#price-premium-display.price-item-label { color: var(--color-price-premium); }
+.price-item-value {
 font-size: 20px;
 font-weight: 900;
 display: block;
 line-height: 1;
 }
-
-#price-cod-display .price-item-value { 
+#price-cod-display.price-item-value {
 color: var(--color-price-cod);
 text-decoration: line-through;
 opacity: 0.7;
 }
-
-#price-premium-display .price-item-value { 
+#price-premium-display.price-item-value {
 color: var(--color-price-premium);
 }
-
 .price-vs {
 font-size: 11px;
 font-weight: 700;
 color: #666;
 }
-
-#description-text { 
+#description-text {
 font-size: 9px;
 color: #666;
 margin-bottom: 6px;
@@ -291,9 +264,8 @@ font-weight: 500;
 text-align: center;
 line-height: 1.3;
 }
-
 /* Buttons - SMALLER */
-.btn-base { 
+.btn-base {
 width: 100%;
 padding: 8px 12px;
 margin-bottom: 5px;
@@ -304,16 +276,13 @@ border: none;
 cursor: pointer;
 transition: all 0.3s;
 }
-
-.primary-btn { 
+.primary-btn {
 background: linear-gradient(135deg, var(--color-primary-btn), #FF4500);
 color: white;
 box-shadow: 0 4px 10px rgba(255, 107, 0, 0.5);
 }
-
 .primary-btn:active { transform: scale(0.98); }
-
-input[type="text"], textarea, select { 
+input[type="text"], textarea, select {
 width: 100%;
 padding: 8px;
 margin-bottom: 8px;
@@ -323,17 +292,15 @@ box-sizing: border-box;
 font-size: 11px;
 outline: none;
 }
-
 /* Share Section */
-#share-section-box { 
+#share-section-box {
 padding: 8px;
 margin-top: 5px;
 background-color: rgba(139, 26, 0, 0.3);
 border-radius: 8px;
 flex-shrink: 0;
 }
-
-#share-label { 
+#share-label {
 font-size: 10px;
 font-weight: 700;
 margin-bottom: 5px;
@@ -342,9 +309,8 @@ align-items: center;
 gap: 5px;
 color: #fff;
 }
-
 /* Timer - SMALLER */
-#offer-timer-share { 
+#offer-timer-share {
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -354,7 +320,6 @@ border-radius: 8px;
 padding: 5px 8px;
 margin-bottom: 8px;
 }
-
 #timer-inner {
 background: #8B0000;
 padding: 4px 10px;
@@ -365,8 +330,7 @@ justify-content: space-between;
 align-items: center;
 margin-left: 8px;
 }
-
-#offer-end-text { 
+#offer-end-text {
 font-size: 9px;
 font-weight: 700;
 color: var(--color-gold);
@@ -375,24 +339,20 @@ align-items: center;
 gap: 3px;
 white-space: nowrap;
 }
-
-#countdown { 
+#countdown {
 font-size: 13px;
 font-weight: 900;
 color: #fff;
 }
-
 /* Input Row - EK LINE MEIN */
-.share-input-row { 
+.share-input-row {
 display: flex;
 gap: 8px;
 margin-bottom: 8px;
 }
-
 .input-group {
 flex: 1;
 }
-
 .input-label-white {
 font-size: 9px;
 font-weight: 600;
@@ -400,8 +360,7 @@ color: #fff;
 margin-bottom: 3px;
 display: block;
 }
-
-.share-input-field { 
+.share-input-field {
 width: 100%;
 padding: 7px;
 border-radius: 6px;
@@ -411,8 +370,7 @@ outline: none;
 text-align: center;
 font-weight: 500;
 }
-
-.share-btn { 
+.share-btn {
 width: 100%;
 padding: 8px;
 background: linear-gradient(135deg, #FF8C00, var(--color-primary-btn));
@@ -424,9 +382,8 @@ border: none;
 cursor: pointer;
 box-shadow: 0 4px 10px rgba(255, 107, 0, 0.5);
 }
-
 /* Script Purchase Box */
-#script-purchase-box { 
+#script-purchase-box {
 padding: 10px;
 margin-top: 8px;
 background: #2C1810;
@@ -439,7 +396,6 @@ align-items: stretch;
 gap: 10px;
 min-height: 65px;
 }
-
 .script-info-group {
 flex: 1;
 display: flex;
@@ -447,8 +403,7 @@ flex-direction: column;
 justify-content: space-between;
 gap: 5px;
 }
-
-.script-info { 
+.script-info {
 font-size: 9px;
 margin-bottom: 3px;
 font-weight: 700;
@@ -457,8 +412,7 @@ display: flex;
 align-items: center;
 gap: 5px;
 }
-
-.script-btn { 
+.script-btn {
 padding: 7px 10px;
 font-size: 10px;
 background: var(--color-gold);
@@ -469,16 +423,14 @@ font-weight: 900;
 cursor: pointer;
 white-space: nowrap;
 }
-
-.qr-code-display { 
+.qr-code-display {
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 3px;
 }
-
-.qr-code-display img { 
+.qr-code-display img {
 width: 55px;
 height: 55px;
 border: 2.5px solid #000;
@@ -486,18 +438,15 @@ border-radius: 5px;
 background: #fff;
 padding: 2px;
 }
-
-.qr-code-label { 
+.qr-code-label {
 font-size: 7px;
 color: #FFE4B5;
 font-weight: 700;
 text-align: center;
 }
-
 .hidden { display: none !important; }
-
 /* Modal */
-#modal { 
+#modal {
 position: fixed;
 z-index: 100;
 left: 0;
@@ -509,8 +458,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 }
-
-.modal-content { 
+.modal-content {
 background-color: var(--color-card-bg);
 padding: 20px;
 border-radius: 15px;
@@ -522,8 +470,7 @@ box-shadow: 0 10px 40px rgba(255, 107, 53, 0.5);
 overflow-y: auto;
 max-height: 90vh;
 }
-
-.modal-content .close-btn { 
+.modal-content .close-btn {
 position: absolute;
 top: 10px;
 right: 12px;
@@ -538,12 +485,10 @@ justify-content: center;
 background: none;
 border: none;
 }
-
 .modal-content .close-btn:hover { color: #000; }
 .modal-content h3 { margin-bottom: 15px; text-align: center; }
 .modal-content p { margin-bottom: 15px; }
 .modal-content button { margin-top: 10px; }
-
 .loading-spinner {
 display: inline-block;
 width: 20px;
@@ -553,7 +498,6 @@ border-radius: 50%;
 border-top-color: #fff;
 animation: spin 1s ease-in-out infinite;
 }
-
 @keyframes spin {
 to { transform: rotate(360deg); }
 }
@@ -563,30 +507,25 @@ to { transform: rotate(360deg); }
 <div id="app-container">
 <span class="diya-decoration diya-left">🪔</span>
 <span class="diya-decoration diya-right">🪔</span>
-
 <div id="top-header-wish">
 <h1 class="receiver-header">Hi <span id="receiver-display-top">Priya</span>!</h1>
 <p class="festival-text">
-Happy Diwali ✨ 
+Happy Diwali ✨
 <span class="audio-icon-btn" onclick="playAudioManually()" title="Play Audio">🔊</span>
 </p>
 <h2 class="store-title-top">+ Genzy Gifts +</h2>
 </div>
-
 <div id="content-area">
 <div id="product-card">
 <h4 id="product-name-static" class="product-name-main">Loading Product...</h4>
-
 <div id="review-bar">
 <span class="stars">⭐⭐⭐⭐⭐</span>
 <span class="review-count">(154 Reviews | 4.8/5)</span>
 </div>
-
 <div id="media-box">
 <div id="media-carousel"></div>
 <div class="carousel-dots" id="carousel-dots"></div>
 </div>
-
 <div id="details-box">
 <div id="price-section">
 <div class="price-item" id="price-cod-display">
@@ -599,12 +538,10 @@ Happy Diwali ✨
 <span class="price-item-value">₹<span id="price-premium">...</span></span>
 </div>
 </div>
-
 <p id="description-text">Loading...</p>
 <button id="buy-now-btn" class="btn-base primary-btn" disabled>🛒 Loading...</button>
 </div>
 </div>
-
 <div id="share-section-box">
 <p id="share-label">❤️ Add Your Name And Receiver Name</p>
 <div id="share-input-group">
@@ -614,22 +551,21 @@ Happy Diwali ✨
 <div id="countdown">00H : 00M : 00S</div>
 </div>
 </div>
-
 <div class="share-input-row">
 <div class="input-group">
 <label class="input-label-white">Your Name</label>
-<input type="text" id="share-sender-input" class="share-input-field" placeholder="Your Name" autocomplete="off" value="Sunil">
+<input type="text" id="share-sender-input" class="share-input-field" placeholder="Your Name"
+autocomplete="off" value="Sunil">
 </div>
 <div class="input-group">
 <label class="input-label-white">Friend Name</label>
-<input type="text" id="share-receiver-input" class="share-input-field" placeholder="Friend Name" autocomplete="off" value="Ram">
+<input type="text" id="share-receiver-input" class="share-input-field" placeholder="Friend
+Name" autocomplete="off" value="Ram">
 </div>
 </div>
-
 <button id="share-btn" class="share-btn btn-base">Share Wish</button>
 </div>
 </div>
-
 <div id="script-purchase-box">
 <div class="script-info-group">
 <p class="script-info">🎁 Want to create on own store like this?</p>
@@ -644,38 +580,36 @@ Happy Diwali ✨
 </div>
 </div>
 </div>
-
 <audio id="tts-audio" preload="none" hidden></audio>
-
 <div id="modal" class="hidden">
 <div class="modal-content">
 <button class="close-btn" onclick="hideModal()" aria-label="Close">×</button>
 <div id="modal-body"></div>
 </div>
 </div>
-
 <script>
 // === CONFIGURATION ===
 const CONFIG = {
-ORDER_SUBMIT_API: "https://script.google.com/macros/s/AKfycbyQoweTvVkWVWQRo72rNrJI_Qk4uw2TcLTRJwkvlr0ZWXrf6U3jnDOA9MKo7WPyEco8/exec",
+ORDER_SUBMIT_API:
+"https://script.google.com/macros/s/AKfycbyQoweTvVkWVWQRo72rNrJI_Qk4uw2TcLTRJwkvlr0ZWXrf6U3jnDOA9MKo7WPyEco8/exec",
 ADMIN_WHATSAPP: "919226949557",
+// BASE_STORE_URL को आपके GitHub Pages URL पर सेट किया गया है
 BASE_STORE_URL: "https://genzygifts.github.io/GenzyGifts/",
 SCRIPT_PRICE: 1999,
 PRODUCT_JSON_FILE: "product_data.json"
 };
-
 let currentProduct = null, audioPlayed = false, carouselTimer = null, currentMediaIndex = 0;
-
 // === UTILITY FUNCTIONS ===
 function checkKey(e) {
-if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 83)) || (e.ctrlKey && e.keyCode === 85)) {
+if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 83))
+|| (e.ctrlKey && e.keyCode === 85)) {
 e.preventDefault();
 return false;
 }
 if (e.key === 'Escape') hideModal();
 return true;
 }
-
+// 🔒 NOTE: checkDomain() फ़ंक्शन को init() से हटा दिया गया है ताकि डेटा फ़ेचिंग हमेशा काम करे।
 function checkDomain() {
 const currentHost = window.location.host, expectedHost = (new URL(CONFIG.BASE_STORE_URL)).host;
 if (currentHost !== expectedHost) {
@@ -688,7 +622,6 @@ return false;
 }
 return true;
 }
-
 function getUrlParams() {
 const params = {};
 window.location.search.substring(1).split("&").forEach(pair => {
@@ -697,16 +630,13 @@ if (key) params[key] = value;
 });
 return params;
 }
-
 function showModal(content) {
 document.getElementById("modal-body").innerHTML = content;
 document.getElementById("modal").classList.remove("hidden");
 }
-
 function hideModal() {
 document.getElementById("modal").classList.add("hidden");
 }
-
 // === TIMER WITH LOCALSTORAGE ===
 function startCountdown() {
 const TIMER_KEY = 'diwali_offer_timer';
@@ -719,7 +649,8 @@ const minutes = Math.floor(Math.random() * 6) + 10;
 countDownDate = new Date().getTime() + minutes * 60 * 1000;
 localStorage.setItem(TIMER_KEY, countDownDate.toString());
 }
-const countdownElement = document.getElementById("countdown"), buyBtn = document.getElementById("buy-now-btn");
+const countdownElement = document.getElementById("countdown"), buyBtn =
+document.getElementById("buy-now-btn");
 const x = setInterval(() => {
 const now = new Date().getTime(), distance = countDownDate - now;
 if (distance < 0) {
@@ -732,25 +663,30 @@ return;
 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-countdownElement.innerHTML = (hours < 10 ? "0" + hours : hours) + "H : " + (minutes < 10 ? "0" + minutes : minutes) + "M : " + (seconds < 10 ? "0" + seconds : seconds) + "S";
+countdownElement.innerHTML = (hours < 10 ? "0" + hours : hours) + "H : " + (minutes < 10 ?
+"0" + minutes : minutes) + "M : " + (seconds 
+< 10 ? "0" + seconds : seconds) + "S";
 }, 1000);
 }
-
 // === AUDIO LOGIC ===
 function generateTtsUrl(receiverName, senderName) {
-const TTS_ENDPOINT = "https://corsproxy.io/?https://translate.google.com/translate_tts?ie=UTF-8&tl=hi&client=tw-ob&q=";
+const TTS_ENDPOINT =
+"https://corsproxy.io/?https://translate.google.com/translate_tts?ie=UTF-8&tl=hi&client=tw-ob&q
+=";
 const params = getUrlParams(), shareStatus = params.status;
 let ttsMessage;
 if (shareStatus === "bought") {
-ttsMessage = `नमस्ते ${receiverName}! आपके दोस्त ${senderName} ने भी इसे अभी-अभी order किया है।`;
+ttsMessage = `नमस्ते${receiverName}! आपके दोस्त ${senderName} नेभी इसेअभी-अभी order कि या
+है।`;
 } else if (params.sender && "Priya" !== params.sender) {
-ttsMessage = `नमस्ते ${receiverName}! ${senderName} की ओर से यह special offer आपके लिए है।`;
+ttsMessage = `नमस्ते${receiverName}!
+${senderName} की ओर सेयह special offer आपके लि ए है।`;
 } else {
-ttsMessage = `नमस्ते ${receiverName}! अपना name डालके Wish share करें।`;
+ttsMessage = `नमस्ते${receiverName}!
+अपना name डालके Wish share करें।`;
 }
 return TTS_ENDPOINT + encodeURIComponent(ttsMessage);
 }
-
 function playAudio(receiverName) {
 if (audioPlayed || !currentProduct) return;
 const params = getUrlParams(), senderName = params.sender || "Priya";
@@ -759,14 +695,12 @@ audio.src = generateTtsUrl(receiverName, senderName);
 audio.onended = () => { audioPlayed = true; };
 audio.play().catch(() => { audioPlayed = false; });
 }
-
 function playAudioManually() {
 const params = getUrlParams();
 const receiverName = params.sender ? decodeURIComponent(params.sender) : "Priya";
 audioPlayed = false;
 playAudio(receiverName);
 }
-
 // === FETCH PRODUCT DATA ===
 async function fetchProductData() {
 try {
@@ -781,30 +715,36 @@ document.getElementById("product-name-static").textContent = "Error Loading";
 document.getElementById("buy-now-btn").disabled = true;
 }
 }
-
 function updateStoreUI() {
 if (!currentProduct) return;
-const params = getUrlParams(), finalReceiverName = params.sender ? decodeURIComponent(params.sender) : "Priya";
+const params = getUrlParams(), finalReceiverName = params.sender ?
+decodeURIComponent(params.sender) : "Priya";
 document.getElementById("receiver-display-top").textContent = finalReceiverName;
-document.getElementById("product-name-static").textContent = currentProduct["Product Name"] || "Diwali Gift Box";
-document.getElementById("price-premium").textContent = currentProduct.Premium_Price || "999";
+document.getElementById("product-name-static").textContent = currentProduct["Product
+Name"] ||
+"Diwali Gift Box";
+document.getElementById("price-premium").textContent = currentProduct.Premium_Price ||
+"999";
 document.getElementById("price-cod").textContent = currentProduct.COD_Price || "1150";
-document.getElementById("description-text").textContent = currentProduct.Description || "Experience the joy...";
+document.getElementById("description-text").textContent = currentProduct.Description ||
+"Experience the joy...";
 document.getElementById("script-price-display").textContent = CONFIG.SCRIPT_PRICE;
-document.getElementById("buy-now-btn").textContent = `🛒 Buy Now ₹${currentProduct.Premium_Price || "999"}`;
+document.getElementById("buy-now-btn").textContent = `🛒 Buy Now
+₹${currentProduct.Premium_Price || "999"}`;
 document.getElementById("buy-now-btn").disabled = false;
 startMediaDisplay();
 startCountdown();
 setTimeout(() => { if (!audioPlayed) playAudio(finalReceiverName); }, 1000);
 }
-
 // === MEDIA DISPLAY ===
 function startMediaDisplay() {
-const mediaContainer = document.getElementById("media-carousel"), dotsContainer = document.getElementById("carousel-dots");
+const mediaContainer = document.getElementById("media-carousel"), dotsContainer =
+document.getElementById("carousel-dots");
 mediaContainer.innerHTML = "";
 dotsContainer.innerHTML = "";
 clearInterval(carouselTimer);
-const mediaCount = parseInt(currentProduct.Media_Count || 0), hasVideo = currentProduct.Has_Video === true;
+const mediaCount = parseInt(currentProduct.Media_Count || 0), hasVideo =
+currentProduct.Has_Video === true;
 if (hasVideo && mediaCount > 0) {
 const video = document.createElement("video");
 video.src = "1.mp4";
@@ -813,7 +753,8 @@ video.setAttribute("loop", "");
 video.setAttribute("autoplay", "");
 video.setAttribute("playsinline", "");
 video.setAttribute("muted", "");
-video.onerror = () => { video.remove(); startImageCarousel(mediaCount, mediaContainer, dotsContainer); };
+video.onerror = () => { video.remove(); startImageCarousel(mediaCount, mediaContainer,
+dotsContainer); };
 mediaContainer.appendChild(video);
 } else if (mediaCount > 0) {
 startImageCarousel(mediaCount, mediaContainer, dotsContainer);
@@ -822,8 +763,6 @@ mediaContainer.innerHTML = '<div class="media-loading">🎁</div>';
 }
 }
 function startImageCarousel(count, container, dotsContainer) {
-for (let i = 1; i <= count; i++) {
-const img function startImageCarousel(count, container, dotsContainer) {
 for (let i = 1; i <= count; i++) {
 const img = document.createElement("img");
 img.className = "carousel-image";
@@ -843,9 +782,9 @@ changeImage(currentMediaIndex);
 }, 3000);
 }
 }
-
 function changeImage(index) {
-const images = document.querySelectorAll('.carousel-image'), dots = document.querySelectorAll('.dot');
+const images = document.querySelectorAll('.carousel-image'), dots =
+document.querySelectorAll('.dot');
 images.forEach((img, i) => img.classList.toggle('active', i === index));
 dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
 currentMediaIndex = index;
@@ -853,51 +792,50 @@ currentMediaIndex = index;
 // === ORDER FLOW ===
 function handleBuyNow() {
 if (!currentProduct) return alert("Loading...");
-const codPrice = currentProduct.COD_Price || "1150", premiumPrice = currentProduct.Premium_Price || "999";
+const codPrice = currentProduct.COD_Price || "1150", premiumPrice =
+currentProduct.Premium_Price || "999";
 showModal(`
 <h3 style="color: var(--color-primary-btn);">Select Payment</h3>
 <p style="margin-bottom: 20px; text-align: center;">Choose your payment method:</p>
-
-<button class="btn-base" 
-style="background: var(--color-price-premium); color: white; margin-bottom: 15px;" 
+<button class="btn-base"
+style="background: var(--color-price-premium); color: white; margin-bottom: 15px;"
 onclick="showOrderForm(true, '${premiumPrice}');">
 ⭐ Premium Pay (₹${premiumPrice})
-<p style="font-size: 0.8em; margin: 5px 0 0 0;">(Fast Delivery, Save ₹${codPrice - premiumPrice})</p>
+<p style="font-size: 0.8em; margin: 5px 0 0 0;">(Fast Delivery, Save ₹${codPrice -
+premiumPrice})</p>
 </button>
-
-<button class="btn-base" 
-style="background: var(--color-price-cod); color: white;" 
+<button class="btn-base"
+style="background: var(--color-price-cod); color: white;"
 onclick="showOrderForm(false, '${codPrice}');">
 💰 COD (₹${codPrice})
 <p style="font-size: 0.8em; margin: 5px 0 0 0;">(Cash on Delivery)</p>
 </button>
 `);
 }
-
 function showOrderForm(isPrepaid, price) {
 const paymentMode = isPrepaid ? "PREMIUM" : "COD";
 const senderName = document.getElementById("receiver-display-top").textContent || "Direct";
-
 showModal(`
 <h3 style="color: var(--color-price-premium);">${paymentMode} Order Form</h3>
 <p style="font-weight: 700; margin-bottom: 15px; text-align: center;">Final Price: ₹${price}</p>
-
-<form id="order-form" onsubmit="submitOrder(event, ${isPrepaid}, '${price}', '${paymentMode}', '${senderName}'); return false;">
-<input type="text" name="Customer Name" placeholder="1. Full Name *" required autocomplete="name">
-<input type="text" name="Whatsapp" placeholder="2. WhatsApp (10 digits) *" pattern="[6-9][0-9]{9}" required autocomplete="tel">
+<form id="order-form" onsubmit="submitOrder(event, ${isPrepaid}, '${price}', '${paymentMode}',
+'${senderName}'); return false;">
+<input type="text" name="Customer Name" placeholder="1. Full Name *" required
+autocomplete="name">
+<input type="text" name="Whatsapp" placeholder="2. WhatsApp (10 digits) *"
+pattern="[6-9][0-9]{9}" required autocomplete="tel">
 <input type="text" name="Village" placeholder="3. Village *" required>
 <input type="text" name="Area" placeholder="4. Area/Road *" required>
 <input type="text" name="Taluka" placeholder="5. Taluka/City *" required>
 <input type="text" name="District" placeholder="6. District *" required>
 <input type="text" name="State" placeholder="7. State *" required>
-<input type="text" name="Pincode" placeholder="8. Pincode (6 digits) *" pattern="[0-9]{6}" required>
+<input type="text" name="Pincode" placeholder="8. Pincode (6 digits) *" pattern="[0-9]{6}"
+required>
 <textarea name="Other Info" placeholder="9. Other Info (Optional)" rows="2"></textarea>
-
 <button type="submit" class="primary-btn btn-base">Place Order (₹${price})</button>
 </form>
 `);
 }
-
 function submitOrder(event, isPrepaid, price, paymentMode, senderName) {
 event.preventDefault();
 const form = document.getElementById("order-form");
@@ -909,29 +847,29 @@ const data = {
 "Wish Sender": senderName
 };
 formData.forEach((value, key) => { data[key] = value; });
-
 if (isPrepaid) {
 showQRPayment(data);
 } else {
 finalSubmitOrder(data);
 }
 }
-
 function showQRPayment(data) {
 showModal(`
 <h3 style="color: var(--color-price-premium);">⭐ Premium Payment</h3>
-<p style="font-weight: 700; margin-bottom: 15px; text-align: center;">Amount: ₹${data.Price}</p>
-
-<div style="text-align: center; padding: 15px; border: 2px dashed var(--color-gold); border-radius: 10px; background: #FFF9F0;">
-<p style="font-weight: 700; color: var(--color-primary-btn); margin-bottom: 10px;">Scan QR to Pay:</p>
-<img src="qrcode.png" alt="QR" style="width: 180px; height: 180px; border: 3px solid var(--color-gold); border-radius: 8px;">
+<p style="font-weight: 700; margin-bottom: 15px; text-align: center;">Amount:
+₹${data.Price}</p>
+<div style="text-align: center; padding: 15px; border: 2px dashed var(--color-gold);
+border-radius: 10px; background: #FFF9F0;">
+<p style="font-weight: 700; color: var(--color-primary-btn); margin-bottom: 10px;">Scan QR to
+Pay:</p>
+<img src="qrcode.png" alt="QR" style="width: 180px; height: 180px; border: 3px solid
+var(--color-gold); border-radius: 8px;">
 <p style="font-size: 0.85em; margin-top: 10px; color: var(--color-price-cod); font-weight: 600;">
 *Click 'Confirm' after payment*
 </p>
 </div>
-
-<button class="primary-btn btn-base" 
-style="background: linear-gradient(135deg, #25D366, #128C7E); margin-top: 15px;" 
+<button class="primary-btn btn-base"
+style="background: linear-gradient(135deg, #25D366, #128C7E); margin-top: 15px;"
 onclick='finalSubmitOrder(${JSON.stringify(data)});'>
 ✅ Confirm Order (₹${data.Price})
 </button>
@@ -939,17 +877,14 @@ onclick='finalSubmitOrder(${JSON.stringify(data)});'>
 }
 function finalSubmitOrder(data) {
 if (typeof data === 'string') data = JSON.parse(data);
-
 document.getElementById("modal-body").innerHTML = `
 <h3 style="color: var(--color-primary-btn);">
 <span class="loading-spinner"></span> Processing...
 </h3>
 <p>Please wait...</p>
 `;
-
 const params = new URLSearchParams();
 for (const key in data) params.append(key, data[key]);
-
 fetch(CONFIG.ORDER_SUBMIT_API, { method: "POST", body: params })
 .then(response => response.json())
 .then(result => {
@@ -958,7 +893,7 @@ const customerName = data["Customer Name"] || "Customer";
 document.getElementById("modal-body").innerHTML = `
 <h3 style="color: var(--color-price-premium);">🎉 Order Placed!</h3>
 <p style="margin-bottom: 20px;">Your order is confirmed! We'll contact you on WhatsApp.</p>
-<button class="primary-btn btn-base" 
+<button class="primary-btn btn-base"
 style="background: linear-gradient(135deg, #25D366, #128C7E);"
 onclick="hideModal(); showPostPurchaseShareModal('${customerName}');">
 📤 Share with Friends
@@ -977,22 +912,21 @@ document.getElementById("modal-body").innerHTML = `
 `;
 });
 }
-
 function showPostPurchaseShareModal(senderName) {
 showModal(`
 <h3 style="color: var(--color-price-premium); text-align: center;">🎉 Thank You!</h3>
-<p style="margin-bottom: 15px; text-align: center; font-weight: 600;">Share this deal with friends!</p>
-
+<p style="margin-bottom: 15px; text-align: center; font-weight: 600;">Share this deal with
+friends!</p>
 <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
 <label style="font-weight: 600; color: #666;">Your Name:</label>
-<input type="text" id="modal-share-sender-input" value="${senderName}" readonly 
-style="background: #f0f0f0; font-weight: bold; text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-
+<input type="text" id="modal-share-sender-input" value="${senderName}" readonly
+style="background: #f0f0f0; font-weight: bold; text-align: center; padding: 10px; border: 1px solid
+#ddd; border-radius: 6px;">
 <label style="font-weight: 600; color: #666;">Friend's Name:</label>
-<input type="text" id="modal-share-receiver-input" value="Ram" placeholder="Friend Name" 
-style="border: 2px solid var(--color-primary-btn); text-align: center; padding: 10px; border-radius: 6px;">
-
-<button class="primary-btn btn-base" 
+<input type="text" id="modal-share-receiver-input" value="Ram" placeholder="Friend Name"
+style="border: 2px solid var(--color-primary-btn); text-align: center; padding: 10px; border-radius:
+6px;">
+<button class="primary-btn btn-base"
 style="background: linear-gradient(135deg, #25D366, #128C7E); margin-top: 10px;"
 onclick="handleShareFromModal();">
 📤 Share Now!
@@ -1000,75 +934,65 @@ onclick="handleShareFromModal();">
 </div>
 `);
 }
-
 function handleShareFromModal() {
 const senderName = document.getElementById("modal-share-sender-input").value.trim();
 const receiverName = document.getElementById("modal-share-receiver-input").value.trim();
-
 if (!senderName || !receiverName || receiverName === "Friend Name") {
 alert("Please enter friend's name!");
 return;
 }
-
 hideModal();
 initiateWhatsAppShare(CONFIG.BASE_STORE_URL, senderName, receiverName, true);
 }
 function handleShare() {
 const senderName = document.getElementById("share-sender-input").value.trim();
 const receiverName = document.getElementById("share-receiver-input").value.trim();
-
 if (!senderName || senderName === "Your Name") {
 alert("कृपया अपना नाम डालें!");
 return;
 }
-
 if (!receiverName || receiverName === "Friend Name") {
 alert("कृपया दोस्त का नाम डालें!");
 return;
 }
-
 initiateWhatsAppShare(CONFIG.BASE_STORE_URL, senderName, receiverName, false);
 }
-
 function initiateWhatsAppShare(baseShareUrl, senderName, receiverName, isBought) {
 let finalShareUrl = baseShareUrl;
-
 if (isBought) {
-finalShareUrl = baseShareUrl + `?sender=${encodeURIComponent(receiverName)}&status=bought`;
+finalShareUrl = baseShareUrl +
+`?sender=${encodeURIComponent(receiverName)}&status=bought`;
 } else {
 finalShareUrl = baseShareUrl + `?sender=${encodeURIComponent(receiverName)}`;
 }
-
-const customWishText = `!! आपको और आपके परिवार को मेरी ओर से शुभ दीपावली !!\nमां लक्ष्मी और गणेश जी की कृपा आप पर सदा बनी रहे 🌷!!`;
+const customWishText = `!!
+आपको और आपके परि वार को मेरी ओर सेशभु दीपावली !!\nमांलक्ष्मी और
+गणेश जी की कृपा आप पर सदा बनी रहे🌷!!`;
 const shareText = `*${senderName.toUpperCase()}*\n\n${customWishText}\n\n${finalShareUrl}`;
-
 if (navigator.share) {
 navigator.share({ text: shareText, url: finalShareUrl })
-.catch(() => window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank"));
+.catch(() => window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`,
+"_blank"));
 } else {
 window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank");
 }
 }
-
 function handleBuyScript() {
-const msg = `Hello! मुझे ₹${CONFIG.SCRIPT_PRICE} में viral wishing store script खरीदनी है।`;
-window.open(`https://wa.me/${CONFIG.ADMIN_WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
+const msg = `Hello! मझु े₹${CONFIG.SCRIPT_PRICE} मेंviral wishing store script खरीदनी है।`;
+window.open(`https://wa.me/${CONFIG.ADMIN_WHATSAPP}?text=${encodeURIComponent(m
+sg)}`, "_blank");
 }
-
 // === INITIALIZATION ===
 function init() {
-const domainValid = checkDomain();
-if (domainValid) {
-fetchProductData();
-document.getElementById("buy-now-btn").addEventListener("click", handleBuyNow);
-document.getElementById("share-btn").addEventListener("click", handleShare);
-document.getElementById("buy-script-btn").addEventListener("click", handleBuyScript);
-document.getElementById("modal").addEventListener("click", (e) => {
-if (e.target.id === "modal") hideModal();
-});
+    // 💡 FIX APPLIED: checkDomain() की निर्भरता हटाई गई है।
+    fetchProductData();
+    document.getElementById("buy-now-btn").addEventListener("click", handleBuyNow);
+    document.getElementById("share-btn").addEventListener("click", handleShare);
+    document.getElementById("buy-script-btn").addEventListener("click", handleBuyScript);
+    document.getElementById("modal").addEventListener("click", (e) => {
+        if (e.target.id === "modal") hideModal();
+    });
 }
-}
-
 document.addEventListener("DOMContentLoaded", init);
 </script>
 </body>
@@ -1077,6 +1001,3 @@ document.addEventListener("DOMContentLoaded", init);
 
 
 
-
-
-    
