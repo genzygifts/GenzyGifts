@@ -7,14 +7,14 @@
 <link href="https://fonts.googleapis.com/css?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<meta property="og:title" content="🎇 🎁">
-<meta property="og:description" content="अपने नाम के साथ अपनों को (Wish Share)शुभकामनाएं देने के लिए SEND बटन पर क्लिक करें">
+<meta property="og:title" content=" ">
+<meta property="og:description" content="अपने नाम के साथ अपनों को (Wish share) शुभकामनाएं देने के लिए SEND बटन पर क्लिक करें">
 <meta property="og:image" content="https://genzygifts.github.io/GenzyGifts/diwali.gif"> 
 <meta property="og:url" content="https://genzygifts.github.io/GenzyGifts/">
 <meta property="og:type" content="website">
 
 <style>
-/* --- STYLES (UPDATED FOR FOOTER & MEDIA FIX) --- */
+/* --- STYLES (NO CHANGE IN VISUAL STYLES) --- */
 :root {
 --color-bg-dark: #5C1A00;
 --color-bg-darker: #2C0A0A;
@@ -46,7 +46,7 @@ background: #000;
 width: 100vw;
 height: 100vh;
 max-width: min(100vw, 56.25vh);
-max-height: min (100vh, 177.78vw);
+max-height: min(100vh, 177.78vw);
 margin: auto;
 display: flex;
 flex-direction: column;
@@ -54,7 +54,6 @@ background: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-dark
 box-shadow: 0 0 40px rgba(255, 107, 53, 0.6);
 color: var(--color-primary-text);
 position: relative;
-/* 💡 FOOTER FIX: अब फ़ुटर छूपेगा नहीं */
 overflow-y: auto; 
 overflow-x: hidden;
 }
@@ -179,7 +178,7 @@ gap: 6px;
     border-radius: 8px;
     overflow: hidden;
     background: #f0f0f0;
-    cursor: pointer; /* वीडियो पर क्लिक करने का संकेत */
+    cursor: pointer;
 }
 .carousel-image, .product-media-video {
     position: absolute;
@@ -187,7 +186,7 @@ gap: 6px;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* पूरी मीडिया दिखाई देगी */
+    object-fit: contain; 
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
@@ -386,7 +385,7 @@ box-shadow: 0 4px 10px rgba(255, 107, 0, 0.5);
 #script-purchase-box {
 padding: 10px;
 margin-top: 8px;
-margin-bottom: 12px; /* Added slight margin for bottom padding */
+margin-bottom: 12px; 
 background: #2C1810;
 border: 3px solid var(--color-brown);
 border-radius: 10px;
@@ -520,10 +519,10 @@ Happy Diwali ✨
 <div id="product-card">
 <h4 id="product-name-static" class="product-name-main">Loading Product...</h4>
 <div id="review-bar">
-<span class="stars">⭐⭐⭐⭐</span>
+<span class="stars">⭐⭐⭐⭐⭐</span>
 <span class="review-count">(Loading Reviews...)</span>
 </div>
-<div id="media-box" onclick="toggleVideoPlay()"> 
+<div id="media-box" onclick="toggleMediaPlay()"> 
 <div id="media-carousel"></div>
 <div class="carousel-dots" id="carousel-dots"></div>
 </div>
@@ -594,12 +593,12 @@ const CONFIG = {
     ORDER_SUBMIT_API:
         "https://script.google.com/macros/s/AKfycbyQoweTvVkWVWQRo72rNrJI_Qk4uw2TcLTRJwkvlr0ZWXrf6U3jnDOA9MKo7WPyEco8/exec",
     ADMIN_WHATSAPP: "919226949557",
-    BASE_STORE_URL: "genzygifts.github.io/GenzyGifts/",
+    BASE_STORE_URL: "https://genzygifts.github.io/GenzyGifts/",
     SCRIPT_PRICE: 1999,
     PRODUCT_JSON_FILE: "product_data.json"
 };
 let currentProduct = null, audioPlayed = false, carouselTimer = null, currentMediaIndex = 0;
-let currentVideo = null; // 💡 Added for video control
+let currentVideo = null; 
 
 // === UTILITY FUNCTIONS (NO CHANGE) ===
 function checkKey(e) {
@@ -611,7 +610,6 @@ function checkKey(e) {
     if (e.key === 'Escape') hideModal();
     return true;
 }
-
 function getUrlParams() {
     const params = {};
     window.location.search.substring(1).split("&").forEach(pair => {
@@ -658,7 +656,7 @@ function startCountdown() {
                 < 10 ? "0" + seconds : seconds) + "S";
     }, 1000);
 }
-// === AUDIO LOGIC (NO CHANGE) ===
+// === AUDIO LOGIC (UPDATED for TTS and Video Audio Control) ===
 function generateTtsUrl(receiverName, senderName) {
     const TTS_ENDPOINT =
         "https://corsproxy.io/?https://translate.google.com/translate_tts?ie=UTF-8&tl=hi&client=tw-ob&q=";
@@ -666,25 +664,49 @@ function generateTtsUrl(receiverName, senderName) {
     let ttsMessage;
 
     if (shareStatus === "bought") {
-        ttsMessage = `नमस्ते${receiverName}! आपके दोस्त ${senderName} ने इसे अभी-अभी order किया है।`;
-    } else if (params.sender) { 
+        ttsMessage = `नमस्ते${receiverName}! आपके दोस्त ${senderName} ने भी इसे अभी-अभी order किया है।`;
+    } else if (params.sender && "Priya" !== params.sender) { 
         ttsMessage = `नमस्ते${receiverName}! ${senderName} की ओर से यह special offer आपके लिए है।`;
     } else {
         ttsMessage = `नमस्ते${receiverName}! अपना name डालके Wish share करें।`;
     }
     return TTS_ENDPOINT + encodeURIComponent(ttsMessage);
 }
+
 function playAudio(receiverName) {
     if (audioPlayed || !currentProduct) return;
     const params = getUrlParams(), senderName = params.sender || "Priya"; 
     const audio = document.getElementById("tts-audio");
     audio.src = generateTtsUrl(receiverName, senderName);
-    audio.onended = () => { audioPlayed = true; };
-    audio.play().catch(() => { audioPlayed = false; }); 
+    
+    // 💡 TTS END FIX: TTS खत्म होने पर वीडियो को अनम्यूट और प्ले करें
+    audio.onended = () => { 
+        audioPlayed = true;
+        // 3. TTS खत्म, वीडियो को अनम्यूट और प्ले करें
+        if (currentVideo) {
+            currentVideo.muted = false;
+            currentVideo.play().catch(e => console.warn("Video auto-play failed after TTS:", e));
+        }
+    };
+    
+    // 1. TTS प्ले करने का प्रयास
+    audio.play().then(() => {
+        // TTS successfully started
+    }).catch(() => { 
+        audioPlayed = false;
+        // 2. TTS ऑटोप्ले विफल, 3 सेकंड बाद वीडियो को अनम्यूट/प्ले करें
+        setTimeout(() => {
+            if (currentVideo) {
+                currentVideo.muted = false;
+                currentVideo.play().catch(e => console.warn("Video auto-play failed (TTS fail delay):", e));
+            }
+        }, 3000); 
+    });
 }
+
 function playAudioManually() {
     const params = getUrlParams();
-    const receiverName = params.sender || "Priya"; 
+    const receiverName = params.sender ? decodeURIComponent(params.sender) : "Priya";
     audioPlayed = false;
     playAudio(receiverName);
 }
@@ -711,25 +733,27 @@ function updateStoreUI() {
     
     document.getElementById("receiver-display-top").textContent = finalReceiverName;
     
-    document.getElementById("product-name-static").textContent = currentProduct.productName || "Diwali Gift Box";
-    document.getElementById("price-premium").textContent = currentProduct.premiumPrice || "999";
-    document.getElementById("price-cod").textContent = currentProduct.codPrice || "1150";
+    document.getElementById("product-name-static").textContent = currentProduct["Product Name"] || "Diwali Gift Box";
+    document.getElementById("price-premium").textContent = currentProduct.Premium_Price || "999";
+    document.getElementById("price-cod").textContent = currentProduct.COD_Price || "1150";
     
     const reviewBar = document.querySelector('#review-bar .review-count');
     if(reviewBar) reviewBar.textContent = `(${currentProduct.reviews || 0} Reviews | ${currentProduct.rating || 4.5}/5)`;
 
-    const descText = currentProduct.description ? currentProduct.description.join(' ') : "Experience the joy...";
+    const descText = currentProduct.Description || "Experience the joy...";
     document.getElementById("description-text").textContent = descText;
 
     document.getElementById("script-price-display").textContent = CONFIG.SCRIPT_PRICE;
-    document.getElementById("buy-now-btn").textContent = `🛒 Buy Now ₹${currentProduct.premiumPrice || "999"}`;
+    document.getElementById("buy-now-btn").
+textContent = `🛒 Buy Now ₹${currentProduct.Premium_Price || "999"}`;
     document.getElementById("buy-now-btn").disabled = false;
     
     startMediaDisplay();
     startCountdown();
+    // 💡 AUTO-PLAY ATTEMPT for TTS
     setTimeout(() => { if (!audioPlayed) playAudio(finalReceiverName); }, 1000);
 }
-// === MEDIA DISPLAY (FINAL CODE WITH CLICK TO PLAY) ===
+// === MEDIA DISPLAY (UPDATED for Video Control) ===
 function startMediaDisplay() {
     const mediaContainer = document.getElementById("media-carousel"), dotsContainer =
         document.getElementById("carousel-dots");
@@ -737,62 +761,69 @@ function startMediaDisplay() {
     dotsContainer.innerHTML = "";
     clearInterval(carouselTimer);
     
-    const mediaType = currentProduct.mediaType || 'image';
-    const mediaUrl = currentProduct.mediaUrl;
-    const galleryImages = currentProduct.galleryImages || [];
+    const mediaCount = parseInt(currentProduct.Media_Count || 0);
+    const hasVideo = currentProduct.Has_Video === true;
 
-    if (mediaType === 'video' && mediaUrl) {
+    if (hasVideo && mediaCount > 0) {
         const video = document.createElement("video");
-        video.src = mediaUrl;
+        video.src = "1.mp4"; // Assuming video file is named 1.mp4
         video.className = "product-media-video";
         video.setAttribute("loop", "");
         video.setAttribute("autoplay", "");
         video.setAttribute("playsinline", "");
-        video.setAttribute("muted", "");
+        video.setAttribute("muted", ""); // 💡 Video starts MUTED
         
         currentVideo = video; 
 
         video.onerror = () => { 
             console.warn("Video failed to load. Switching to image carousel.");
             video.remove(); 
-            startImageCarousel(galleryImages, mediaContainer, dotsContainer); 
+            startImageCarousel(mediaCount, mediaContainer, dotsContainer); 
         };
         
         mediaContainer.appendChild(video);
-    } else if (galleryImages.length > 0) {
-        startImageCarousel(galleryImages, mediaContainer, dotsContainer);
+    } else if (mediaCount > 0) {
+        startImageCarousel(mediaCount, mediaContainer, dotsContainer);
     } else {
         mediaContainer.innerHTML = '<div class="media-loading">🎁</div>';
     }
 }
-function toggleVideoPlay() {
-    // 💡 VIDEO FIX: अगर ऑटोप्ले विफल होता है, तो touch करने पर वीडियो play/pause हो जाएगा
+
+function toggleMediaPlay() {
+    // 💡 VIDEO FIX: On click, pause TTS and unmute/play video
+    if (document.getElementById("tts-audio").played.length > 0 && !document.getElementById("tts-audio").paused) {
+        document.getElementById("tts-audio").pause();
+        audioPlayed = true; // Mark TTS as played to prevent future auto-starts
+    }
+    
     if (currentVideo) {
         if (currentVideo.paused) {
+            currentVideo.muted = false; // Unmute on touch
             currentVideo.play().catch(e => console.error("Video play failed on click:", e));
         } else {
             currentVideo.pause();
         }
     }
 }
-function startImageCarousel(imageUrls, container, dotsContainer) {
-    imageUrls.forEach((url, i) => {
+
+function startImageCarousel(count, container, dotsContainer) {
+    for (let i = 1; i <= count; i++) {
         const img = document.createElement("img");
         img.className = "carousel-image";
-        img.src = url;
-        if (i === 0) img.classList.add('active');
+        img.src = `${i}.jpg`; // Assuming images are 1.jpg, 2.jpg, etc.
+        if (i === 1) img.classList.add('active');
         container.appendChild(img);
         
         const dot = document.createElement("div");
-        dot.className = "dot" + (i === 0 ? " active" : "");
-        dot.onclick = () => changeImage(i);
+        dot.className = "dot" + (i === 1 ? " active" : "");
+        dot.onclick = () => changeImage(i - 1);
         dotsContainer.appendChild(dot);
-    });
+    }
 
-    if (imageUrls.length > 1) {
+    if (count > 1) {
         currentMediaIndex = 0;
         carouselTimer = setInterval(() => {
-            currentMediaIndex = (currentMediaIndex + 1) % imageUrls.length;
+            currentMediaIndex = (currentMediaIndex + 1) % count;
             changeImage(currentMediaIndex);
         }, 3000);
     }
@@ -807,8 +838,8 @@ function changeImage(index) {
 // === ORDER FLOW (NO CHANGE) ===
 function handleBuyNow() {
     if (!currentProduct) return alert("Loading...");
-    const codPrice = currentProduct.codPrice || "1150", premiumPrice =
-        currentProduct.premiumPrice || "999"; 
+    const codPrice = currentProduct.COD_Price || "1150", premiumPrice =
+        currentProduct.Premium_Price || "999"; 
     showModal(`
 <h3 style="color: var(--color-primary-btn);">Select Payment</h3>
 <p style="margin-bottom: 20px; text-align: center;">Choose your payment method:</p>
@@ -855,7 +886,7 @@ function submitOrder(event, isPrepaid, price, paymentMode, senderName) {
     const form = document.getElementById("order-form");
     const formData = new FormData(form);
     const data = {
-        "Product Name": currentProduct.productName || "Unknown", 
+        "Product Name": currentProduct["Product Name"] || "Unknown", 
         "Price": price,
         "Payment Mode": paymentMode,
         "Wish Sender": senderName
@@ -972,28 +1003,26 @@ function handleShare() {
     initiateWhatsAppShare(CONFIG.BASE_STORE_URL, senderName, receiverName, false);
 }
 
-// === WHATSAPP SHARE FIX: Exact required text and no description ===
+// === 💡 FINAL WHATSAPP SHARE FIX: Exact Preview Logic ===
 function initiateWhatsAppShare(baseShareUrl, senderName, receiverName, isBought) {
-    const fullBaseUrl = 'https://' + baseShareUrl;
-
-    let finalShareUrl = fullBaseUrl;
+    // 1. URL Construction: Final URL will include the sender param
+    let finalShareUrl = baseShareUrl;
     if (isBought) {
-        finalShareUrl = fullBaseUrl +
-            `?sender=${encodeURIComponent(receiverName)}&status=bought`;
+        finalShareUrl = baseShareUrl + `?sender=${encodeURIComponent(receiverName)}&status=bought`;
     } else {
-        finalShareUrl = fullBaseUrl + `?sender=${encodeURIComponent(receiverName)}`;
+        finalShareUrl = baseShareUrl + `?sender=${encodeURIComponent(receiverName)}`;
     }
 
-    // 💡 EXACT WISHING TEXT as requested
-    const customWishText = `।। 🥰💝 आपको और आपके परिवार को मेरी ओर से शुभ दीपावली 🌹⛄ ।।\nमां लक्ष्मी और गणेश जी की कृपा आप पर सदा बनी रहे 🌷🙏 ।।`;
+    // 2. 💡 FINAL Exact Wishing Text (Updated as per last request)
+    // NOTE: WhatsApp automatically makes the first line (Sender Name) the biggest text.
+    const customWishText = `।। ⛄🥰आपको और आपके परिवार को मेरी ओर से शुभ दीपावली 🎁🌷।।\nमां लक्ष्मी और गणेश जी की कृपा आप पर सदा बनी रहे 🌺🙏 ।।`;
 
-    // 💡 FINAL WHATSAPP TEXT: Sender Name (BOLD) + Wishing Text + URL
+    // 3. Share Text: BOLD Sender Name + Wish Text + Single URL (to trigger link preview)
     const shareText = `*${senderName.toUpperCase()}*\n\n${customWishText}\n\n${finalShareUrl}`;
     
     if (navigator.share) {
         navigator.share({ text: shareText, url: finalShareUrl })
-            .catch(() => window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`,
-                "_blank"));
+            .catch(() => window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank"));
     } else {
         window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank");
     }
@@ -1017,3 +1046,13 @@ document.addEventListener("DOMContentLoaded", init);
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+    
