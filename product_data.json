@@ -1,22 +1,14 @@
 {
-  "productName": "Diwali Special Luxury Gift Box (5-in-1)",
-  "productShortName": "Luxury Gift Box",
-  "rating": 4.9,
-  "reviews": 12478,
-  "codPrice": 1499,
-  "premiumPrice": 599,
-  "discountPercent": 60,
-  "mediaType": "video",
-  "mediaUrl": "1.mp4",
-  "galleryImages": [
-    "1.jpg",
-    "2.jpg",
-    "3.jpg"
-  ],
-  "isTrending": true,
-  "description": [
-    "✅ 5 Premium Items in 1 Box: Candles, Chocolates, Dry Fruits, Decorative Diyas & a Greeting Card.",
-    "✅ High-Quality Packaging: Perfect for Gifting to Family, Friends, or Corporate Clients.",
-    "✅ Limited Stock Offer: Buy Now at just ₹599 (Prepaid) or ₹1499 (COD)."
-  ]
+    "Product Name": "Diwali Special Luxury Gift Box (Premium Edition)",
+    "Product ID": "DGW-LGB-2025",
+    "Description": "इस दिवाली, अपनों को दें एक शानदार गिफ्ट बॉक्स जिसमें प्रीमियम चॉकलेट्स, हैंडमेड दीये और एक विशेष शुभकामना कार्ड शामिल है। सीमित स्टॉक उपलब्ध है!",
+    
+    "Premium_Price": "999",
+    "COD_Price": "1150",
+    
+    "Media_Count": 4,
+    "Has_Video": true, 
+    
+    "reviews": 124,
+    "rating": 4.8
 }
