@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 
 <style>
-/* --- STYLES (V12) --- */
+/* --- STYLES (V16) --- */
 :root {
 --color-bg-dark: #5C1A00;
 --color-bg-darker: #2C0A0A;
@@ -35,7 +35,21 @@ font-family: 'Poppins', sans-serif;
 user-select: none;
 }
 html, body { height: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; background: #000; }
-#app-container { width: 100vw; height: 100vh; max-width: min(100vw, 56.25vh); margin: auto; display: flex; flex-direction: column; background: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-darker) 100%); box-shadow: 0 0 40px rgba(255, 107, 53, 0.6); color: var(--color-primary-text); position: relative; overflow-y: auto; overflow-x: hidden; padding-bottom: 5px; }
+#app-container { 
+    width: 100vw; 
+    height: 100vh; 
+    max-width: min(100vw, 56.25vh); 
+    margin: auto; 
+    display: flex; 
+    flex-direction: column; 
+    background: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-darker) 100%); 
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.6); 
+    color: var(--color-primary-text); 
+    position: relative; /* 💡 IMPORTANT: For WhatsApp button to float inside */
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    padding-bottom: 5px; 
+}
 #content-area { padding: 0 8px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
 .diya-decoration { position: absolute; top: 8px; font-size: 14px; z-index: 20; text-shadow: 0 0 10px var(--color-gold); animation: pulse 2s infinite alternate; }
 .diya-left { left: 15px; transform: rotate(-15deg); }
@@ -46,8 +60,6 @@ html, body { height: 100%; display: flex; justify-content: center; align-items: 
 .festival-text { font-size: 11px; font-weight: 700; margin: 2px 0; display: flex; justify-content: center; align-items: center; gap: 5px; }
 .audio-icon-btn { background: rgba(255,215,0,0.25); border: 1.5px solid var(--color-gold); border-radius: 50%; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; font-size: 10px; }
 .store-title-top { font-size: 9px; font-style: italic; font-weight: 600; letter-spacing: 0.5px; color: #FFE4B5; opacity: 0.8; }
-
-/* --- PRODUCT CARD & MEDIA --- */
 #product-card { background-color: var(--color-card-bg); border-radius: 12px; padding: 8px; margin: 3px 0; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); text-align: left; flex-shrink: 0; border: 2px solid var(--color-brown); position: relative; }
 .product-name-main { font-size: 11px; font-weight: 800; margin-bottom: 5px; text-align: center; color: #333; }
 #media-box { width: 100%; height: 130px; margin-bottom: 5px; border: 1px solid #ddd; position: relative; border-radius: 6px; overflow: hidden; background: #f0f0f0; cursor: pointer; }
@@ -58,8 +70,6 @@ html, body { height: 100%; display: flex; justify-content: center; align-items: 
 .carousel-dots { position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; z-index: 5; }
 .dot { width: 6px; height: 6px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; cursor: pointer; transition: background 0.3s; }
 .dot.active { background: var(--color-primary-btn); }
-
-/* --- PRICE, TIMER, BUTTONS --- */
 #price-timer-container { text-align: center; margin-bottom: 3px; }
 #price-section { margin-bottom: 2px; }
 .price-actual { font-size: 14px; font-weight: 400; color: #999; text-decoration: line-through; margin-right: 8px; display: inline-block; }
@@ -74,8 +84,6 @@ html, body { height: 100%; display: flex; justify-content: center; align-items: 
 .btn-base { padding: 7px 10px; margin-bottom: 3px; border-radius: 14px; font-size: 11px; font-weight: 700; border: none; cursor: pointer; }
 .primary-btn { background: var(--color-primary-btn); color: white; transition: background 0.3s; }
 #buy-now-btn { width: 50%; margin: 3px auto 5px; display: block; }
-
-/* --- SHARE SECTION --- */
 #share-section-box { padding: 5px; margin-top: 3px; border-radius: 6px; flex-shrink: 1; background: rgba(0,0,0,0.1); }
 #share-label { font-size: 9px; margin-bottom: 3px; color: #FFE4B5; }
 .share-input-row { display: flex; gap: 5px; margin-bottom: 5px; }
@@ -83,8 +91,6 @@ html, body { height: 100%; display: flex; justify-content: center; align-items: 
 .input-label-white { font-size: 8px; margin-bottom: 2px; color: #FFE4B5; display: block; text-align: left; }
 .share-input-field { width: 100%; padding: 5px; border-radius: 4px; font-size: 9px; border: 1px solid #ccc; }
 .share-btn { padding: 7px; border-radius: 14px; font-size: 11px; width: 100%; background: var(--color-whatsapp); color: white; }
-
-/* --- MODAL FORM STYLES (New) --- */
 #modal .modal-content input, #modal .modal-content select, #modal .modal-content textarea { width: 100%; padding: 8px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 11px; box-sizing: border-box; }
 #modal .modal-content button[type="submit"] { margin-top: 10px; }
 .form-group-qty { display: flex; justify-content: space-between; align-items: center; background: #f0f0f0; padding: 8px; border-radius: 4px; margin-bottom: 8px; }
@@ -93,6 +99,52 @@ html, body { height: 100%; display: flex; justify-content: center; align-items: 
 .qty-btn { background: var(--color-primary-btn); color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 0 5px; }
 #qty-display { font-weight: bold; font-size: 14px; width: 25px; text-align: center; }
 #total-price-display { font-size: 18px; font-weight: 900; color: var(--color-price-cod); margin-left: 10px; }
+/* 💡 WHATSAPP BUTTON FIX: Placed absolutely inside the relative app-container */
+#floating-whatsapp {
+    position: absolute; 
+    right: 15px; 
+    bottom: 20px; 
+    background-color: var(--color-whatsapp); 
+    color: white; 
+    width: 45px; 
+    height: 45px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 24px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+    z-index: 100;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+#floating-whatsapp:hover {
+    transform: scale(1.1);
+}
+.hidden { display: none !important; }
+
+/* LIVE NOTIFICATION STYLE (Added back as it was missing from V15 style block) */
+#live-notification {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    z-index: 1000;
+    font-size: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeinout 5s forwards;
+}
+@keyframes fadeinout {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+}
 </style>
 </head>
 <body oncontextmenu="return false;" onkeydown="return checkKey(event);">
@@ -143,7 +195,7 @@ Happy Diwali ✨
 <p id="description-text">Loading...</p>
 <p class="bold-offer-text" id="description-bold-text">Limited Stock 🎁 Limited Offer ⛄</p>
 
-<button id="buy-now-btn" class="btn-base primary-btn" disabled>Buy Now</button>
+<button id="buy-now-btn" class="btn-base primary-btn">Buy Now</button>
 </div>
 </div>
 <div id="share-section-box">
@@ -165,7 +217,6 @@ Name" autocomplete="off" value="Ram">
 </div>
 </div>
 </div>
-</div>
 
 <a id="floating-whatsapp" href="#" target="_blank" title="WhatsApp Support">
     <i class="fab fa-whatsapp"></i>
@@ -174,6 +225,7 @@ Name" autocomplete="off" value="Ram">
 <div id="live-notification" class="hidden">
     <span class="icon"><i class="fas fa-shopping-bag"></i></span>
     <span id="notification-text"></span>
+</div>
 </div>
 
 <audio id="tts-audio" preload="none" hidden></audio>
@@ -184,13 +236,14 @@ Name" autocomplete="off" value="Ram">
 </div>
 </div>
 <script>
-// === CONFIGURATION (V12) ===
+// === CONFIGURATION (V16) ===
 const CONFIG = {
-    // 💡 UPDATED with your provided Google Apps Script URL
+    // ⚠️ IMPORTANT: Your Google Apps Script URL
     ORDER_SUBMIT_API: "https://script.google.com/macros/s/AKfycbw9benSD2ZQN3ElLygSyZdoByy7FSiAplJ7Pcaa9QwZcFPVFrqgJvMmSlTyoI6NGff/exec",
     ADMIN_WHATSAPP: "919226949557",
+    // ⚠️ IMPORTANT: Your Store's base URL (e.g., GitHub Pages link)
     BASE_STORE_URL: "https://genzygifts.github.io/GenzyGifts/",
-    PRODUCT_JSON_FILE: "product_data.json",
+    PRODUCT_JSON_FILE: "product_data.json", // This file must be in the same folder
     LIVE_ORDERS: [
         { name: "Suresh", city: "Mumbai" },
         { name: "Pooja", city: "Pune" },
@@ -208,20 +261,33 @@ let videoPlayer = null;
 let isVideoPlaying = false;
 
 
-// === UTILITY FUNCTIONS (Unchanged) ===
+// === UTILITY FUNCTIONS (UNCHANGED) ===
 function checkKey(e) { if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 83)) || (e.ctrlKey && e.keyCode === 85)) { e.preventDefault(); return false; } if (e.key === 'Escape') hideModal(); return true; }
 function getUrlParams() { const params = {}; window.location.search.substring(1).split("&").forEach(pair => { const [key, value] = pair.split("=").map(decodeURIComponent); if (key) params[key] = value; }); return params; }
-function showModal(content) { document.getElementById("modal-body").innerHTML = content; document.getElementById("modal").classList.remove("hidden"); }
+function showModal(content) { 
+    document.getElementById("modal-body").innerHTML = content; 
+    document.getElementById("modal").classList.remove("hidden"); 
+}
 function hideModal() { document.getElementById("modal").classList.add("hidden"); if(videoPlayer && isVideoPlaying) { videoPlayer.pause(); document.getElementById("video-play-pause-btn").innerHTML = '<i class="fas fa-play"></i>'; isVideoPlaying = false; } }
 function startCountdown() { const TIMER_KEY = 'diwali_offer_timer'; let countDownDate; const saved = localStorage.getItem(TIMER_KEY); const isExpired = localStorage.getItem('isOfferExpired') === 'true'; if (isExpired) { isOfferActive = false; updateStoreUI(); document.getElementById("timer-below-price").classList.add("hidden"); return; } if (saved) { countDownDate = parseInt(saved); } else { const minutes = Math.floor(Math.random() * 6) + 10; countDownDate = new Date().getTime() + minutes * 60 * 1000; localStorage.setItem(TIMER_KEY, countDownDate.toString()); } const countdownElement = document.getElementById("countdown"); const timerBox = document.getElementById("timer-below-price"); const x = setInterval(() => { const now = new Date().getTime(), distance = countDownDate - now; if (distance < 0) { clearInterval(x); countdownElement.textContent = "EXPIRED"; timerBox.classList.add("hidden"); isOfferActive = false; localStorage.setItem('isOfferExpired', 'true'); localStorage.removeItem(TIMER_KEY); updateStoreUI(); return; } isOfferActive = true; timerBox.classList.remove("hidden"); const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); const seconds = Math.floor((distance % (1000 * 60)) / 1000); countdownElement.textContent = (hours < 10 ? "0" + hours : hours) + "H : " + (minutes < 10 ? "0" + minutes : minutes) + "M : " + (seconds < 10 ? "0" + seconds : seconds) + "S"; }, 1000); }
 function generateTtsUrl(receiverName, senderName) { const TTS_ENDPOINT = "https://corsproxy.io/?https://translate.google.com/translate_tts?ie=UTF-8&tl=hi&client=tw-ob&q="; const params = getUrlParams(), shareStatus = params.status; let ttsMessage; if (shareStatus === "bought" || shareStatus === "paid") { ttsMessage = `नमस्ते${receiverName}! आपके दोस्त ${senderName} ने भी इसे अभी-अभी order किया है।`; } else if (params.sender && "Priya" !== params.sender) { ttsMessage = `नमस्ते${receiverName}! ${senderName} की ओर से यह special offer आपके लिए है।`; } else { ttsMessage = `नमस्ते${receiverName}! अपना name डालके Wish share करें।`; } return TTS_ENDPOINT + encodeURIComponent(ttsMessage); }
 function playAudio(receiverName) { if (audioPlayed || !currentProduct) return; const params = getUrlParams(), senderName = params.sender || "Priya"; const audio = document.getElementById("tts-audio"); audio.src = generateTtsUrl(receiverName, senderName); audio.onended = () => { audioPlayed = true; }; audio.play().catch(() => { audioPlayed = false; }); }
 function playAudioManually() { const params = getUrlParams(); const receiverName = params.sender ? decodeURIComponent(params.sender) : "Priya"; audioPlayed = false; playAudio(receiverName); }
 function updateMetaTags(productName, price) { const titleTag = document.querySelector('meta[property="og:title"]'); if (titleTag) { titleTag.setAttribute('content', `${productName} | Offer Price ₹${price}`); } }
+
+
+// === DATA FETCH & UI UPDATE (UNCHANGED) ===
 async function fetchProductData() {
+    const buyBtn = document.getElementById("buy-now-btn");
     try {
+        buyBtn.disabled = true; 
         const response = await fetch(CONFIG.PRODUCT_JSON_FILE);
-        if (!response.ok) throw new Error("Failed to fetch product_data.json.");
+        
+        if (!response.ok) {
+            console.error(`Error: Failed to fetch product data. Status: ${response.status}`);
+            throw new Error(`Failed to fetch product_data.json. Status: ${response.status}`);
+        }
+        
         const data = await response.json();
         currentProduct = data;
         
@@ -235,11 +301,16 @@ async function fetchProductData() {
 
         const finalPrice = isOfferActive ? offerPrice : actualPrice;
         updateMetaTags(currentProduct["Product Name"] || "Diwali Gift Box", finalPrice);
+        buyBtn.disabled = false; 
+
     } catch (error) {
-        console.error("Error fetching product data:", error);
+        console.error("--- FATAL ERROR: product_data.json ---");
+        console.error("Product data fetch error. Check file path and CORS policy.");
+        console.error("Error details:", error);
+        
         document.getElementById("product-name-static").textContent = "DATA ERROR: Product Not Found";
-        document.getElementById("buy-now-btn").textContent = "Error";
-        document.getElementById("buy-now-btn").disabled = true;
+        buyBtn.textContent = "Error Loading";
+        buyBtn.disabled = true; 
     }
 }
 function updateStoreUI() {
@@ -272,29 +343,169 @@ function updateStoreUI() {
     document.getElementById("description-text").textContent = currentProduct.Description || "Experience the joy...";
     
     buyBtn.textContent = `Buy Now`;
-    buyBtn.disabled = false;
+    buyBtn.disabled = false; 
     
     const reviewBar = document.querySelector('#review-bar .review-count');
     if(reviewBar) reviewBar.textContent = `(${currentProduct.reviews || 0} Reviews | ${currentProduct.rating || 4.5}/5)`;
     
-    const waLink = `https://wa.me/${CONFIG.ADMIN_WHATSAPP}?text=Hi! I am interested in the ${currentProduct["Product Name"]}`;
+const waLink = `https://wa.me/${CONFIG.ADMIN_WHATSAPP}?text=Hi! I am interested in the ${currentProduct["Product Name"]}`;
     document.getElementById("floating-whatsapp").href = waLink;
 
     setTimeout(() => { if (!audioPlayed) playAudio(finalReceiverName); }, 1000);
 }
 
 
-// === ORDER FLOW (V12: QUANTITY and NEW FORM LOGIC) ===
+// === MEDIA DISPLAY (V16) ===
+function startMediaDisplay() { 
+    if (!currentProduct || !currentProduct.Media_URLs || currentProduct.Media_URLs.length === 0) {
+        console.error("No media URLs found in product data.");
+        return;
+    }
+    
+    const mediaContainer = document.getElementById("media-carousel");
+    const videoPlayerBox = document.getElementById("media-video-player");
+    const videoElement = document.getElementById("product-video");
+    const dotsContainer = document.getElementById("carousel-dots");
+    
+    mediaContainer.innerHTML = ''; 
+    dotsContainer.innerHTML = '';
+    videoPlayerBox.style.display = 'none'; 
+
+    const mediaFiles = currentProduct.Media_URLs;
+    let imageCount = 0;
+    
+    mediaFiles.forEach((fileName, index) => {
+        // Building full URL by combining BASE_STORE_URL and file name
+        const fullUrl = CONFIG.BASE_STORE_URL + fileName; 
+        
+        // Check for video extension
+        if (fileName.toLowerCase().endsWith('.mp4') || fileName.toLowerCase().endsWith('.mov') || fileName.toLowerCase().endsWith('.webm')) {
+            videoElement.src = fullUrl;
+            videoPlayer = videoElement;
+            videoPlayerBox.style.display = 'block';
+            
+        } else {
+            // Treat as image
+            const img = document.createElement('img');
+            img.src = fullUrl;
+            img.className = 'carousel-image';
+            if (imageCount === 0) {
+                img.classList.add('active'); 
+            }
+            mediaContainer.appendChild(img);
+
+            const dot = document.createElement('span');
+            dot.className = 'dot';
+            dot.dataset.index = index;
+            if (imageCount === 0) {
+                dot.classList.add('active');
+            }
+            dot.onclick = () => changeImage(imageCount); 
+            dotsContainer.appendChild(dot);
+            
+            imageCount++;
+        }
+    });
+
+    if (imageCount > 1) {
+        startImageCarousel(imageCount, mediaContainer, dotsContainer);
+    } else if (imageCount === 1) {
+        if (carouselTimer) clearInterval(carouselTimer);
+    }
+}
+function toggleVideoPlay() {
+    if (!videoPlayer) return;
+    if (isVideoPlaying) {
+        videoPlayer.pause();
+        document.getElementById("video-play-pause-btn").innerHTML = '<i class="fas fa-play"></i>';
+    } else {
+        videoPlayer.play();
+        document.getElementById("video-play-pause-btn").innerHTML = '<i class="fas fa-pause"></i>';
+    }
+    isVideoPlaying = !isVideoPlaying;
+}
+
+function startImageCarousel(count, container, dotsContainer) {
+    if (carouselTimer) clearInterval(carouselTimer);
+    if (count <= 1) return; 
+
+    const images = container.querySelectorAll('.carousel-image');
+    const dots = dotsContainer.querySelectorAll('.dot');
+    
+    const showNextImage = () => {
+        currentMediaIndex = (currentMediaIndex + 1) % count;
+        changeImage(currentMediaIndex, images, dots);
+    };
+
+    carouselTimer = setInterval(showNextImage, 3000); 
+}
+
+function changeImage(index, images = document.querySelectorAll('#media-carousel .carousel-image'), dots = document.querySelectorAll('#carousel-dots .dot')) {
+    images.forEach((img, idx) => {
+        if (idx === index) {
+            img.classList.add('active');
+        } else {
+            img.classList.remove('active');
+        }
+    });
+
+    dots.forEach((dot, idx) => {
+        if (idx === index) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+    
+    currentMediaIndex = index;
+    startImageCarousel(images.length, document.getElementById("media-carousel"), document.getElementById("carousel-dots"));
+}
+
+function startLiveNotifications() {
+    const notificationElement = document.getElementById("live-notification");
+    const textElement = document.getElementById("notification-text");
+    const orders = CONFIG.LIVE_ORDERS;
+
+    let notificationIndex = 0;
+    const totalOrders = orders.length;
+
+    const showNextNotification = () => {
+        if (totalOrders === 0) return;
+        
+        const order = orders[notificationIndex];
+        textElement.innerHTML = `**${order.name}** just ordered from **${order.city}**!`;
+        notificationElement.classList.remove("hidden");
+
+        setTimeout(() => {
+            notificationElement.classList.add("hidden");
+        }, 5000); 
+
+        notificationIndex = (notificationIndex + 1) % totalOrders;
+    };
+
+    setTimeout(() => {
+        showNextNotification();
+        setInterval(showNextNotification, Math.random() * 10000 + 10000); 
+    }, 5000); 
+}
+
+
+// === ORDER FLOW (UNCHANGED) ===
 function handleBuyNow() { 
-    if (!currentProduct) return alert("Loading..."); 
+    if (!currentProduct) return alert("Loading Product Data..."); 
     const itemPrice = isOfferActive ? parseFloat(offerPrice) : parseFloat(actualPrice);
     showOrderForm(itemPrice); 
 }
 
 function updateTotalPrice(itemPrice, qty) {
-    const totalPrice = (itemPrice * qty).toFixed(0); // Calculate total price
-    document.getElementById("total-price-display").textContent = `₹${totalPrice}`;
-    document.getElementById("order-form-submit-btn").textContent = `Place COD Order (₹${totalPrice})`;
+    if (isNaN(itemPrice)) itemPrice = 0; 
+    const totalPrice = (itemPrice * qty).toFixed(0); 
+    
+    const priceDisplayElement = document.getElementById("total-price-display");
+    const submitBtnElement = document.getElementById("order-form-submit-btn");
+
+    if (priceDisplayElement) priceDisplayElement.textContent = `₹${totalPrice}`;
+    if (submitBtnElement) submitBtnElement.textContent = `Place COD Order (₹${totalPrice})`;
     return totalPrice;
 }
 
@@ -303,28 +514,26 @@ function showOrderForm(itemPrice) {
     const senderName = document.getElementById("receiver-display-top").textContent || "Direct"; 
     
     let currentQty = 1;
-    let totalPrice = updateTotalPrice(itemPrice, currentQty);
+    let totalPrice = updateTotalPrice(itemPrice, currentQty); 
+    
+    document.getElementById("modal-body").dataset.itemPrice = itemPrice;
 
-    // Form HTML with all 10 fields + Quantity control
     const formHtml = `
         <h3 style="color: var(--color-price-cod);">Cash on Delivery Order Form</h3>
         <p style="font-weight: 700; margin-bottom: 15px; text-align: center;">Total Price: <span id="total-price-display">₹${totalPrice}</span></p>
         
-        <form id="order-form" onsubmit="submitOrder(event, '${itemPrice}', '${paymentMode}', '${senderName}'); return false;">
-            
+        <form id="order-form">
             <div class="form-group-qty">
                 <label>1. Quantity</label>
                 <div class="qty-control">
-                    <button type="button" class="qty-btn" onclick="changeQty(${itemPrice}, -1)">-</button>
+                    <button type="button" class="qty-btn" onclick="changeQty(-1)">-</button>
                     <span id="qty-display">${currentQty}</span>
-                    <button type="button" class="qty-btn" onclick="changeQty(${itemPrice}, 1)">+</button>
+                    <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
                     <input type="hidden" name="Quantity" id="qty-input" value="${currentQty}">
                 </div>
             </div>
-
             <input type="text" name="Full Name" placeholder="2. Full Name *" required autocomplete="name">
             <input type="text" name="WhatsApp Number" placeholder="3. WhatsApp (10 digits) *" pattern="[6-9][0-9]{9}" required autocomplete="tel">
-            
             <input type="text" name="Area / Locality" placeholder="4. Area / Locality *" required>
             <input type="text" name="Landmark / Road Name" placeholder="5. Landmark / Road Name *" required>
             <input type="text" name="Village / Town" placeholder="6. Village / Town *" required>
@@ -337,15 +546,20 @@ function showOrderForm(itemPrice) {
         </form>
     `;
     showModal(formHtml); 
+    
+    document.getElementById("order-form").addEventListener('submit', (event) => {
+        submitOrder(event, itemPrice, paymentMode, senderName);
+    });
 }
 
-function changeQty(itemPrice, delta) {
+function changeQty(delta) {
+    const itemPrice = parseFloat(document.getElementById("modal-body").dataset.itemPrice);
     const qtyDisplay = document.getElementById("qty-display");
     const qtyInput = document.getElementById("qty-input");
     
     let newQty = parseInt(qtyDisplay.textContent) + delta;
     
-    if (newQty < 1) newQty = 1; // Minimum Quantity is 1
+    if (newQty < 1 || isNaN(newQty)) newQty = 1; 
     
     qtyDisplay.textContent = newQty;
     qtyInput.value = newQty;
@@ -359,21 +573,19 @@ function submitOrder(event, itemPrice, paymentMode, senderName) {
     const formData = new FormData(form); 
     
     const qty = parseInt(document.getElementById("qty-input").value);
-    const totalPrice = updateTotalPrice(itemPrice, qty); // Final calculation
+    const totalPrice = updateTotalPrice(itemPrice, qty); 
 
     const data = { 
         "Product Name": currentProduct["Product Name"] || "Unknown", 
-        "Price": totalPrice, // Save Total Price
-        "Quantity": qty,      // Save Quantity
+        "Price": totalPrice, 
+        "Quantity": qty,      
         "Payment Mode": paymentMode, 
         "Wish Sender": senderName, 
         "Payment Status": "COD_CONFIRMED" 
     }; 
     
-    // Add all form data fields to the data object
     formData.forEach((value, key) => { 
-        // Correcting field names to match Google Sheet Headers (e.g., "Full Name" instead of "Customer Name")
-        if (key !== 'Quantity') { // Quantity is handled above
+        if (key !== 'Quantity') { 
              data[key] = value;
         }
     }); 
@@ -443,18 +655,14 @@ function initiateWhatsAppShare(baseShareUrl, senderName, receiverName, isBought)
     }
 }
 
-// === MEDIA DISPLAY, LIVE NOTIFICATIONS (Unchanged) ===
-function startMediaDisplay() { /* ... */ }
-function toggleVideoPlay() { /* ... */ }
-function startImageCarousel(count, container, dotsContainer) { /* ... */ }
-function changeImage(index) { /* ... */ }
-function startLiveNotifications() { /* ... */ }
 
 // === INITIALIZATION ===
 function init() {
+    document.getElementById("buy-now-btn").addEventListener("click", handleBuyNow);
+    
+    // Load data
     fetchProductData(); 
     
-    document.getElementById("buy-now-btn").addEventListener("click", handleBuyNow);
     document.getElementById("share-btn").addEventListener("click", handleShare);
     document.getElementById("modal").addEventListener("click", (e) => {
         if (e.target.id === "modal") hideModal();
@@ -464,3 +672,8 @@ document.addEventListener("DOMContentLoaded", init);
 </script>
 </body>
 </html>
+
+
+
+
+    
