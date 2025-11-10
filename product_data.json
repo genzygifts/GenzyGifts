@@ -1,19 +1,14 @@
 {
-    "Product Name": "Fresh Juice Blender Bottle",
-    "Product ID": "DGW-LGB-2025",
-    "Description": "।। इस दिवाली, अपनों को दें एक शानदार गिफ्ट बॉक्स 🎁⛄सीमित स्टॉक उपलब्ध है।।",
-    
-    "COD_Actual_Price": "1199", 
-    "COD_Offer_Price": "799", 
-    
-    // 💡 सिर्फ़ फ़ाइल के नाम, URL नहीं
-    "Media_URLs": [
-        "1.jpg", 
-        "2.jpg", 
-        "3.jpg",
-        "video.mp4" 
-    ],
-    
-    "reviews": 124,
-    "rating": 4.8
+  "Product Name": "Exclusive Birthday Gift Hamper",
+  "Description": "This hamper includes premium chocolates, a custom mug, and a personalized greeting card. Perfect for making their day memorable!",
+  "Media_URLs": [
+    "1.jpg",
+    "2.jpg",
+    "3.jpg",
+    "1.mp4"
+  ],
+  "COD_Actual_Price": 1499,
+  "COD_Offer_Price": 999,
+  "reviews": 450,
+  "rating": 4.8
 }
