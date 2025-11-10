@@ -5,10 +5,10 @@
     "1.jpg",
     "2.jpg",
     "3.jpg",
-    "1.mp4"
+    "4.ipg"
   ],
-  "COD_Actual_Price": 1499,
-  "COD_Offer_Price": 999,
+  "Price": 1499,
+  "Offer": 999,
   "reviews": 450,
   "rating": 4.8
 }
