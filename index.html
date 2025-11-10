@@ -1,31 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Diwali Special Wish and Gift Offer</title>
+<title>Exclusive Viral Gift Store</title>
 <link href="https://fonts.googleapis.com/css?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<meta property="og:title" content=" ">
-<meta property="og:description" content="अपने नाम के साथ अपनों को (Wish share) शुभकामनाएं देने के लिए SEND बटन पर क्लिक करें">
+<meta property="og:title" content="Viral Gift Offer for You!">
+<meta property="og:description" content="अपने नाम के साथ अपनों को (Gift offer share) देने के लिए SEND बटन पर क्लिक करें">
 <meta property="og:image" content="https://genzygifts.github.io/GenzyGifts/diwali.gif"> 
 <meta property="og:url" content="https://genzygifts.github.io/GenzyGifts/">
 <meta property="og:type" content="website">
 
 <style>
-/* --- STYLES (No Change) --- */
+/* --- STYLES (V25 - Attractive Professional Design) --- */
 :root {
---color-bg-dark: #5C1A00;
---color-bg-darker: #2C0A0A;
+--color-bg-dark: #1e2a78; /* Navy Blue */
+--color-bg-darker: #131b46; /* Deeper Navy */
 --color-card-bg: #ffffff;
 --color-primary-text: #000000;
---color-primary-btn: #FF6B00;
---color-price-cod: #dc3545;
---color-price-premium: #FF8C00;
---color-gold: #FFD700;
---color-brown: #8B4513;
+--color-primary-btn: #1e2a78; /* Navy Button */
+--color-price-flash: #dc3545; /* Red for urgency */
+--color-gold: #FFD700; /* Gold Accent */
+--color-border: #dddddd; /* Light grey border */
 }
 * {
 box-sizing: border-box;
@@ -41,7 +39,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 overflow: hidden;
-background: #000;
+background: #f5f5f5; /* Light grey background */
 }
 #app-container {
 width: 100vw;
@@ -51,471 +49,104 @@ max-height: min(100vh, 177.78vw);
 margin: auto;
 display: flex;
 flex-direction: column;
-background: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-darker) 100%);
-box-shadow: 0 0 40px rgba(255, 107, 53, 0.6);
+background: #ffffff; /* White content background */
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
 color: var(--color-primary-text);
 position: relative;
 overflow-y: auto; 
 overflow-x: hidden;
 }
-#content-area {
-padding: 0 8px;
-text-align: center;
-flex-grow: 1;
-display: flex;
-flex-direction: column;
-}
-/* Decorations */
-.diya-decoration {
-position: absolute;
-top: 8px;
-font-size: 18px;
-z-index: 20;
-text-shadow: 0 0 15px var(--color-gold);
-animation: pulse 2s infinite alternate;
-}
-.diya-left { left: 15px; transform: rotate(-15deg); }
-.diya-right { right: 15px; transform: rotate(15deg); }
-@keyframes pulse {
-0% { transform: scale(1); opacity: 0.9; }
-100% { transform: scale(1.1); opacity: 1; }
-}
-/* Header */
-#top-header-wish {
-text-align: center;
-padding: 25px 0 5px 0;
-color: #FFE4B5;
-font-weight: 600;
-position: relative;
-z-index: 10;
-}
-.receiver-header {
-font-size: 22px;
-font-weight: 900;
-color: var(--color-gold);
-text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-font-family: cursive;
-margin-bottom: 3px;
-}
-.festival-text {
-font-size: 13px;
-font-weight: 700;
-margin: 3px 0;
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 6px;
-}
-.audio-icon-btn {
-background: rgba(255,215,0,0.25);
-border: 1.5px solid var(--color-gold);
-border-radius: 50%;
-width: 22px;
-height: 22px;
-display: inline-flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-font-size: 11px;
+
+/* 1. PROFESSIONAL BANNER/HEADER (V25) */
+.diya-decoration { display: none; } /* Remove Diya */
+#top-header-wish { 
+    text-align: center; 
+    padding: 20px 10px 15px 10px; 
+    color: #ffffff; 
+    background: var(--color-bg-dark); /* Solid Navy background for banner look */
+    font-weight: 600; 
+    position: relative; 
+    z-index: 10; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 .store-title-top {
-font-size: 10px;
-font-style: italic;
-font-weight: 600;
-letter-spacing: 1px;
-color: #FFE4B5;
-opacity: 0.8;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-gold); /* Gold accent for brand name */
+    text-transform: uppercase;
+    margin-top: 0;
 }
-/* Product Card */
-#product-card {
-background-color: var(--color-card-bg);
-border-radius: 15px;
-padding: 12px;
-margin: 5px 0;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-text-align: left;
-flex-shrink: 0;
-border: 3px solid var(--color-brown);
-position: relative;
+.receiver-header { 
+    font-size: 24px; 
+    font-weight: 900; 
+    color: #ffffff; /* White text */
+    text-shadow: none; 
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 0; 
+    margin-top: 5px;
 }
-#product-card::before {
-content: "";
-position: absolute;
-top: 5px;
-left: 5px;
-right: 5px;
-bottom: 5px;
-border: 1px dashed #CD853F;
-border-radius: 12px;
-pointer-events: none;
-opacity: 0.6;
-}
-.product-name-main {
-font-size: 12px;
-font-weight: 700;
-margin-bottom: 5px;
-text-align: center;
-}
-#review-bar {
-text-align: center;
-margin-bottom: 8px;
-color: var(--color-gold);
-font-size: 11px;
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 6px;
-}
-.stars { font-size: 15px; }
-.review-count { color: #666; font-size: 9px; font-weight: 600; }
+.festival-text { display: none; } /* Remove festival text */
 
-/* MEDIA FIX */
-#media-box {
-    width: 100%;
-    height: 200px;
-    margin-bottom: 8px;
-    border: 1px solid #ddd;
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #f0f0f0;
-    cursor: pointer;
+/* 2. CONTENT AREA */
+#content-area {
+    padding: 10px; 
+    flex-grow: 1;
+    background-color: var(--color-card-bg); /* White background for the main content area */
 }
-.carousel-image, .product-media-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain; 
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+#product-card { 
+    border: 1px solid var(--color-border); /* Light border */
+    border-radius: 15px; padding: 12px; margin: 5px 0; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+    text-align: left; flex-shrink: 0; 
+    position: relative; 
 }
-.carousel-image.active, .product-media-video { opacity: 1; }
-.media-loading {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-font-size: 50px;
-color: #bbb;
-}
-.carousel-dots {
-position: absolute;
-bottom: 5px;
-left: 50%;
-transform: translateX(-50%);
-display: flex;
-gap: 10px;
-z-index: 5;
-}
-.dot {
-width: 7px;
-height: 7px;
-border-radius: 50%;
-background: #ccc;
-cursor: pointer;
-transition: all 0.3s;
-}
-.dot.active { background: var(--color-primary-btn); transform: scale(1.3); }
-/* Price Section */
-#price-section {
-display: flex;
-justify-content: center;
-align-items: center;
-margin-bottom: 8px;
-gap: 12px;
-}
-.price-item {
-text-align: center;
-}
-.price-item-label {
-font-size: 8px;
-font-weight: 600;
-text-transform: uppercase;
-display: block;
-margin-bottom: 2px;
-letter-spacing: 0.5px;
-opacity: 0.8;
-}
-#price-cod-display.price-item-label { color: var(--color-price-cod); }
-#price-premium-display.price-item-label { color: var(--color-price-premium); }
-.price-item-value {
-font-size: 20px;
-font-weight: 900;
-display: block;
-line-height: 1;
-}
-#price-cod-display.price-item-value {
-color: var(--color-price-cod);
-text-decoration: line-through;
-opacity: 0.7;
-}
-#price-premium-display.price-item-value {
-color: var(--color-price-premium);
-}
-.price-vs {
-font-size: 11px;
-font-weight: 700;
-color: #666;
-}
-#description-text {
-font-size: 9px;
-color: #666;
-margin-bottom: 6px;
-font-weight: 500;
-text-align: center;
-line-height: 1.3;
-}
-/* Buttons */
-.btn-base {
-width: 100%;
-padding: 8px 12px;
-margin-bottom: 5px;
-border-radius: 16px;
-font-size: 12px;
-font-weight: 700;
-border: none;
-cursor: pointer;
-transition: all 0.3s;
-}
-.primary-btn {
-background: linear-gradient(135deg, var(--color-primary-btn), #FF4500);
-color: white;
-box-shadow: 0 4px 10px rgba(255, 107, 0, 0.5);
-}
-.primary-btn:active { transform: scale(0.98); }
-input[type="text"], textarea, select {
-width: 100%;
-padding: 8px;
-margin-bottom: 8px;
-border: 1px solid #ddd;
-border-radius: 6px;
-box-sizing: border-box;
-font-size: 11px;
-outline: none;
-}
-/* Share Section */
+
+/* 3. SHARE SECTION (Dark Professional Footer) */
 #share-section-box {
-padding: 8px;
-margin-top: 5px;
-background-color: rgba(139, 26, 0, 0.3);
-border-radius: 8px;
-flex-shrink: 0;
-}
-#share-label {
-font-size: 10px;
-font-weight: 700;
-margin-bottom: 5px;
-display: flex;
-align-items: center;
-gap: 5px;
-color: #fff;
-}
-/* Timer */
-#offer-timer-share {
-display: flex;
-align-items: center;
-justify-content: space-between;
-background: linear-gradient(135deg, var(--color-gold), #FFA500);
-border: 2px solid #D2691E;
-border-radius: 8px;
-padding: 5px 8px;
-margin-bottom: 8px;
-}
-#timer-inner {
-background: #8B0000;
-padding: 4px 10px;
-border-radius: 6px;
-flex-grow: 1;
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-left: 8px;
-}
-#offer-end-text {
-font-size: 9px;
-font-weight: 700;
-color: var(--color-gold);
-white-space: nowrap;
-}
-#countdown {
-font-size: 13px;
-font-weight: 900;
-color: #fff;
-}
-/* Input Row */
-.share-input-row {
-display: flex;
-gap: 8px;
-margin-bottom: 8px;
-}
-.input-group {
-flex: 1;
-}
-.input-label-white {
-font-size: 9px;
-font-weight: 600;
-color: #fff;
-margin-bottom: 3px;
-display: block;
+    background: var(--color-bg-dark); /* Dark section background */
+    padding: 15px;
+    color: #ffffff;
+    flex-shrink: 0;
 }
 .share-input-field {
-width: 100%;
-padding: 7px;
-border-radius: 6px;
-border: 1px solid #ccc;
-font-size: 10px;
-outline: none;
-text-align: center;
-font-weight: 500;
+    border: 1px solid #ffffff; /* White border */
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent white background */
+    color: #ffffff;
 }
-.share-btn {
-width: 100%;
-padding: 8px;
-background: linear-gradient(135deg, #FF8C00, var(--color-primary-btn));
-color: white;
-border-radius: 16px;
-font-size: 12px;
-font-weight: 700;
-border: none;
-cursor: pointer;
-box-shadow: 0 4px 10px rgba(255, 107, 0, 0.5);
+
+/* Price Display (Remains same for dynamic pricing) */
+#price-section { display: flex; justify-content: center; align-items: center; margin: 10px 0; }
+.price-item { text-align: center; padding: 5px 15px; border-radius: 8px; background-color: #f7e6e1; border: 2px solid var(--color-price-flash); }
+.price-item-label { display: block; font-size: 14px; font-weight: 700; color: var(--color-price-flash); }
+.price-item-value { display: block; font-size: 26px; font-weight: 900; color: #000; }
+
+/* Media Aspect Ratio and other core styles remain */
+#media-box-wrapper { position: relative; width: 100%; overflow: hidden; border-radius: 8px; background: #f0f0f0; margin-bottom: 8px; border: 1px solid #ddd; }
+#media-box { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; }
+.carousel-image, .product-media-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease-in-out; }
+.product-media-video { opacity: 1; }
+.carousel-image.active { opacity: 1; }
+.form-group-qty { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-weight: 600; }
+.qty-control { display: flex; align-items: center; gap: 10px; }
+.qty-btn { background: #f0f0f0; color: #000; border: 1px solid #ccc; width: 30px; height: 30px; border-radius: 4px; font-size: 16px; font-weight: 700; cursor: pointer; }
+#floating-whatsapp {
+    position: fixed; right: calc(50% - min(50vw, 281.25px) + 15px); bottom: 15px; background-color: #25D366; 
+    color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; 
+    justify-content: center; font-size: 28px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); z-index: 1000; 
+    text-decoration: none; user-select: none; transition: transform 0.2s;
 }
-/* Script Purchase Box */
-#script-purchase-box {
-padding: 10px;
-margin-top: 8px;
-margin-bottom: 12px; 
-background: #2C1810;
-border: 3px solid var(--color-brown);
-border-radius: 10px;
-flex-shrink: 0;
-display: flex;
-justify-content: space-between;
-align-items: stretch;
-gap: 10px;
-min-height: 65px;
-}
-.script-info-group {
-flex: 1;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-gap: 5px;
-}
-.script-info {
-font-size: 9px;
-margin-bottom: 3px;
-font-weight: 700;
-color: #FFE4B5;
-display: flex;
-align-items: center;
-gap: 5px;
-}
-.script-btn {
-padding: 7px 10px;
-font-size: 10px;
-background: var(--color-gold);
-color: #000;
-border: 1.5px solid #000;
-border-radius: 12px;
-font-weight: 900;
-cursor: pointer;
-white-space: nowrap;
-}
-.qr-code-display {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-gap: 3px;
-}
-.qr-code-display img {
-width: 55px;
-height: 55px;
-border: 2.5px solid #000;
-border-radius: 5px;
-background: #fff;
-padding: 2px;
-}
-.qr-code-label {
-font-size: 7px;
-color: #FFE4B5;
-font-weight: 700;
-text-align: center;
-}
-.hidden { display: none !important; }
-/* Modal */
-#modal {
-position: fixed;
-z-index: 100;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.8);
-display: flex;
-justify-content: center;
-align-items: center;
-}
-.modal-content {
-background-color: var(--color-card-bg);
-padding: 20px;
-border-radius: 15px;
-width: 90%;
-max-width: 380px;
-position: relative;
-color: var(--color-primary-text);
-box-shadow: 0 10px 40px rgba(255, 107, 53, 0.5);
-overflow-y: auto;
-max-height: 90vh;
-}
-.modal-content .close-btn {
-position: absolute;
-top: 10px;
-right: 12px;
-font-size: 28px;
-cursor: pointer;
-color: #999;
-width: 32px;
-height: 32px;
-display: flex;
-align-items: center;
-justify-content: center;
-background: none;
-border: none;
-}
-.modal-content .close-btn:hover { color: #000; }
-.modal-content h3 { margin-bottom: 15px; text-align: center; }
-.modal-content p { margin-bottom: 15px; }
-.modal-content button { margin-top: 10px; }
-.loading-spinner {
-display: inline-block;
-width: 20px;
-height: 20px;
-border: 3px solid rgba(255,255,255,.3);
-border-radius: 50%;
-border-top-color: #fff;
-animation: spin 1s ease-in-out infinite;
-}
-@keyframes spin {
-to { transform: rotate(360deg); }
-}
+#floating-whatsapp:active { transform: scale(0.9); }
 </style>
 </head>
 <body oncontextmenu="return false;" onkeydown="return checkKey(event);">
 <div id="app-container">
-<span class="diya-decoration diya-left">🪔</span>
-<span class="diya-decoration diya-right">🪔</span>
+
 <div id="top-header-wish">
-<h1 class="receiver-header">Hi <span id="receiver-display-top">Priya</span>!</h1>
-<p class="festival-text">
-Happy Diwali ✨
-<span class="audio-icon-btn" onclick="playAudioManually()" title="Play Audio">🔊</span>
-</p>
-<h2 class="store-title-top">+ Genzy Gifts +</h2>
+    <h2 class="store-title-top">+ Genzy Gifts +</h2>
+    <h1 class="receiver-header">Welcome, <span id="receiver-display-top">Priya</span>!</h1>
+    <span class="audio-icon-btn" onclick="playAudioManually()" title="Play Audio" style="position: absolute; right: 15px; top: 20px; font-size: 20px;">🔊</span>
 </div>
+
 <div id="content-area">
 <div id="product-card">
 <h4 id="product-name-static" class="product-name-main">Loading Product...</h4>
@@ -523,22 +154,22 @@ Happy Diwali ✨
 <span class="stars">⭐⭐⭐⭐⭐</span>
 <span class="review-count">(Loading Reviews...)</span>
 </div>
-<div id="media-box" onclick="toggleMediaPlay()"> 
-<div id="media-carousel"></div>
-<div class="carousel-dots" id="carousel-dots"></div>
+
+<div id="media-box-wrapper">
+    <div id="media-box" onclick="toggleMediaPlay()"> 
+        <div id="media-carousel"></div>
+        <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
 </div>
+
 <div id="details-box">
 <div id="price-section">
-<div class="price-item" id="price-cod-display">
-<span class="price-item-label">COD</span>
-<span class="price-item-value">₹<span id="price-cod">...</span></span>
+    <div class="price-item" id="price-current-display">
+        <span class="price-item-label">FLASH SALE</span>
+        <span class="price-item-value">₹<span id="price-current">799</span></span>
+    </div>
 </div>
-<span class="price-vs">VS</span>
-<div class="price-item" id="price-premium-display">
-<span class="price-item-label">Premium</span>
-<span class="price-item-value">₹<span id="price-premium">...</span></span>
-</div>
-</div>
+
 <p id="description-text">Loading...</p>
 <button id="buy-now-btn" class="btn-base primary-btn" disabled>🛒 Loading...</button>
 </div>
@@ -567,20 +198,14 @@ Name" autocomplete="off" value="Ram">
 <button id="share-btn" class="share-btn btn-base">Share Wish</button>
 </div>
 </div>
-<div id="script-purchase-box">
-<div class="script-info-group">
-<p class="script-info">🎁 Want to create on own store like this?</p>
-<button id="buy-script-btn" class="script-btn btn-base">
-<i class="fas fa-laptop-code"></i> Buy Script ₹<span id="script-price-display">1999</span>
-</button>
-</div>
-<div class="qr-code-display">
-<p class="qr-code-label">Scan to Buy</p>
-<img src="qrcode.png" alt="Payment QR Code" id="phonepe-qr">
 </div>
 </div>
-</div>
-</div>
+
+<a id="floating-whatsapp" href="#" target="_blank" title="WhatsApp Support">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+
 <audio id="tts-audio" preload="none" hidden></audio>
 <div id="modal" class="hidden">
 <div class="modal-content">
@@ -589,19 +214,19 @@ Name" autocomplete="off" value="Ram">
 </div>
 </div>
 <script>
-// === CONFIGURATION (FINAL AND CORRECT) ===
+// === CONFIGURATION ===
 const CONFIG = {
     ORDER_SUBMIT_API:
         "https://script.google.com/macros/s/AKfycbyQoweTvVkWVWQRo72rNrJI_Qk4uw2TcLTRJwkvlr0ZWXrf6U3jnDOA9MKo7WPyEco8/exec",
     ADMIN_WHATSAPP: "919226949557",
-    // 💡 BASE URL: Your Final GitHub Pages URL
     BASE_STORE_URL: "https://genzygifts.github.io/GenzyGifts/",
-    SCRIPT_PRICE: 1999,
     PRODUCT_JSON_FILE: "product_data.json"
 };
 
 let currentProduct = null, audioPlayed = false, carouselTimer = null, currentMediaIndex = 0;
 let currentVideo = null; 
+let currentPrice = 799; // V24: Initial price set here
+let isOfferExpired = false; // V24: Flag to track timer status
 
 // === UTILITY FUNCTIONS ===
 function checkKey(e) {
@@ -627,8 +252,11 @@ function showModal(content) {
 }
 function hideModal() {
     document.getElementById("modal").classList.add("hidden");
+    if (currentVideo && !currentVideo.paused) {
+        currentVideo.pause();
+    }
 }
-// === TIMER ===
+// === TIMER & PRICE LOGIC (V24 UPDATE) ===
 function startCountdown() {
     const TIMER_KEY = 'diwali_offer_timer';
     let countDownDate;
@@ -640,26 +268,51 @@ function startCountdown() {
         countDownDate = new Date().getTime() + minutes * 60 * 1000;
         localStorage.setItem(TIMER_KEY, countDownDate.toString());
     }
-    const countdownElement = document.getElementById("countdown"), buyBtn =
-        document.getElementById("buy-now-btn");
+    
+    const OFFER_PRICE = 799;
+    const EXPIRY_PRICE = 999;
+    const countdownElement = document.getElementById("countdown");
+    const priceElement = document.getElementById("price-current");
+    const labelElement = document.querySelector('#price-current-display .price-item-label');
+    const buyBtn = document.getElementById("buy-now-btn");
+
     const x = setInterval(() => {
         const now = new Date().getTime(), distance = countDownDate - now;
+
         if (distance < 0) {
             clearInterval(x);
             countdownElement.innerHTML = "EXPIRED!";
-            if (buyBtn) { buyBtn.textContent = "⏰ Offer Ended!"; buyBtn.disabled = true; }
+            isOfferExpired = true;
+            currentPrice = EXPIRY_PRICE; // Set 999
+            
+            priceElement.textContent = EXPIRY_PRICE; 
+            labelElement.textContent = "NORMAL PRICE";
+            if (buyBtn) { 
+                buyBtn.textContent = `🛒 Buy Now ₹${EXPIRY_PRICE}`; 
+                buyBtn.disabled = false;
+            }
             localStorage.removeItem(TIMER_KEY);
             return;
         }
+
+        // Timer Running Price (799)
+        currentPrice = OFFER_PRICE; 
+        priceElement.textContent = OFFER_PRICE;
+        labelElement.textContent = "FLASH SALE";
+        if (buyBtn && currentProduct) {
+            buyBtn.textContent = `🛒 Buy Now ₹${OFFER_PRICE}`;
+        }
+
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
         countdownElement.innerHTML = (hours < 10 ? "0" + hours : hours) + "H : " + (minutes < 10 ?
             "0" + minutes : minutes) + "M : " + (seconds
                 < 10 ? "0" + seconds : seconds) + "S";
     }, 1000);
 }
-// === AUDIO LOGIC ===
+// === AUDIO & MEDIA AUTOPLAY LOGIC (Same as V23) ===
 function generateTtsUrl(receiverName, senderName) {
     const TTS_ENDPOINT =
         "https://corsproxy.io/?https://translate.google.com/translate_tts?ie=UTF-8&tl=hi&client=tw-ob&q=";
@@ -729,11 +382,7 @@ function updateStoreUI() {
         decodeURIComponent(params.sender) : "Priya";
     
     document.getElementById("receiver-display-top").textContent = finalReceiverName;
-    
-    // FETCHING data directly from currentProduct
-    document.getElementById("product-name-static").textContent = currentProduct["Product Name"] || "Diwali Gift Box";
-    document.getElementById("price-premium").textContent = currentProduct.Premium_Price || "999";
-    document.getElementById("price-cod").textContent = currentProduct.COD_Price || "1150";
+    document.getElementById("product-name-static").textContent = currentProduct["Product Name"] || "Exclusive Gift Box";
     
     const reviewBar = document.querySelector('#review-bar .review-count');
     if(reviewBar) reviewBar.textContent = `(${currentProduct.reviews || 0} Reviews | ${currentProduct.rating || 4.5}/5)`;
@@ -741,16 +390,19 @@ function updateStoreUI() {
     const descText = currentProduct.Description || "Experience the joy...";
     document.getElementById("description-text").textContent = descText;
 
-    document.getElementById("script-price-display").textContent = CONFIG.SCRIPT_PRICE;
-    document.getElementById("buy-now-btn").textContent = `🛒 Buy Now ₹${currentProduct.Premium_Price || "999"}`;
     document.getElementById("buy-now-btn").disabled = false;
     
+    // Set WhatsApp link
+    const waLink = `https://wa.me/${CONFIG.ADMIN_WHATSAPP}?text=Hi! I am interested in the ${currentProduct["Product Name"]} (Current Price: ₹${currentPrice})`;
+    document.getElementById("floating-whatsapp").href = waLink;
+
     startMediaDisplay();
     startCountdown();
     setTimeout(() => { if (!audioPlayed) playAudio(finalReceiverName); }, 1000);
 }
-// === MEDIA DISPLAY ===
+// === MEDIA DISPLAY (Same as V23) ===
 function startMediaDisplay() {
+    const mediaWrapper = document.getElementById("media-box-wrapper");
     const mediaContainer = document.getElementById("media-carousel"), dotsContainer =
         document.getElementById("carousel-dots");
     mediaContainer.innerHTML = "";
@@ -761,8 +413,10 @@ function startMediaDisplay() {
     const hasVideo = currentProduct.Has_Video === true;
 
     if (hasVideo && mediaCount > 0) {
+        mediaWrapper.style.paddingTop = '177.77%'; // 9:16 Aspect Ratio
+        
         const video = document.createElement("video");
-        video.src = "1.mp4"; // Assumes 1.mp4 is available
+        video.src = "1.mp4"; 
         video.className = "product-media-video";
         video.setAttribute("loop", "");
         video.setAttribute("autoplay", "");
@@ -772,15 +426,19 @@ function startMediaDisplay() {
         currentVideo = video; 
 
         video.onerror = () => { 
-            console.warn("Video failed to load.");
+            console.warn("Video failed to load. Falling back to images.");
             video.remove(); 
+            currentVideo = null;
+            mediaWrapper.style.paddingTop = '100%'; // Fallback to 1:1
             startImageCarousel(mediaCount, mediaContainer, dotsContainer); 
         };
         
         mediaContainer.appendChild(video);
     } else if (mediaCount > 0) {
+        mediaWrapper.style.paddingTop = '100%'; // 1:1 Aspect Ratio
         startImageCarousel(mediaCount, mediaContainer, dotsContainer);
     } else {
+        mediaWrapper.style.paddingTop = '100%';
         mediaContainer.innerHTML = '<div class="media-loading">🖼️</div>'; 
     }
 }
@@ -805,7 +463,7 @@ function startImageCarousel(count, container, dotsContainer) {
     for (let i = 1; i <= count; i++) {
         const img = document.createElement("img");
         img.className = "carousel-image";
-        img.src = `${i}.jpg`; // Assumes 1.jpg, 2.jpg, etc.
+        img.src = `${i}.jpg`; 
         if (i === 1) img.classList.add('active');
         container.appendChild(img);
         
@@ -820,7 +478,7 @@ function startImageCarousel(count, container, dotsContainer) {
         carouselTimer = setInterval(() => {
             currentMediaIndex = (currentMediaIndex + 1) % count;
             changeImage(currentMediaIndex);
-        }, 3000);
+        }, 2000); 
     }
 }
 function changeImage(index) {
@@ -830,91 +488,111 @@ function changeImage(index) {
     dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
     currentMediaIndex = index;
 }
-// === ORDER FLOW ===
+
+// === ORDER FLOW (V24 UPDATE: Simplified to single COD flow) ===
 function handleBuyNow() {
     if (!currentProduct) return alert("Loading...");
-    const codPrice = currentProduct.COD_Price || "1150", premiumPrice =
-        currentProduct.Premium_Price || "999"; 
-    showModal(`
-<h3 style="color: var(--color-primary-btn);">Select Payment</h3>
-<p style="margin-bottom: 20px; text-align: center;">Choose your payment method:</p>
-<button class="btn-base"
-style="background: var(--color-price-premium); color: white; margin-bottom: 15px;"
-onclick="showOrderForm(true, '${premiumPrice}');">
-⭐ Premium Pay (₹${premiumPrice})
-<p style="font-size: 0.8em; margin: 5px 0 0 0;">(Fast Delivery, Save ₹${codPrice - premiumPrice})</p>
-</button>
-<button class="btn-base"
-style="background: var(--color-price-cod); color: white;"
-onclick="showOrderForm(false, '${codPrice}');">
-💰 COD (₹${codPrice})
-<p style="font-size: 0.8em; margin: 5px 0 0 0;">(Cash on Delivery)</p>
-</button>
-`);
+    // V24: Directly show COD Order Form using the dynamic currentPrice
+    showOrderForm(currentPrice, currentProduct['Product Name']);
 }
-function showOrderForm(isPrepaid, price) {
-    const paymentMode = isPrepaid ? "PREMIUM" : "COD";
+
+function updateTotalPrice(itemPrice, qty) {
+    if (isNaN(itemPrice)) itemPrice = 0;
+    const totalPrice = (itemPrice * qty).toFixed(0);
+    const priceDisplayElement = document.getElementById("total-price-display");
+    const submitBtnElement = document.getElementById("order-form-submit-btn");
+
+    if (priceDisplayElement) priceDisplayElement.textContent = `₹${totalPrice}`;
+    if (submitBtnElement) submitBtnElement.textContent = `Place COD Order (₹${totalPrice})`;
+
+    return totalPrice;
+}
+
+function changeQty(delta) {
+    const qtyInput = document.getElementById("qty-input");
+    const qtyDisplay = document.getElementById("qty-display");
+    // Use currentPrice for calculation
+    const itemPrice = currentPrice; 
+    
+    let currentQty = parseInt(qtyInput.value) || 1;
+    let newQty = currentQty + delta;
+
+    if (newQty < 1) newQty = 1;
+    
+    qtyInput.value = newQty;
+    qtyDisplay.textContent = newQty;
+    
+    updateTotalPrice(itemPrice, newQty);
+}
+
+function showOrderForm(price, productName) {
+// V24: Payment mode is fixed to COD
+    const paymentMode = "COD"; 
     const senderName = document.getElementById("receiver-display-top").textContent || "Direct";
+    const itemPrice = parseFloat(price);
+    let currentQty = 1;
+    const totalPrice = updateTotalPrice(itemPrice, currentQty);
+
+    document.getElementById("modal-body").dataset.itemPrice = itemPrice; 
+
     showModal(`
-<h3 style="color: var(--color-price-premium);">${paymentMode} Order Form</h3>
-<p style="font-weight: 700; margin-bottom: 15px; text-align: center;">Final Price: ₹${price}</p>
-<form id="order-form" onsubmit="submitOrder(event, ${isPrepaid}, '${price}', '${paymentMode}',
-'${senderName}'); return false;">
-<input type="text" name="Customer Name" placeholder="1. Full Name *" required
-autocomplete="name">
-<input type="text" name="Whatsapp" placeholder="2. WhatsApp (10 digits) *"
-pattern="[6-9][0-9]{9}" required autocomplete="tel">
-<input type="text" name="Village" placeholder="3. Village *" required>
-<input type="text" name="Area" placeholder="4. Area/Road *" required>
-<input type="text" name="Taluka" placeholder="5. Taluka/City *" required>
-<input type="text" name="District" placeholder="6. District *" required>
-<input type="text" name="State" placeholder="7. State *" required>
-<input type="text" name="Pincode" placeholder="8. Pincode (6 digits) *" pattern="[0-9]{6}"
-required>
-<textarea name="Other Info" placeholder="9. Other Info (Optional)" rows="2"></textarea>
-<button type="submit" class="primary-btn btn-base">Place Order (₹${price})</button>
+<h3 style="color: var(--color-primary-btn);">Cash on Delivery (COD) Order Form</h3>
+<p style="font-weight: 700; margin-bottom: 15px; text-align: center;">Total Price: <span id="total-price-display">₹${totalPrice}</span></p>
+
+<form id="order-form" onsubmit="submitOrder(event, '${itemPrice}', '${paymentMode}', '${senderName}', '${productName}'); return false;">
+    
+    <div class="form-group-qty">
+        <label>1. Quantity</label>
+        <div class="qty-control">
+            <button type="button" class="qty-btn" onclick="changeQty(-1)">-</button>
+            <span id="qty-display">${currentQty}</span>
+            <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
+            <input type="hidden" name="Quantity" id="qty-input" value="${currentQty}">
+        </div>
+    </div>
+
+    <input type="text" name="Full Name" placeholder="2. Full Name *" required autocomplete="name">
+    <input type="text" name="Whatsapp Number" placeholder="3. WhatsApp (10 digits) *" pattern="[6-9][0-9]{9}" required autocomplete="tel">
+    <input type="email" name="Email" placeholder="4. Email (Optional)" autocomplete="email">
+    <input type="text" name="Area / Locality" placeholder="5. Area / Locality *" required>
+    <input type="text" name="Landmark / Road Name" placeholder="6. Landmark / Road Name *" required>
+    <input type="text" name="Village / Town" placeholder="7. Village / Town *" required>
+    <input type="text" name="Taluka / Block" placeholder="8. Taluka / Block *" required>
+    <input type="text" name="District" placeholder="9. District *" required>
+    <input type="text" name="State" placeholder="10. State *" required>
+    <input type="text" name="Pincode" placeholder="11. Pincode (6 digits) *" pattern="[0-9]{6}" required autocomplete="postal-code">
+
+    <button type="submit" id="order-form-submit-btn" class="primary-btn btn-base">Place COD Order (₹${totalPrice})</button>
 </form>
 `);
+    setTimeout(() => {
+        const nameInput = document.querySelector('#order-form input[name="Full Name"]');
+        if (nameInput) nameInput.focus();
+    }, 100);
 }
-function submitOrder(event, isPrepaid, price, paymentMode, senderName) {
+
+function submitOrder(event, itemPrice, paymentMode, senderName, productName) {
     event.preventDefault();
     const form = document.getElementById("order-form");
     const formData = new FormData(form);
+    
+    const qty = parseInt(document.getElementById("qty-input").value);
+    const totalPrice = updateTotalPrice(itemPrice, qty);
+
     const data = {
-        "Product Name": currentProduct["Product Name"] || "Unknown", 
-        "Price": price,
+        "Product Name": productName, 
+        "Price": totalPrice,
+        "Quantity": qty, 
         "Payment Mode": paymentMode,
-        "Wish Sender": senderName
+        "Wish Sender": senderName,
+        "Order Time": new Date().toLocaleString()
     };
+    
     formData.forEach((value, key) => { data[key] = value; });
-    if (isPrepaid) {
-        showQRPayment(data);
-    } else {
-        finalSubmitOrder(data);
-    }
+    
+    finalSubmitOrder(data);
 }
-function showQRPayment(data) {
-    showModal(`
-<h3 style="color: var(--color-price-premium);">⭐ Premium Payment</h3>
-<p style="font-weight: 700; margin-bottom: 15px; text-align: center;">Amount:
-₹${data.Price}</p>
-<div style="text-align: center; padding: 15px; border: 2px dashed var(--color-gold);
-border-radius: 10px; background: #FFF9F0;">
-<p style="font-weight: 700; color: var(--color-primary-btn); margin-bottom: 10px;">Scan QR to
-Pay:</p>
-<img src="qrcode.png" alt="QR" style="width: 180px; height: 180px; border: 3px solid
-var(--color-gold); border-radius: 8px;">
-<p style="font-size: 0.85em; margin-top: 10px; color: var(--color-price-cod); font-weight: 600;">
-*Click 'Confirm' after payment*
-</p>
-</div>
-<button class="primary-btn btn-base"
-style="background: linear-gradient(135deg, #25D366, #128C7E); margin-top: 15px;"
-onclick='finalSubmitOrder(${JSON.stringify(data)});'>
-✅ Confirm Order (₹${data.Price})
-</button>
-`);
-}
+
 function finalSubmitOrder(data) {
     if (typeof data === 'string') data = JSON.parse(data);
     document.getElementById("modal-body").innerHTML = `
@@ -924,15 +602,19 @@ function finalSubmitOrder(data) {
 <p>Please wait...</p>
 `;
     const params = new URLSearchParams();
+    data["Payment Status"] = "COD_CONFIRMED"; 
+    data["Actual Price"] = isOfferExpired ? "999" : "799"; // Log actual offer status
+
     for (const key in data) params.append(key, data[key]);
+    
     fetch(CONFIG.ORDER_SUBMIT_API, { method: "POST", body: params })
         .then(response => response.json())
         .then(result => {
             if (result.result === "success") {
-                const customerName = data["Customer Name"] || "Customer";
+                const customerName = data["Full Name"] || "Customer";
                 document.getElementById("modal-body").innerHTML = `
-<h3 style="color: var(--color-price-premium);">🎉 Order Placed!</h3>
-<p style="margin-bottom: 20px;">Your order is confirmed! We'll contact you on WhatsApp.</p>
+<h3 style="color: var(--color-primary-btn);">🎉 Order Placed!</h3>
+<p style="margin-bottom: 20px;">Your COD order is confirmed! We'll contact you on WhatsApp.</p>
 <button class="primary-btn btn-base"
 style="background: linear-gradient(135deg, #25D366, #128C7E);"
 onclick="hideModal(); showPostPurchaseShareModal('${customerName}');">
@@ -946,7 +628,7 @@ onclick="hideModal(); showPostPurchaseShareModal('${customerName}');">
         .catch(error => {
             console.error("Error submitting order:", error);
             document.getElementById("modal-body").innerHTML = `
-<h3 style="color: var(--color-price-cod);">❌ Failed</h3>
+<h3 style="color: var(--color-price-flash);">❌ Failed</h3>
 <p>Network error or API failure. Please try again.</p>
 <button class="primary-btn btn-base" onclick="hideModal();">Close</button>
 `;
@@ -954,7 +636,7 @@ onclick="hideModal(); showPostPurchaseShareModal('${customerName}');">
 }
 function showPostPurchaseShareModal(senderName) {
     showModal(`
-<h3 style="color: var(--color-price-premium); text-align: center;">🎉 Thank You!</h3>
+<h3 style="color: var(--color-primary-btn); text-align: center;">🎉 Thank You!</h3>
 <p style="margin-bottom: 15px; text-align: center; font-weight: 600;">Share this deal with
 friends!</p>
 <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
@@ -998,7 +680,7 @@ function handleShare() {
     initiateWhatsAppShare(CONFIG.BASE_STORE_URL, senderName, receiverName, false);
 }
 
-// === FINAL WHATSAPP SHARE LOGIC (Exact Preview) ===
+// === FINAL WHATSAPP SHARE LOGIC (Same as V23) ===
 function initiateWhatsAppShare(baseShareUrl, senderName, receiverName, isBought) {
     let finalShareUrl = baseShareUrl;
     if (isBought) {
@@ -1007,10 +689,9 @@ function initiateWhatsAppShare(baseShareUrl, senderName, receiverName, isBought)
         finalShareUrl = baseShareUrl + `?sender=${encodeURIComponent(receiverName)}`;
     }
     
-    // 1. EXACT WISHING TEXT
-    const customWishText = `।। ⛄🥰आपको और आपके परिवार को मेरी ओर से शुभ दीपावली 🎁🌷।।\nमां लक्ष्मी और गणेश जी की कृपा आप पर सदा बनी रहे 🌺🙏 ।।`;
+    // V25: Changed wish text to a generic one
+    const customWishText = `🎁 Best Wishes! आपके लिए एक exclusive gift offer है। इसे मिस न करें! 🥳`;
 
-    // 2. BOLD SENDER NAME + WISH TEXT + LIVE URL (Triggers the custom preview card)
     const shareText = `*${senderName.toUpperCase()}*\n\n${customWishText}\n\n${finalShareUrl}`;
     
     if (navigator.share) {
@@ -1021,16 +702,11 @@ function initiateWhatsAppShare(baseShareUrl, senderName, receiverName, isBought)
     }
 }
 
-function handleBuyScript() {
-    const msg = `Hello! मझु े₹${CONFIG.SCRIPT_PRICE} में viral wishing store script खरीदनी है।`;
-    window.open(`https://wa.me/${CONFIG.ADMIN_WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
-}
 // === INITIALIZATION ===
 function init() {
     fetchProductData();
     document.getElementById("buy-now-btn").addEventListener("click", handleBuyNow);
     document.getElementById("share-btn").addEventListener("click", handleShare);
-    document.getElementById("buy-script-btn").addEventListener("click", handleBuyScript);
     document.getElementById("modal").addEventListener("click", (e) => {
         if (e.target.id === "modal") hideModal();
     });
@@ -1039,6 +715,10 @@ document.addEventListener("DOMContentLoaded", init);
 </script>
 </body>
 </html>
+
+
+
+
 
 
 
