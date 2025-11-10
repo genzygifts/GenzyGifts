@@ -1,14 +1,10 @@
 {
-  "Product Name": "Exclusive Birthday Gift Hamper",
-  "Description": "This hamper includes premium chocolates, a custom mug, and a personalized greeting card. Perfect for making their day memorable!",
-  "Media_URLs": [
-    "1.jpg",
-    "2.jpg",
-    "3.jpg",
-    "4.ipg"
-  ],
-  "Price": 1499,
-  "Offer": 999,
-  "reviews": 450,
-  "rating": 4.8
+  "Product Name": "Fresh Juice Mixer",
+  "Price": "899",
+  "Offer": "1299",
+  "Description": "यह दिवाली स्पेशल गिफ्ट बॉक्स अपने दोस्तों और परिवार के लिए प्यार और खुशियाँ भेजने का सबसे अच्छा तरीका है। आकर्षक दाम पर सीमित समय का ऑफर।",
+  "rating": 4.8,
+  "reviews": 125,
+  "Media_Count": 4,
+  "Has_Video": true 
 }
