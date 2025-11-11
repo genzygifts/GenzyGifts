@@ -1,10 +1,10 @@
 {
-  "Product Name": "Fresh Juice Mixer",
-  "Price": "899",
-  "Offer": "1299",
-  "Description": "यह दिवाली स्पेशल गिफ्ट बॉक्स अपने दोस्तों और परिवार के लिए प्यार और खुशियाँ भेजने का सबसे अच्छा तरीका है। आकर्षक दाम पर सीमित समय का ऑफर।",
-  "rating": 4.8,
-  "reviews": 125,
-  "Media_Count": 4,
-  "Has_Video": true 
+    "Product Name": "Diwali Special Gift Box 🎁",
+    "COD_Price": "1150",
+    "Premium_Price": "999",
+    "rating": "4.7",
+    "reviews": "1450",
+    "Description": "इस दिवाली अपने अपनों को दें एक खास तोहफ़ा! लिमिटेड स्टॉक और ऑफर के साथ, अब खरीदें और शानदार डिस्काउंट पाएं।",
+    "Media_Count": "3",
+    "Has_Video": true 
 }
