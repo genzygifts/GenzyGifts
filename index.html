@@ -462,7 +462,7 @@ box-shadow: 0 4px 10px rgba(255, 107, 0, 0.5);
     border-radius: 5px;
     transition: background-color 0.3s;
     flex: 1;
-    max-width: 45%;
+    max-width: 32%; /* Adjusted to fit 3 items */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -475,6 +475,285 @@ box-shadow: 0 4px 10px rgba(255, 107, 0, 0.5);
     font-size: 9px;
     opacity: 0.7;
     margin-top: 10px;
+}
+/* END FOOTER STYLES */
+
+
+.hidden { display: none !important; }
+/* Modal */
+#modal {
+position: fixed;
+z-index: 100;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.8);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.modal-content {
+background-color: var(--color-card-bg);
+padding: 20px;
+border-radius: 15px;
+width: 90%;
+max-width: 380px;
+position: relative;
+color: var(--color-primary-text);
+box-shadow: 0 10px 40px rgba(255, 107, 53, 0.5);
+overflow-y: auto;
+max-height: 90vh;
+}
+.modal-content .close-btn {
+position: absolute;
+top: 10px;
+right: 12px;
+font-size: 28px;
+cursor: pointer;
+color: #999;
+width: 32px;
+height: 32px;
+display: flex;
+align-items: center;
+justify-content: center;
+background: none;
+border: none;
+}
+.modal-content .close-btn:hover { color: #000; }
+.modal-content h3 { margin-bottom: 15px; text-align: center; }
+.modal-content p { margin-bottom: 15px; }
+.modal-content button { margin-top: 10px; }
+.loading-spinner {
+display: inline-block;
+width: 20px;
+height: 20px;
+border: 3px solid rgba(255,255,255,.3);
+border-radius: 50%;
+border-top-color: #fff;
+animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin {
+to { transform: rotate(360deg); }
+}
+</style>
+</head>
+<body oncontextmenu="return false;" onkeydown="return checkKey(event);">
+<div id="app-container">
+<span class="diya-decoration diya-left">🪔</span>
+<span class="diya-decoration diya-right">🪔</span>
+<div id="top-header-wish">
+<h1 class="receiver-header">Hi <span id="receiver-display-top">Priya</span>!</h1>
+<p class="festival-text">
+Happy Diwali ✨
+<span class="audio-icon-btn" onclick="playAudioManually()" title="Play Audio">🔊</span>
+</p>
+<h2 class="store-title-top">+ Genzy Gifts +</h2>
+</div>
+<div id="content-area">
+<div id="product-card">
+<h4 id="product-name-static" class="product-name-main">Loading Product...</h4>
+<div id="review-bar">
+<span class="stars">⭐⭐⭐⭐⭐</span>
+<span class="review-count">(Loading Reviews...)</span>
+</div>
+<div id="media-box" onclick="toggleMediaPlay()"> 
+<div id="media-carousel"></div>
+<div class="carousel-dots" id="carousel-dots"></div>
+</div>
+<div id="details-box">
+    <div id="price-section">
+        <div class="price-item" id="price-display-wrapper">
+            <span class="price-item-value" id="price-cod-display">₹<span id="price-cod">...</span></span> 
+            <span class="price-item-value" id="price-premium-display">₹<span id="price-premium">...</span></span>
+        </div>
+    </div>
+    <p id="description-text">Loading...</p>
+<button id="buy-now-btn" class="btn-base primary-btn" disabled>🛒 Loading...</button>
+</div>
+</div>
+<div id="share-section-box">
+<p id="share-label">❤️ Add Your Name And Receiver Name</p>
+<div id="share-input-group">
+<div id="offer-timer-share">
+<span id="offer-end-text">⏰ Offer End:</span>
+<div id="timer-inner">
+<div id="countdown">00H : 00M : 00S</div>
+</div>
+</div>
+<div class="share-input-row">
+<div class="input-group">
+<label class="input-label-white">Your Name</label>
+<input type="text" id="share-sender-input" class="share-input-field" placeholder="Your Name"
+autocomplete="off" value="Sunil">
+</div>
+<div class="input-group">
+<label class="input-label-white">Friend Name</label>
+<input type="text" id="share-receiver-input" class="share-input-field" placeholder="Friend
+Name" autocomplete="off" value="Ram">
+</div>
+</div>
+<button id="share-btn" class="share-btn btn-base">Share Wish</button>
+</div>
+</div>
+</div>
+
+<div id="site-footer">
+    <div id="social-icons">
+        <a href="https://wa.me/c/919226949557" target="_blank" title="WhatsApp Business"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.youtube.com/@genzygifts" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/genzygifts?igsh=MXI5dXB1bGUwcGFodA==" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/1DXBZ9xLQ7/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
+
+    <div id="footer-pages">
+        <div class="page-row">
+            <a href="about-us.html" target="_self">About Us</a>
+            <a href="contact-us.html" target="_self">Contact Us</a>
+            <a href="terms.html" target="_self">Terms</a>
+        </div>
+        <div class="page-row">
+            <a href="privacy-policy.html" target="_self">Privacy & Policy</a>
+            <a href="return-refund.html" target="_self">Return & Refund Policy</a>
+        </div>
+    </div>
+    <p class="copyright-text">© 2023 Genzy Gifts. All Rights Reserved.</p>
+</div>
+</div>
+<audio id="tts-audio" preload="none" hidden></audio>
+<div id="modal" class="hidden">
+<div class="modal-content">
+<button class="close-btn" onclick="hideModal()" aria-label="Close">×</button>
+<div id="modal-body"></div>
+</div>
+</div>
+<script>
+// === CONFIGURATION (FINAL AND CORRECT) ===
+const CONFIG = {
+    ORDER_SUBMIT_API:
+        "https://script.google.com/macros/s/AKfycbyQoweTvVkWVWQRo72rNrJI_Qk4uw2TcLTRJwkvlr0ZWXrf6U3jnDOA9MKo7WPyEco8/exec",
+    ADMIN_WHATSAPP: "919226949557",
+    // 💡 BASE URL: Your Final GitHub Pages URL
+    BASE_STORE_URL: "https://genzygifts.github.io/GenzyGifts/",
+    PRODUCT_JSON_FILE: "product_data.json"
+};
+
+let currentProduct = null, audioPlayed = false, carouselTimer = null, currentMediaIndex = 0;
+let currentVideo = null; 
+
+// === UTILITY FUNCTIONS ===
+function checkKey(e) {
+    if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 83))
+        || (e.ctrlKey && e.keyCode === 85)) {
+        e.preventDefault();
+        return false;
+    }
+    if (e.key === 'Escape') hideModal();
+    return true;
+}
+function getUrlParams() {
+    const params = {};
+    window.location.search.substring(1).split("&").forEach(pair => {
+        const [key, value] = pair.split("=").map(decodeURIComponent);
+        if (key) params[key] = value;
+    });
+    return params;
+}
+function showModal(content) {
+    document.getElementById("modal-body").innerHTML = content;
+    document.getElementById("modal").classList.remove("hidden");
+}
+function hideModal() {
+    document.getElementById("modal").classList.add("hidden");
+}
+
+// === TIMER & PRICE LOGIC (MODIFIED) ===
+function startCountdown() {
+    const TIMER_KEY = 'diwali_offer_timer';
+    let countDownDate;
+    const saved = localStorage.getItem(TIMER_KEY);
+    if (saved) {
+        countDownDate = parseInt(saved);
+    } else {
+        // Offer time starts random between 10 to 15 minutes
+        const minutes = Math.floor(Math.random() * 6) + 10;
+        countDownDate = new Date().getTime() + minutes * 60 * 1000;
+        localStorage.setItem(TIMER_KEY, countDownDate.toString());
+    }
+    
+    const countdownElement = document.getElementById("countdown");
+    const buyBtn = document.getElementById("buy-now-btn");
+    const actualPriceEl = document.getElementById("price-cod-display"); // Actual Price Container
+    const offerPriceEl = document.getElementById("price-premium-display"); // Offer Price Container
+    
+    // Prices fetched from JSON
+    const actualPrice = parseFloat(currentProduct.COD_Price || "1150"); 
+    const offerPrice = parseFloat(currentProduct.Premium_Price || "999"); 
+
+    const x = setInterval(() => {
+        const now = new Date().getTime(), distance = countDownDate - now;
+        
+        // Timer Logic
+        if (distance < 0) {
+            clearInterval(x);
+            countdownElement.innerHTML = "EXPIRED!";
+            
+            // Offer Expired: Show only Actual Price
+            if (actualPriceEl) actualPriceEl.style.display = 'none'; // Hide strikethrough price
+            if (offerPriceEl) {
+                offerPriceEl.textContent = `₹${actualPrice}`; // Show Actual Price as the main price
+            }
+            if (buyBtn) {
+                buyBtn.textContent = `🛒 Buy Now ₹${actualPrice}`;
+                buyBtn.disabled = false;
+            }
+            localStorage.removeItem(TIMER_KEY);
+            return;
+        }
+
+        // Timer Active: Show both prices
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        countdownElement.innerHTML = (hours < 10 ? "0" + hours : hours) + "H : " + (minutes < 10 ?
+            "0" + minutes : minutes) + "M : " + (seconds
+                < 10 ? "0" + seconds : seconds) + "S";
+        
+        // Ensure both prices are visible when timer is active
+        if (actualPriceEl) actualPriceEl.style.display = 'inline-block';
+        if (offerPriceEl) offerPriceEl.textContent = `₹${offerPrice}`;
+
+    }, 1000);
+}
+
+// === AUDIO LOGIC (Unchanged) ===
+function generateTtsUrl(receiverName, senderName) {
+    const TTS_ENDPOINT =
+        "https://corsproxy.io/?https://translate.google.com/translate_tts?ie=UTF-8&tl=hi&client=tw-ob&q=";
+    const params = getUrlParams(), shareStatus = params.status;
+    let ttsMessage;
+
+    if (shareStatus === "bought") {
+        ttsMessage = `नमस्ते${receiverName}! आपके दोस्त ${senderName} ने भी इसे अभी-अभी order किया है।`;
+    } else if (params.sender && "Priya" !== params.sender) { 
+        ttsMessage = `नमस्ते${receiverName}! ${senderName} की ओर से यह special offer आपके लिए है।`;
+    } else {
+        ttsMessage = `नमस्ते${receiverName}! अपना name डालके Wish share करें।`;
+    }
+    return TTS_ENDPOINT + encodeURIComponent(ttsMessage);
+}
+
+function playAudio(receiverName) {
+    if (audioPlayed || !currentProduct) return;
+    const params = getUrlParams(), senderName = params.sender || "Priya"; 
+    const audio = document.getElementById("tts-audio");
+    audio.src = generateTtsUrl(receiverName, senderName);
+    
+    audio.onended = () => { 
+        audioPlayed = true;
+        if (currentVideo) {
+            currentVideo.muted = false;
+            currentVideo.play().catch(e =   margin-top: 10px;
 }
 /* END FOOTER STYLES */
 
