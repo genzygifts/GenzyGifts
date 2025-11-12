@@ -1,12 +1,10 @@
-[
-  {
-    "product_name": "Diwali Special Gift Box 🎁",
-    "Price": "1199",
-    "Offer": "999",
+{
+    "Product Name": "Diwali Special Gift Box 🎁",
+    "COD_Price": "1150",
+    "Premium_Price": "999",
     "rating": "4.7",
     "reviews": "1450",
-    "description": "इस दिवाली अपने अपनों को दें एक खास तोहफ़ा! लिमिटेड स्टॉक और ऑफर के साथ, अब खरीदें और शानदार डिस्काउंट पाएं।",
-    "media_count": "3",
-    "has_video": true
-  }
-]
+    "Description": "इस दिवाली अपने अपनों को दें एक खास तोहफ़ा! लिमिटेड स्टॉक और ऑफर के साथ, अब खरीदें और शानदार डिस्काउंट पाएं।",
+    "Media_Count": "3",
+    "Has_Video": true 
+}
