@@ -453,22 +453,24 @@ box-shadow: 0 4px 10px rgba(255, 107, 0, 0.5);
     gap: 10px;
 }
 .page-row a {
+    /* REMOVED BUTTON-LIKE STYLING */
     color: var(--color-footer-text);
-    font-size: 10px;
-    font-weight: 500;
+    font-size: 11px;
+    font-weight: 700; /* Bolder text */
     text-decoration: none;
-    padding: 3px 6px;
-    border: 1px solid rgba(255, 228, 181, 0.3);
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    flex: 1;
-    max-width: 32%; /* Adjusted to fit 3 items */
+    padding: 3px 0; /* Minimal padding */
+    border: none; /* Removed border */
+    border-radius: 0; /* Removed border-radius */
+    transition: color 0.3s;
+    flex: 0 1 auto; /* Allow natural sizing */
+    max-width: none; /* No max width */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .page-row a:hover {
-    background-color: rgba(255, 228, 181, 0.1);
+    background-color: transparent;
+    color: var(--color-gold);
 }
 
 .copyright-text {
@@ -564,8 +566,8 @@ Happy Diwali ✨
 <div id="details-box">
     <div id="price-section">
         <div class="price-item" id="price-display-wrapper">
-            <span class="price-item-value" id="price-cod-display">₹<span id="price-cod">...</span></span> 
-            <span class="price-item-value" id="price-premium-display">₹<span id="price-premium">...</span></span>
+            <span class="price-item-value" id="price-premium-display">₹<span id="price-premium">...</span></span> 
+            <span class="price-item-value" id="price-cod-display">₹<span id="price-cod">...</span></span>
         </div>
     </div>
     <p id="description-text">Loading...</p>
@@ -630,8 +632,9 @@ Name" autocomplete="off" value="Ram">
 <script>
 // === CONFIGURATION (FINAL AND CORRECT) ===
 const CONFIG = {
+    // 💡 IMPORTANT: Replace this with your DEPLOYED Apps Script URL
     ORDER_SUBMIT_API:
-        "https://script.google.com/macros/s/AKfycbyQoweTvVkWVWQRo72rNrJI_Qk4uw2TcLTRJwkvlr0ZWXrf6U3jnDOA9MKo7WPyEco8/exec",
+        "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE", 
     ADMIN_WHATSAPP: "919226949557",
     // 💡 BASE URL: Your Final GitHub Pages URL
     BASE_STORE_URL: "https://genzygifts.github.io/GenzyGifts/",
@@ -672,12 +675,20 @@ function startCountdown() {
     const TIMER_KEY = 'diwali_offer_timer';
     let countDownDate;
     const saved = localStorage.getItem(TIMER_KEY);
+    
+    // Check if the saved time is too old (e.g., > 24 hours), then reset.
+    const now = new Date().getTime();
+    if (saved && (now - parseInt(saved)) > 24 * 60 * 60 * 1000) {
+        localStorage.removeItem(TIMER_KEY);
+        countDownDate = null;
+    }
+
     if (saved) {
         countDownDate = parseInt(saved);
     } else {
         // Offer time starts random between 10 to 15 minutes
         const minutes = Math.floor(Math.random() * 6) + 10;
-        countDownDate = new Date().getTime() + minutes * 60 * 1000;
+        countDownDate = now + minutes * 60 * 1000;
         localStorage.setItem(TIMER_KEY, countDownDate.toString());
     }
     
@@ -698,20 +709,26 @@ function startCountdown() {
             clearInterval(x);
             countdownElement.innerHTML = "EXPIRED!";
             
-            // Offer Expired: Show only Actual Price
-            if (actualPriceEl) actualPriceEl.style.display = 'none'; // Hide strikethrough price
-            if (offerPriceEl) {
-                offerPriceEl.textContent = `₹${actualPrice}`; // Show Actual Price as the main price
+            // Offer Expired: Show only Actual Price, Offer Price strikethrough is hidden
+            if (actualPriceEl) {
+                actualPriceEl.textContent = `₹${actualPrice}`; // Actual Price (no strikethrough)
+                actualPriceEl.style.textDecoration = 'none';
+                actualPriceEl.style.color = 'var(--color-price-premium)'; // Use offer price color for main price
+                actualPriceEl.style.fontSize = '20px';
+                actualPriceEl.style.opacity = '1';
+                actualPriceEl.style.fontWeight = '900';
             }
+            if (offerPriceEl) offerPriceEl.style.display = 'none';
+            
             if (buyBtn) {
                 buyBtn.textContent = `🛒 Buy Now ₹${actualPrice}`;
                 buyBtn.disabled = false;
             }
-            localStorage.removeItem(TIMER_KEY);
+            // Do NOT remove TIMER_KEY here, keep it expired until manually reset
             return;
         }
 
-        // Timer Active: Show both prices
+        // Timer Active: Show Offer Price as main, Actual Price as strikethrough
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
@@ -720,8 +737,24 @@ function startCountdown() {
                 < 10 ? "0" + seconds : seconds) + "S";
         
         // Ensure both prices are visible when timer is active
-        if (actualPriceEl) actualPriceEl.style.display = 'inline-block';
-        if (offerPriceEl) offerPriceEl.textContent = `₹${offerPrice}`;
+        if (offerPriceEl) {
+             offerPriceEl.textContent = `₹${offerPrice}`;
+             offerPriceEl.style.display = 'inline-block';
+        }
+        if (actualPriceEl) {
+            actualPriceEl.textContent = `₹${actualPrice}`;
+            actualPriceEl.style.display = 'inline-block';
+            actualPriceEl.style.textDecoration = 'line-through';
+            actualPriceEl.style.color = '#666';
+            actualPriceEl.style.fontSize = '14px';
+            actualPriceEl.style.opacity = '0.7';
+            actualPriceEl.style.fontWeight = '500';
+        }
+
+        if (buyBtn) {
+            buyBtn.textContent = `🛒 Buy Now ₹${offerPrice}`;
+            buyBtn.disabled = false;
+        }
 
     }, 1000);
 }
@@ -816,7 +849,7 @@ function updateStoreUI() {
     const descText = currentProduct.Description || "Experience the joy...";
     document.getElementById("description-text").textContent = descText;
 
-    document.getElementById("buy-now-btn").textContent = `🛒 Buy Now ₹${offerPrice}`;
+    // Button text will be set by startCountdown for accurate price display
     document.getElementById("buy-now-btn").disabled = false;
     
     startMediaDisplay();
@@ -925,32 +958,31 @@ window.updateQuantity = (change, basePrice) => {
 function handleBuyNow() {
     if (!currentProduct) return alert("Loading...");
 
-    // Determine the price based on timer status
     const countdownEl = document.getElementById("countdown");
     const isOfferActive = countdownEl.innerHTML !== "EXPIRED!";
     
-    // Actual Price (Fallback/Expired) is COD_Price, Offer Price is Premium_Price
     const priceToPay = isOfferActive 
         ? (currentProduct.Premium_Price || "999") 
         : (currentProduct.COD_Price || "1150"); 
     
-    // Payment mode is set implicitly based on the price paid
-    // Since we removed payment selection, we assume direct order is prepaid/premium for tracking.
-    const paymentMode = isOfferActive ? "OFFER_PREPAID_PRICE" : "ACTUAL_PRICE_PAID";
+    // Payment mode is ALWAYS COD as per requirement
+    const paymentMode = "COD"; 
 
-    // Direct call to show Order Form
-    showOrderForm(priceToPay, paymentMode);
+    // Add extra tracking context for the price paid
+    const priceContext = isOfferActive ? "OFFER_PRICE" : "ACTUAL_PRICE";
+
+    showOrderForm(priceToPay, paymentMode, priceContext);
 }
 
-function showOrderForm(price, paymentMode) {
+function showOrderForm(price, paymentMode, priceContext) {
     const basePrice = parseFloat(price);
     let currentPrice = basePrice;
     let currentQuantity = 1;
     
     const modalContent = `
 <h3 style="color: var(--color-primary-btn);">Complete Order</h3>
-<p style="font-weight: 700; margin-bottom: 15px; text-align: center;">You pay: ₹<span id="final-price-display">${currentPrice}</span></p>
-<form id="order-form" onsubmit="submitOrder(event, '${paymentMode}'); return false;">
+<p style="font-weight: 700; margin-bottom: 15px; text-align: center;">You pay: ₹<span id="final-price-display">${currentPrice}</span> (Payment Mode: ${paymentMode})</p>
+<form id="order-form" onsubmit="submitOrder(event, '${paymentMode}', '${priceContext}'); return false;">
     
     <div class="quantity-control">
         <span>Quantity:</span>
@@ -959,15 +991,16 @@ function showOrderForm(price, paymentMode) {
         <button type="button" class="quantity-btn" onclick="updateQuantity(1, ${basePrice});">+</button>
         <input type="hidden" name="Quantity" id="quantity-hidden" value="${currentQuantity}">
         <input type="hidden" name="Price" id="price-hidden" value="${currentPrice}">
+        <input type="hidden" name="Payment Mode" value="${paymentMode}"> 
     </div>
-    <input type="text" name="Customer Name" placeholder="Full Name *" required autocomplete="name">
-    <input type="text" name="Whatsapp" placeholder="WhatsApp No. (10 digits) *"
+    <input type="text" name="Full Name" placeholder="Full Name *" required autocomplete="name">
+    <input type="text" name="Whatsapp No" placeholder="WhatsApp No. (10 digits) *"
         pattern="[6-9][0-9]{9}" required autocomplete="tel">
-    <input type="email" name="Email" placeholder="Email *" required autocomplete="email">
+    <input type="email" name="Email" placeholder="Email (For Invoice) *" required autocomplete="email">
     <input type="text" name="Area/Locality" placeholder="Area/Locality *" required>
     <input type="text" name="Village" placeholder="Village *" required>
     <input type="text" name="Landmark/Road" placeholder="Landmark/Road *" required>
-    <input type="text" name="Taluka" placeholder="Taluka/City *" required>
+    <input type="text" name="Taluka/City" placeholder="Taluka/City *" required>
     <input type="text" name="Dist" placeholder="Dist *" required>
     <input type="text" name="State" placeholder="State *" required>
     <input type="text" name="Pincode" placeholder="Pincode (6 digits) *" pattern="[0-9]{6}" required>
@@ -978,36 +1011,83 @@ function showOrderForm(price, paymentMode) {
     showModal(modalContent);
 }
 
-function submitOrder(event, paymentMode) {
+function submitOrder(event, paymentMode, priceContext) {
     event.preventDefault();
     
     const form = document.getElementById("order-form");
     const formData = new FormData(form);
     
-    // Get final calculated values from hidden fields
     const price = document.getElementById('price-hidden').value; 
     const quantity = document.getElementById('quantity-hidden').value;
     const senderName = document.getElementById("receiver-display-top").textContent || "Direct";
     
+    // Generate Order ID, Date, Day, Time
+    const now = new Date();
+    const orderId = 'ORD-' + now.getTime().toString().slice(-6) + Math.floor(Math.random() * 100);
+
     // Create the final data object for submission
     const data = {
+        "Date": now.toLocaleDateString('en-IN'),
+        "Day": now.toLocaleDateString('en-IN', { weekday: 'long' }),
+        "Time": now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+        "Order Id": orderId,
         "Product Name": currentProduct["Product Name"] || "Unknown", 
         "Price": price,
         "Quantity": quantity,
         "Payment Mode": paymentMode, 
+        "Price Context": priceContext, // Added for tracking
         "Wish Sender": senderName,
     };
     
     // Map form data to the final data object keys
+    // NOTE: Key names are updated here to match Google Sheet columns
     formData.forEach((value, key) => { 
         data[key] = value;
     });
+    
+    // Re-map keys to ensure exact match with Google Sheet
+    data["Full Name"] = formData.get("Full Name");
+    data["Whatsapp No"] = formData.get("Whatsapp No");
+    data["Email"] = formData.get("Email");
+    data["Area/Locality"] = formData.get("Area/Locality");
+    data["Village"] = formData.get("Village");
+    data["Landmark/Road"] = formData.get("Landmark/Road");
+    data["Taluka/City"] = formData.get("Taluka/City");
+    data["Dist"] = formData.get("Dist");
+    data["State"] = formData.get("State");
+    data["Pincode"] = formData.get("Pincode");
+
 
     finalSubmitOrder(data);
 }
 
 function finalSubmitOrder(data) {
     if (typeof data === 'string') data = JSON.parse(data);
+    
+    // Add columns in the required sequence for Google Sheet.
+    // The Apps Script will handle the order and the extra fields not in form.
+    const submitData = {
+        "Date": data["Date"],
+        "Day": data["Day"],
+        "Time": data["Time"],
+        "Order Id": data["Order Id"],
+        "Full Name": data["Full Name"],
+        "Whatsapp No": data["Whatsapp No"],
+        "Email": data["Email"],
+        "Area/Locality": data["Area/Locality"],
+        "Village": data["Village"],
+        "Landmark/Road": data["Landmark/Road"],
+        "Taluka/City": data["Taluka/City"],
+        "Dist": data["Dist"],
+        "State": data["State"],
+        "Pincode": data["Pincode"],
+        "Product Name": data["Product Name"],
+        "Price": data["Price"],
+        "Payment Mode": data["Payment Mode"],
+        "Price Context": data["Price Context"], 
+        "Quantity": data["Quantity"]
+    };
+
     document.getElementById("modal-body").innerHTML = `
 <h3 style="color: var(--color-primary-btn);">
 <span class="loading-spinner"></span> Processing...
@@ -1015,21 +1095,22 @@ function finalSubmitOrder(data) {
 <p>Please wait...</p>
 `;
     const params = new URLSearchParams();
-    for (const key in data) params.append(key, data[key]);
+    for (const key in submitData) params.append(key, submitData[key]);
+    
+    // Log the structure being sent for debugging
+    console.log("Submitting Data:", submitData); 
+
     fetch(CONFIG.ORDER_SUBMIT_API, { method: "POST", body: params })
         .then(response => response.json())
         .then(result => {
             if (result.result === "success") {
-                const customerName = data["Customer Name"] || "Customer";
-                document.getElementById("modal-body").innerHTML = `
-<h3 style="color: var(--color-price-premium);">🎉 Order Placed!</h3>
-<p style="margin-bottom: 20px;">Your order is confirmed! We'll contact you on WhatsApp.</p>
-<button class="primary-btn btn-base"
-style="background: linear-gradient(135deg, #25D366, #128C7E);"
-onclick="hideModal(); showPostPurchaseShareModal('${customerName}');">
-📤 Share with Friends
-</button>
-`;
+                const customerName = data["Full Name"] || "Customer";
+                const customerEmail = data["Email"] || "N/A";
+                
+                // Show Post-Purchase Share Modal
+                hideModal();
+                showPostPurchaseShareModal(customerName, customerEmail);
+                
             } else {
                 throw new Error(result.error || "Error");
             }
@@ -1038,17 +1119,17 @@ onclick="hideModal(); showPostPurchaseShareModal('${customerName}');">
             console.error("Error submitting order:", error);
             document.getElementById("modal-body").innerHTML = `
 <h3 style="color: var(--color-price-cod);">❌ Failed</h3>
-<p>Network error or API failure. Please try again.</p>
+<p>Network error or API failure. Please try again. (Check console for error)</p>
 <button class="primary-btn btn-base" onclick="hideModal();">Close</button>
 `;
         });
 }
-function showPostPurchaseShareModal(senderName) {
+function showPostPurchaseShareModal(senderName, customerEmail) {
     showModal(`
-<h3 style="color: var(--color-price-premium); text-align: center;">🎉 Thank You!</h3>
-<p style="margin-bottom: 15px; text-align: center; font-weight: 600;">Share this deal with
-friends!</p>
-<div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+<h3 style="color: #25D366; text-align: center;">🎉 Order Placed Successfully!</h3>
+<p style="margin-bottom: 20px; text-align: center; font-weight: 600;">Invoice sent to: <strong>${customerEmail}</strong></p>
+<h4 style="color: var(--color-primary-btn); text-align: center; margin-bottom: 15px;">🎁 Share Wish with Friends!</h4>
+<div style="display: flex; flex-direction: column; gap: 12px;">
 <label style="font-weight: 600; color: #666;">Your Name:</label>
 <input type="text" id="modal-share-sender-input" value="${senderName}" readonly
 style="background: #f0f0f0; font-weight: bold; text-align: center; padding: 10px; border: 1px solid
@@ -1069,7 +1150,7 @@ function handleShareFromModal() {
     const senderName = document.getElementById("modal-share-sender-input").value.trim();
     const receiverName = document.getElementById("modal-share-receiver-input").value.trim();
     if (!senderName || !receiverName || receiverName === "Friend Name") {
-        alert("Please enter friend's name!");
+        alert("कृपया दोस्त का नाम डालें!");
         return;
     }
     hideModal();
@@ -1129,6 +1210,4 @@ document.addEventListener("DOMContentLoaded", init);
 
 
 
-
-
-    
+                          
