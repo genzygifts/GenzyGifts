@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Diwali Special Wish and Gift Offer</title>
+    <title>Diwali Special Wish and Gift Offer - Genzy Gifts</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <meta property="og:title" content=" ">
+    <meta property="og:title" content="🎁 Diwali Special Gift Offer">
     <meta property="og:description" content="अपने नाम के साथ अपनों को (Wish share) शुभकामनाएं देने के लिए SEND बटन पर क्लिक करें">
     <meta property="og:image" content="https://genzygifts.github.io/GenzyGifts/diwali.gif">
     <meta property="og:url" content="https://genzygifts.github.io/GenzyGifts/">
@@ -23,7 +23,7 @@
             --color-price-premium: #FF8C00; /* Used for Offer Price text */
             --color-gold: #FFD700;
             --color-brown: #8B4513;
-            --color-footer-bg: #1a0a00; /* New color for footer */
+            --color-footer-bg: #1a0a00;
             --color-footer-text: #FFE4B5;
         }
 
@@ -48,7 +48,7 @@
         #app-container {
             width: 100vw;
             height: 100vh;
-            max-width: min(100vw, 56.25vh);
+            max-width: min(100vw, 56.25vh); /* Standard mobile aspect ratio */
             max-height: min(100vh, 177.78vw);
             margin: auto;
             display: flex;
@@ -59,7 +59,13 @@
             position: relative;
             overflow-y: auto;
             overflow-x: hidden;
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
         }
+        #app-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
 
         #content-area {
             padding: 0 8px;
@@ -140,6 +146,7 @@
             justify-content: center;
             cursor: pointer;
             font-size: 11px;
+            color: var(--color-gold);
         }
 
         .store-title-top {
@@ -494,7 +501,7 @@
             display: inline;
         }
 
-        /* FOOTER STYLES (UPDATED FOR BOLD TEXT ONLY) */
+        /* FOOTER STYLES (FIXED SPACING) */
         #site-footer {
             background-color: var(--color-footer-bg);
             color: var(--color-footer-text);
@@ -531,29 +538,30 @@
 
         .page-row {
             display: flex;
-            justify-content: center;
-            gap: 5px; /* MODIFIED: Reduced from 10px to 5px for closer spacing */
+            justify-content: space-around;
+            gap: 5px; 
+            padding: 0 5px;
         }
 
         .page-row a {
             color: var(--color-footer-text);
             font-size: 10px;
-            font-weight: 700; /* BOLD */
+            font-weight: 700;
             text-decoration: none;
-            padding: 0;
+            padding: 0 5px;
             border: none;
             border-radius: 0;
-            flex: 1;
-            max-width: 32%; /* Adjusted to fit 3 items */
+            flex-basis: 33%;
+            max-width: 33%; 
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Added slight shadow for visibility */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); 
         }
 
         .page-row a:hover {
             opacity: 0.8;
-            background-color: transparent; /* Ensure no background change */
+            background-color: transparent;
         }
 
         .copyright-text {
@@ -636,6 +644,13 @@
             border-top-color: #fff;
             animation: spin 1s ease-in-out infinite;
         }
+        
+        #order-success-whatsapp-btn {
+            background-color: #25D366; /* WhatsApp Green */
+            color: white;
+            font-weight: 700;
+            margin-top: 10px;
+        }
 
         @keyframes spin {
             to {
@@ -684,13 +699,14 @@
                             <div id="countdown">00H : 00M : 00S</div>
                         </div>
                     </div>
-                    <div class="share-input-row">
+                    
+<div class="share-input-row">
                         <div class="input-group">
                             <label class="input-label-white">Your Name</label>
                             <input type="text" id="share-sender-input" class="share-input-field" placeholder="Your Name" autocomplete="off" value="Sunil">
                         </div>
 
-<div class="input-group">
+                        <div class="input-group">
                             <label class="input-label-white">Friend Name</label>
                             <input type="text" id="share-receiver-input" class="share-input-field" placeholder="FriendName" autocomplete="off" value="Ram">
                         </div>
@@ -731,9 +747,10 @@
     <script>
         // === CONFIGURATION (FINAL AND CORRECT) ===
         const CONFIG = {
-            ORDER_SUBMIT_API: "https://script.google.com/macros/s/AKfycbzqcMkqB8XMcuFfoqio5UEtnm5VFX5fUyC0ekaPGiGGEfhKQbsS7LnCqQYGMWl4yAWU/exec",
+            // !!! IMPORTANT: REPLACE THIS WITH YOUR DEPLOYED GOOGLE APPS SCRIPT URL !!!
+            ORDER_SUBMIT_API: "https://script.google.com/macros/s/AKfycbyNOu3oYarwpYHb9UQZ7MPqoTgDHuf1D3im3a00s-QMEvSskXuunp4NmabfeXqHPk1Nhg/exec", 
             ADMIN_WHATSAPP: "919226949557",
-            // 💡 BASE URL: Your Final GitHub Pages URL
+            ADMIN_EMAIL: "karlemadhav7@gmail.com", // !!! IMPORTANT: REPLACE THIS WITH YOUR ADMIN EMAIL !!!
             BASE_STORE_URL: "https://genzygifts.github.io/GenzyGifts/",
             PRODUCT_JSON_FILE: "product_data.json"
         };
@@ -771,7 +788,7 @@
             document.getElementById("modal").classList.add("hidden");
         }
 
-        // === TIMER & PRICE LOGIC (MODIFIED) ===
+        // === TIMER & PRICE LOGIC ===
         function startCountdown() {
             const TIMER_KEY = 'diwali_offer_timer';
             let countDownDate;
@@ -786,12 +803,19 @@
             }
             const countdownElement = document.getElementById("countdown");
             const buyBtn = document.getElementById("buy-now-btn");
-            const actualPriceEl = document.getElementById("price-cod-display"); // Actual Price Container
-            const offerPriceEl = document.getElementById("price-premium-display"); // Offer Price Container
+            const actualPriceEl = document.getElementById("price-cod-display");
+            const offerPriceEl = document.getElementById("price-premium-display");
 
             // Prices fetched from JSON
             const actualPrice = parseFloat(currentProduct.COD_Price || "1150");
             const offerPrice = parseFloat(currentProduct.Premium_Price || "999");
+            
+            // Initial price setting
+            if (actualPriceEl) actualPriceEl.querySelector('#price-cod').textContent = actualPrice;
+            if (offerPriceEl) offerPriceEl.querySelector('#price-premium').textContent = offerPrice;
+            if (buyBtn) buyBtn.textContent = `🛒 Buy Now ₹${offerPrice}`;
+            
+
             const x = setInterval(() => {
                 const now = new Date().getTime(),
                     distance = countDownDate - now;
@@ -802,9 +826,10 @@
                     countdownElement.innerHTML = "EXPIRED!";
 
                     // Offer Expired: Show only Actual Price (COD Price)
-                    if (actualPriceEl) actualPriceEl.style.display = 'none'; // Hide strikethrough price
+                    if (actualPriceEl) actualPriceEl.style.display = 'none';
                     if (offerPriceEl) {
-                        offerPriceEl.textContent = `₹${actualPrice}`; // Show Actual Price as the main price
+                        offerPriceEl.querySelector('#price-premium').textContent = actualPrice;
+                        offerPriceEl.style.color = 'var(--color-primary-text)'; // Regular price color
                     }
                     if (buyBtn) {
                         buyBtn.textContent = `🛒 Buy Now ₹${actualPrice}`;
@@ -819,25 +844,29 @@
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
                 countdownElement.innerHTML = (hours < 10 ? "0" + hours : hours) + "H : " + (minutes < 10 ? "0" + minutes : minutes) + "M : " + (seconds < 10 ? "0" + seconds : seconds) + "S";
-
+                
                 // Ensure both prices are visible when timer is active
                 if (actualPriceEl) actualPriceEl.style.display = 'inline-block';
-                if (offerPriceEl) offerPriceEl.textContent = `₹${offerPrice}`;
+                if (offerPriceEl) {
+                    offerPriceEl.querySelector('#price-premium').textContent = offerPrice;
+                    offerPriceEl.style.color = 'var(--color-price-premium)'; // Offer price color
+                }
             }, 1000);
         }
 
-        // === AUDIO LOGIC (Unchanged) ===
+        // === AUDIO LOGIC (Improved for reliability) ===
         function generateTtsUrl(receiverName, senderName) {
-            const TTS_ENDPOINT = "https://corsproxy.io/?https://translate.google.com/translate_tts?ie=UTF-8&tl=hi&client=tw-ob&q=";
+            // Using a reliable Google Translate TTS endpoint without a proxy
+            const TTS_ENDPOINT = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=hi&q=";
             const params = getUrlParams(),
                 shareStatus = params.status;
             let ttsMessage;
             if (shareStatus === "bought") {
-                ttsMessage = `नमस्ते${receiverName}! आपके दोस्त ${senderName} ने भी इसे अभी-अभी order किया है।`;
+                ttsMessage = `नमस्ते ${receiverName}! आपके दोस्त ${senderName} ने भी इसे अभी-अभी order किया है।`;
             } else if (params.sender && "Priya" !== params.sender) {
-                ttsMessage = `नमस्ते${receiverName}! ${senderName} की ओर से यह special offer आपके लिए है।`;
+                ttsMessage = `नमस्ते ${receiverName}! ${senderName} की ओर से यह special offer आपके लिए है।`;
             } else {
-                ttsMessage = `नमस्ते${receiverName}! अपना name डालके Wish share करें।`;
+                ttsMessage = `नमस्ते ${receiverName}! अपना name डालके Wish share करें।`;
             }
             return TTS_ENDPOINT + encodeURIComponent(ttsMessage);
         }
@@ -848,32 +877,51 @@
                 senderName = params.sender || "Priya";
             const audio = document.getElementById("tts-audio");
             audio.src = generateTtsUrl(receiverName, senderName);
-            audio.onended = () => {
+            
+            // Try playing on interaction
+            audio.play().then(() => {
                 audioPlayed = true;
+                const icon = document.querySelector('.audio-icon-btn');
+                icon.innerHTML = '🔈';
+                audio.onended = () => { icon.innerHTML = '🔊'; };
+
                 if (currentVideo) {
                     currentVideo.muted = false;
                     currentVideo.play().catch(e => console.warn("Video auto-play failed after TTS:", e));
                 }
-            };
-            audio.play().catch(() => {
+            }).catch(e => {
+                console.warn("Audio autoplay blocked:", e);
                 audioPlayed = false;
-                setTimeout(() => {
-                    if (currentVideo) {
-                        currentVideo.muted = false;
-                        currentVideo.play().catch(e => console.warn("Video auto-play failed (TTS fail delay):", e));
-                    }
-                }, 3000);
             });
         }
 
         function playAudioManually() {
             const params = getUrlParams();
             const receiverName = params.sender ? decodeURIComponent(params.sender) : "Priya";
-            audioPlayed = false;
-            playAudio(receiverName);
+            const audio = document.getElementById("tts-audio");
+            
+            if (audio.played.length > 0 && !audio.paused) {
+                 audio.pause();
+                 document.querySelector('.audio-icon-btn').innerHTML = '🔊';
+                 return;
+            }
+
+            // Always set source when clicked
+            audio.src = generateTtsUrl(receiverName, params.sender || "Priya");
+            
+            // Attempt to play
+            audio.play().then(() => {
+                audioPlayed = true;
+                const icon = document.querySelector('.audio-icon-btn');
+                icon.innerHTML = '🔈';
+                audio.onended = () => { icon.innerHTML = '🔊'; };
+            }).catch(e => {
+                console.error("Manual audio play failed:", e);
+                alert("Audio playback failed. Please try again.");
+            });
         }
 
-        // === FETCH PRODUCT DATA (IMPROVED ERROR HANDLING) ===
+        // === FETCH PRODUCT DATA ===
         async function fetchProductData() {
             try {
                 const response = await fetch(CONFIG.PRODUCT_JSON_FILE);
@@ -907,8 +955,8 @@
             // Set both Actual and Offer prices for initial display
             const offerPrice = currentProduct.Premium_Price || "999";
             const actualPrice = currentProduct.COD_Price || "1150";
-            document.getElementById("price-premium").textContent = offerPrice; // Offer Price
-            document.getElementById("price-cod").textContent = actualPrice; // Actual Price (for strikethrough)
+            document.getElementById("price-premium").textContent = offerPrice;
+            document.getElementById("price-cod").textContent = actualPrice;
 
             const ratingText = currentProduct.rating || "4.5";
             const reviewCount = currentProduct.reviews || 0;
@@ -926,7 +974,7 @@
             }, 1000);
         }
 
-        // === MEDIA DISPLAY (Unchanged) ===
+        // === MEDIA DISPLAY ===
         function startMediaDisplay() {
             const mediaContainer = document.getElementById("media-carousel"),
                 dotsContainer = document.getElementById("carousel-dots");
@@ -937,10 +985,10 @@
             const mediaCount = parseInt(currentProduct.Media_Count || 0);
             const hasVideo = currentProduct.Has_Video === true;
 
-            if (hasVideo && mediaCount > 0) {
+            if (hasVideo) {
                 const video = document.createElement("video");
-                video.src = "1.mp4"; // Assumes 1.mp4 is available
-                video.className = "product-media-video";
+                video.src = "1.mp4";
+                video.className = "product-media-video active";
                 video.setAttribute("loop", "");
                 video.setAttribute("autoplay", "");
                 video.setAttribute("playsinline", "");
@@ -948,7 +996,7 @@
 
                 currentVideo = video;
                 video.onerror = () => {
-                    console.warn("Video failed to load.");
+                    console.warn("Video failed to load. Falling back to images.");
                     video.remove();
                     startImageCarousel(mediaCount, mediaContainer, dotsContainer);
                 };
@@ -962,8 +1010,10 @@
         }
 
         function toggleMediaPlay() {
-            if (document.getElementById("tts-audio").played.length > 0 && !document.getElementById("tts-audio").paused) {
-                document.getElementById("tts-audio").pause();
+            const audio = document.getElementById("tts-audio");
+            if (audio.played.length > 0 && !audio.paused) {
+                audio.pause();
+                document.querySelector('.audio-icon-btn').innerHTML = '🔊';
                 audioPlayed = true;
             }
 
@@ -981,7 +1031,7 @@
             for (let i = 1; i <= count; i++) {
                 const img = document.createElement("img");
                 img.className = "carousel-image";
-                img.src = `${i}.jpg`; // Assumes 1.jpg, 2.jpg, etc.
+                img.src = `${i}.jpg`;
                 if (i === 1) img.classList.add('active');
                 container.appendChild(img);
 
@@ -1023,22 +1073,17 @@
             document.getElementById('place-order-btn').textContent = `Place Order (₹${finalPrice})`;
         };
 
-        // MODIFIED: Implements COD-ONLY logic
         function handleBuyNow() {
-            if (!currentProduct) return alert("Product data is not loaded. Please try again after refreshing or check if 'product_data.json' is deployed correctly.");
+            if (!currentProduct) return alert("Product data is not loaded. Please try again after refreshing.");
             const countdownEl = document.getElementById("countdown");
             const isOfferActive = countdownEl.innerHTML !== "EXPIRED!";
 
-            // Price is based on the timer status
             const priceToPay = isOfferActive
-                ? (currentProduct.Premium_Price || "999") // Offer Price if active
-                : (currentProduct.COD_Price || "1150"); // Regular Price if expired
+                ? (currentProduct.Premium_Price || "999")
+                : (currentProduct.COD_Price || "1150");
 
-            // As per user request, the order is ALWAYS COD.
-            // paymentMode tracks which COD price was paid for reporting.
             const paymentMode = isOfferActive ? "COD_ORDER_OFFER_PRICE" : "COD_ORDER_REGULAR_PRICE";
 
-            // Direct call to show Order Form
             showOrderForm(priceToPay, paymentMode);
         }
 
@@ -1048,7 +1093,9 @@
             let currentQuantity = 1;
 
             const modalContent =
-                `<h3 style="color: var(--color-primary-btn);">Complete Order (COD)</h3><p style="font-weight: 700; margin-bottom: 15px; text-align: center;">You pay: ₹<span id="final-price-display">${currentPrice}</span></p><form id="order-form" onsubmit="submitOrder(event, '${paymentMode}'); return false;">
+                `<h3 style="color: var(--color-primary-btn);">Complete Order (COD)</h3>
+                <p style="font-weight: 700; margin-bottom: 15px; text-align: center;">You pay: ₹<span id="final-price-display">${currentPrice}</span></p>
+                <form id="order-form" onsubmit="submitOrder(event, '${paymentMode}'); return false;">
                 <div class="quantity-control">
                     <span>Quantity:</span>
                     <button type="button" class="quantity-btn" onclick="updateQuantity(-1, ${basePrice});">-</button>
@@ -1060,13 +1107,15 @@
                 <input type="text" name="Customer Name" placeholder="Full Name *" required autocomplete="name">
                 <input type="text" name="Whatsapp" placeholder="WhatsApp No. (10 digits) *" pattern="[6-9][0-9]{9}" required autocomplete="tel">
                 <input type="email" name="Email" placeholder="Email *" required autocomplete="email">
-                <input type="text" name="Area/Locality" placeholder="Area/Locality *" required>
-                <input type="text" name="Village" placeholder="Village *" required>
-                <input type="text" name="Landmark/Road" placeholder="Landmark/Road *" required>
-                <input type="text" name="Taluka" placeholder="Taluka/City *" required>
-                <input type="text" name="Dist" placeholder="Dist *" required>
-                <input type="text" name="State" placeholder="State *" required>
+                
                 <input type="text" name="Pincode" placeholder="Pincode (6 digits) *" pattern="[0-9]{6}" required>
+                <input type="text" name="Area/Locality" placeholder="Flat/House No., Area/Locality *" required>
+                <input type="text" name="Landmark/Road" placeholder="Landmark/Road/Street Name *" required>
+                <input type="text" name="Village" placeholder="Village/Suburb Name *" required>
+                <input type="text" name="Taluka" placeholder="Taluka/City *" required>
+                <input type="text" name="Dist" placeholder="Dist (District) *" required>
+                <input type="text" name="State" placeholder="State *" required>
+
                 <button type="submit" id="place-order-btn" class="primary-btn btn-base">Place Order (₹${currentPrice})</button>
             </form>`;
             showModal(modalContent);
@@ -1078,17 +1127,27 @@
             const submitBtn = document.getElementById('place-order-btn');
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span class="loading-spinner"></span> Placing Order...';
+            
+            if (CONFIG.ORDER_SUBMIT_API === "YOUR_APPS_SCRIPT_WEB_APP_URL_HERE") {
+                alert("ERROR: Please update the 'ORDER_SUBMIT_API' in the code with your deployed Apps Script URL.");
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Place Order (Failed)';
+                return;
+            }
 
             const formData = new FormData(form);
             const data = {
+                "Order Date": new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
                 "Product Name": currentProduct["Product Name"] || "Diwali Gift",
-                "Payment Mode": paymentMode, // Use the determined COD payment mode
+                "Payment Mode": paymentMode,
                 "Media Type": currentProduct.Has_Video ? "Video" : "Image",
             };
 
             for (const [key, value] of formData.entries()) {
                 data[key] = value;
             }
+            
+            console.log("Submitting Data:", data);
 
             fetch(CONFIG.ORDER_SUBMIT_API, {
                     method: 'POST',
@@ -1097,52 +1156,74 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    redirect: 'follow',
                     body: JSON.stringify(data)
                 })
-                .then(response => response.json())
+                .then(response => {
+                    const contentType = response.headers.get("content-type");
+                    if (contentType && contentType.indexOf("application/json") !== -1) {
+                        return response.json();
+                    } else {
+                        return response.text().then(text => {
+                            throw new Error(`Non-JSON response received. Response: ${text.substring(0, 100)}...`);
+                        });
+                    }
+                })
                 .then(result => {
                     if (result.result === "success") {
                         const customerName = data["Customer Name"] || "Customer";
-                        // MODIFIED: Call new function to show success + share form directly
-                        showSuccessWishShareModal(customerName); 
+                        const customerWhatsapp = data["Whatsapp"] || "";
+                        const orderID = result.orderID || "N/A";
+                        showSuccessWishShareModal(customerName, customerWhatsapp, orderID); 
                     } else {
-                        throw new Error(result.error || "Error");
+                        throw new Error(result.error || "Order failed to process on server.");
                     }
                 })
                 .catch(error => {
                     console.error("Error submitting order:", error);
-                    document.getElementById("modal-body").innerHTML = `<h3 style="color: var(--color-price-cod);">❌ Failed</h3><p>Network error or API failure. Please try again.</p><button class="primary-btn btn-base" onclick="hideModal();">Close</button>`;
+                    document.getElementById("modal-body").innerHTML = `<h3 style="color: var(--color-price-cod);">❌ Order Failed!</h3><p>Network/API Problem: ${error.message}</p><p>Check Apps Script Deployment ('Anyone' access) and URL. Please try again or contact support.</p><button class="primary-btn btn-base" onclick="hideModal();">Close</button>`;
                 });
         }
 
         // --- NEW/MODIFIED SHARE LOGIC FOR ORDER SUCCESS MODAL ---
 
-        // NEW: Function to display the Wish Share form after successful order
-        function showSuccessWishShareModal(senderName) {
-            const modalContent = `
-                <h3 style="color: var(--color-price-premium); text-align: center; margin-bottom: 20px; font-size: 14px; font-weight: 700;">Message for successful place order</h3>
-                
-                <p style="text-align: center; color: var(--color-primary-text); font-size: 11px; font-weight: 700; margin-bottom: 10px;">❤️ Add Your Name And Receiver Name</p>
-                
-                <div class="share-input-row" style="margin-bottom: 12px; gap: 8px;">
-                    <div class="input-group">
-                        <label class="input-label-white" style="color: #666; font-weight: 600;">Your Name</label>
-                        <input type="text" id="modal-share-sender-input" class="share-input-field" style="color: #000; background: #f0f0f0; border: 1px solid #ccc; font-weight: 700;" placeholder="Your Name" autocomplete="off" value="${senderName}" readonly>
+        function showSuccessWishShareModal(senderName, customerWhatsapp, orderID) {
+            // Wait for 1 second to ensure the modal closes first
+            setTimeout(() => {
+                const modalContent = `
+                    <h3 style="color: #25D366; text-align: center; margin-bottom: 5px; font-size: 16px; font-weight: 900;"><i class="fas fa-check-circle"></i> Order Placed Successfully!</h3>
+                    <p style="text-align: center; color: var(--color-primary-text); font-size: 11px; font-weight: 700; margin-bottom: 10px;">Your Order ID is: <span style="color: var(--color-price-premium);">${orderID}</span></p>
+                    <button type="button" id="order-success-whatsapp-btn" class="btn-base" onclick="sendOrderConfirmation('${customerWhatsapp}', '${orderID}');">
+                        <i class="fab fa-whatsapp"></i> Send Order on WhatsApp
+                    </button>
+                    
+                    <hr style="margin: 15px 0; border-top: 1px dashed #ccc;">
+                    
+                    <p style="text-align: center; color: var(--color-primary-text); font-size: 11px; font-weight: 700; margin-bottom: 10px;">❤️ Add Your Name And Friend Name to Share Offer</p>
+                    
+                    <div class="share-input-row" style="margin-bottom: 12px; gap: 8px;">
+                        <div class="input-group">
+                            <label class="input-label-white" style="color: #666; font-weight: 600;">Your Name</label>
+                            <input type="text" id="modal-share-sender-input" class="share-input-field" style="color: #000; background: #f0f0f0; border: 1px solid #ccc; font-weight: 700;" placeholder="Your Name" autocomplete="off" value="${senderName}" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label-white" style="color: #666; font-weight: 600;">Friend Name</label>
+                            <input type="text" id="modal-share-receiver-input" class="share-input-field" style="color: #000; border: 1px solid #ccc;" placeholder="Friend Name" autocomplete="off" value="">
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label class="input-label-white" style="color: #666; font-weight: 600;">Friend Name</label>
-                        <input type="text" id="modal-share-receiver-input" class="share-input-field" style="color: #000; border: 1px solid #ccc;" placeholder="Friend Name" autocomplete="off" value="">
-                    </div>
-                </div>
-                
-                <button type="button" id="modal-share-btn" class="share-btn btn-base" onclick="shareWishHandler(true);">📤 Share Wish</button>
-                <button type="button" class="primary-btn btn-base" style="margin-top: 10px; background: #ccc; color: #333;" onclick="hideModal();">Close</button>
-            `;
-            showModal(modalContent);
+                    
+                    <button type="button" id="modal-share-btn" class="share-btn btn-base" onclick="shareWishHandler(true);">📤 Share Wish</button>
+                    <button type="button" class="primary-btn btn-base" style="margin-top: 10px; background: #ccc; color: #333;" onclick="hideModal();">Close</button>
+                `;
+                showModal(modalContent);
+            }, 500); // 500ms delay to ensure previous modal transition is done
+        }
+        
+        function sendOrderConfirmation(customerWhatsapp, orderID) {
+             const message = `🎉 ${currentProduct["Product Name"]} के लिए आपका Order #${orderID} सफलतापूर्वक Genzy Gifts पर Place हो गया है! हमने आपके ईमेल पर विस्तृत इनवॉइस भेज दिया है।`;
+             const whatsappUrl = `https://api.whatsapp.com/send?phone=91${customerWhatsapp}&text=${encodeURIComponent(message)}`;
+             window.open(whatsappUrl, "_blank");
         }
 
-        // Refactored: Central function to handle all share button clicks
         function shareWishHandler(isModal = false) {
             const senderInputId = isModal ? "modal-share-sender-input" : "share-sender-input";
             const receiverInputId = isModal ? "modal-share-receiver-input" : "share-receiver-input";
@@ -1159,23 +1240,19 @@
 
             btn.disabled = true;
             btn.innerHTML = isModal ? 'Sharing...' : '<span class="loading-spinner"></span> Sharing...';
-
-            const shareUrl = `${CONFIG.BASE_STORE_URL}?sender=${encodeURIComponent(sender)}`;
-            // Message modified to directly send the offer link
+            
+            const shareStatus = isModal ? "&status=bought" : "";
+            const shareUrl = `${CONFIG.BASE_STORE_URL}?sender=${encodeURIComponent(sender)}${shareStatus}`;
+            
             const message = `नमस्ते ${receiver}, आपके दोस्त ${sender} ने आपके लिए एक special offer भेजा है! इस लिंक पर click करके अपना wish share करें: ${shareUrl}`;
 
             const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
 
-            // Open WhatsApp
             window.open(whatsappUrl, "_blank");
 
-            // Update UI
             if (isModal) {
-                // For modal, show success and close
                 btn.textContent = "✅ Shared!";
-                setTimeout(hideModal, 1500);
             } else {
-                // For main page, reset button
                 btn.textContent = "✅ Shared! Share Again";
                 setTimeout(() => { 
                     btn.textContent = "Share Wish";
@@ -1185,7 +1262,6 @@
         }
 
         // --- EVENT LISTENERS ---
-        // New listener for the main page share button
         document.addEventListener('DOMContentLoaded', () => {
             fetchProductData();
             const mainShareBtn = document.getElementById("share-btn");
@@ -1198,11 +1274,9 @@
                 buyNowBtn.addEventListener('click', handleBuyNow);
             }
         });
-
-        // Initial fetch
-        // fetchProductData(); // Moved to DOMContentLoaded
     </script>
 </body>
 </html>
 
 
+        
