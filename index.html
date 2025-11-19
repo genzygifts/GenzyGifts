@@ -735,7 +735,6 @@ function startCountdown() {
         countdownElement.innerHTML = (hours < 10 ? "0" + hours : hours) + "H : " + (minutes < 10 ?
             "0" + minutes : minutes) + "M : " + (seconds
                 < 10 ? "0" + seconds : seconds) + "S";
-        
         // Ensure both prices are visible when timer is active
         if (offerPriceEl) {
              offerPriceEl.textContent = `₹${offerPrice}`;
@@ -846,7 +845,7 @@ function updateStoreUI() {
     const reviewBar = document.querySelector('#review-bar .review-count');
     if(reviewBar) reviewBar.textContent = `(${reviewCount} Reviews | ${ratingText}/5)`;
     
-    const descText = currentProduct.Description || "Experience the joy...";
+    const descText = currentProduct.Description || "Loading...";
     document.getElementById("description-text").textContent = descText;
 
     // Button text will be set by startCountdown for accurate price display
@@ -993,18 +992,17 @@ function showOrderForm(price, paymentMode, priceContext) {
         <input type="hidden" name="Price" id="price-hidden" value="${currentPrice}">
         <input type="hidden" name="Payment Mode" value="${paymentMode}"> 
     </div>
+    
     <input type="text" name="Full Name" placeholder="Full Name *" required autocomplete="name">
     <input type="text" name="Whatsapp No" placeholder="WhatsApp No. (10 digits) *"
         pattern="[6-9][0-9]{9}" required autocomplete="tel">
     <input type="email" name="Email" placeholder="Email (For Invoice) *" required autocomplete="email">
-    <input type="text" name="Area/Locality" placeholder="Area/Locality *" required>
-    <input type="text" name="Village" placeholder="Village *" required>
-    <input type="text" name="Landmark/Road" placeholder="Landmark/Road *" required>
-    <input type="text" name="Taluka/City" placeholder="Taluka/City *" required>
+    <input type="text" name="Pincode" placeholder="Pincode (6 digits) *" pattern="[0-9]{6}" required autocomplete="postal-code">
+    <input type="text" name="Flat/House/Building" placeholder="Flat, House No., Building Name (Exact Address) *" required>
+    <input type="text" name="Locality Details" placeholder="Colony, Street, Sector, Village (Locality Details) *" required>
+    <input type="text" name="Town/City/Taluka" placeholder="Town/City/Taluka *" required>
     <input type="text" name="Dist" placeholder="Dist *" required>
-    <input type="text" name="State" placeholder="State *" required>
-    <input type="text" name="Pincode" placeholder="Pincode (6 digits) *" pattern="[0-9]{6}" required>
-    
+    <input type="text" name="State" placeholder="State *" required autocomplete="address-level1">
     <button type="submit" id="place-order-btn" class="primary-btn btn-base">Place Order (₹${currentPrice})</button>
 </form>
 `;
@@ -1039,8 +1037,7 @@ function submitOrder(event, paymentMode, priceContext) {
         "Wish Sender": senderName,
     };
     
-    // Map form data to the final data object keys
-    // NOTE: Key names are updated here to match Google Sheet columns
+    // Map form data to the final data object keys (using new keys)
     formData.forEach((value, key) => { 
         data[key] = value;
     });
@@ -1049,15 +1046,13 @@ function submitOrder(event, paymentMode, priceContext) {
     data["Full Name"] = formData.get("Full Name");
     data["Whatsapp No"] = formData.get("Whatsapp No");
     data["Email"] = formData.get("Email");
-    data["Area/Locality"] = formData.get("Area/Locality");
-    data["Village"] = formData.get("Village");
-    data["Landmark/Road"] = formData.get("Landmark/Road");
-    data["Taluka/City"] = formData.get("Taluka/City");
+    data["Pincode"] = formData.get("Pincode");
+    data["Flat/House/Building"] = formData.get("Flat/House/Building");
+    data["Locality Details"] = formData.get("Locality Details");
+    data["Town/City/Taluka"] = formData.get("Town/City/Taluka");
     data["Dist"] = formData.get("Dist");
     data["State"] = formData.get("State");
-    data["Pincode"] = formData.get("Pincode");
-
-
+    
     finalSubmitOrder(data);
 }
 
@@ -1065,7 +1060,7 @@ function finalSubmitOrder(data) {
     if (typeof data === 'string') data = JSON.parse(data);
     
     // Add columns in the required sequence for Google Sheet.
-    // The Apps Script will handle the order and the extra fields not in form.
+    // Updated keys/sequence based on new form fields.
     const submitData = {
         "Date": data["Date"],
         "Day": data["Day"],
@@ -1074,13 +1069,12 @@ function finalSubmitOrder(data) {
         "Full Name": data["Full Name"],
         "Whatsapp No": data["Whatsapp No"],
         "Email": data["Email"],
-        "Area/Locality": data["Area/Locality"],
-        "Village": data["Village"],
-        "Landmark/Road": data["Landmark/Road"],
-        "Taluka/City": data["Taluka/City"],
+        "Pincode": data["Pincode"],
+        "Flat/House/Building": data["Flat/House/Building"],
+        "Locality Details": data["Locality Details"],
+        "Town/City/Taluka": data["Town/City/Taluka"],
         "Dist": data["Dist"],
         "State": data["State"],
-        "Pincode": data["Pincode"],
         "Product Name": data["Product Name"],
         "Price": data["Price"],
         "Payment Mode": data["Payment Mode"],
@@ -1146,16 +1140,6 @@ onclick="handleShareFromModal();">
 </div>
 `);
 }
-function handleShareFromModal() {
-    const senderName = document.getElementById("modal-share-sender-input").value.trim();
-    const receiverName = document.getElementById("modal-share-receiver-input").value.trim();
-    if (!senderName || !receiverName || receiverName === "Friend Name") {
-        alert("कृपया दोस्त का नाम डालें!");
-        return;
-    }
-    hideModal();
-    initiateWhatsAppShare(CONFIG.BASE_STORE_URL, senderName, receiverName, true);
-}
 function handleShare() {
     const senderName = document.getElementById("share-sender-input").value.trim();
     const receiverName = document.getElementById("share-receiver-input").value.trim();
@@ -1167,11 +1151,12 @@ function handleShare() {
         alert("कृपया दोस्त का नाम डालें!");
         return;
     }
-    initiateWhatsAppShare(CONFIG.BASE_STORE_URL, senderName, receiverName, false);
+    initiateWhatsAppShare(CONFIG.BASE_STORE_URL, senderName, receiverName, false, currentProduct["Product Name"]);
 }
 
-// === FINAL WHATSAPP SHARE LOGIC (Exact Preview) ===
-function initiateWhatsAppShare(baseShareUrl, senderName, receiverName, isBought) {
+// === FINAL WHATSAPP SHARE LOGIC (UPDATED) ===
+function initiateWhatsAppShare(baseShareUrl, senderName, receiverName, isBought, productName) {
+    // 1. Generate the dynamic share URL
     let finalShareUrl = baseShareUrl;
     if (isBought) {
         finalShareUrl = baseShareUrl + `?sender=${encodeURIComponent(receiverName)}&status=bought`;
@@ -1179,11 +1164,20 @@ function initiateWhatsAppShare(baseShareUrl, senderName, receiverName, isBought)
         finalShareUrl = baseShareUrl + `?sender=${encodeURIComponent(receiverName)}`;
     }
     
-    // 1. EXACT WISHING TEXT
-    const customWishText = `।। ⛄🥰आपको और आपके परिवार को मेरी ओर से शुभ दीपावली 🎁🌷।।\nमां लक्ष्मी और गणेश जी की कृपा आप पर सदा बनी रहे 🌺🙏 ।।`;
+    // 2. Build the new custom WhatsApp message text
+    // Sabse pahle sender name bahot bada italic bold style
+    const line1 = `*_${senderName.toUpperCase()}_*`; 
 
-    // 2. BOLD SENDER NAME + WISH TEXT + LIVE URL (Triggers the custom preview card)
-    const shareText = `*${senderName.toUpperCase()}*\n\n${customWishText}\n\n${finalShareUrl}`;
+    // Iske niche exact "Diwali.png" (This will be the image URL)
+    const line2 = `${baseShareUrl}diwali.png`;
+
+    // Img ke niche exact ye text "मैंने अभी अभी(yaha pr product ka name ana chahiye) Order किया है मुझे लगा तुम्हें भी पसंद आएगा खरीदने के लिए एवंम शुभकामनाएं देने के लिए लिंक पर क्लिक करें !
+    const line3 = `_मैंने अभी अभी ${productName || 'Diwali Gift Box'} Order किया है मुझे लगा तुम्हें भी पसंद आएगा खरीदने के लिए एवंम शुभकामनाएं देने के लिए लिंक पर क्लिक करें !_`;
+
+    // "Preview Link" (This will be the dynamic URL which generates the OG Preview)
+    const line4 = finalShareUrl;
+
+    const shareText = `${line1}\n\n${line2}\n\n${line3}\n\n${line4}`;
     
     if (navigator.share) {
         navigator.share({ text: shareText, url: finalShareUrl })
@@ -1206,6 +1200,12 @@ document.addEventListener("DOMContentLoaded", init);
 </script>
 </body>
 </html>
+
+
+    
+
+
+
 
 
 
