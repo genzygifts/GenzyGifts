@@ -645,7 +645,7 @@ Name" autocomplete="off" value="Ram">
 const CONFIG = {
     // YOUR DEPLOYED APPS SCRIPT URL HERE
     ORDER_SUBMIT_API:
-        "https://script.google.com/macros/s/AKfycbxjuZ4G5GTcHlONEA_m65ihJw_guvl9BQMVsy7vJrbbagcGKpdD6m93qUS_RWYVFR58/exec", 
+        "https://script.google.com/macros/s/AKfycbyFHIUI1aSSOHGxAiUg17rBxrwhQemSIyqF5YTAgd3uDEfHujTsMTDAQD6scxNgp3yH/exec", 
     ADMIN_WHATSAPP: "919226949557",
     // 💡 BASE URL: Your Final GitHub Pages URL
     BASE_STORE_URL: "https://genzygifts.github.io/GenzyGifts/",
@@ -730,7 +730,7 @@ function startCountdown() {
             return;
         }
 
-        // Timer Active: Show Offer Price as main, Actual Price as strikethrough
+   // Timer Active: Show Offer Price as main, Actual Price as strikethrough
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
@@ -981,7 +981,7 @@ function showOrderForm(price, paymentMode, priceContext) {
     let currentPrice = basePrice;
     let currentQuantity = 1;
     
-    // NOTE: The address fields are modified here to align with the required sheet columns
+    // NOTE: The address fields are MODIFIED here to match the user's required sequence and names
     const modalContent = `
 <h3 style="color: var(--color-primary-btn);">Complete Order</h3>
 <p style="font-weight: 700; margin-bottom: 15px; text-align: center;">You pay: ₹<span id="final-price-display">${currentPrice}</span> (Payment Mode: ${paymentMode})</p>
@@ -1002,12 +1002,14 @@ function showOrderForm(price, paymentMode, priceContext) {
     <input type="text" name="Whatsapp No" placeholder="WhatsApp No. (10 digits) *"
         pattern="[6-9][0-9]{9}" required autocomplete="tel">
     <input type="email" name="Email" placeholder="Email (For Invoice) *" required autocomplete="email">
-    <input type="text" name="Flat/House/Building" placeholder="Flat, House No., Building Name (Exact Address) *" required>
-    <input type="text" name="Locality Details" placeholder="Colony, Street, Sector, Village (Locality Details) *" required>
-    <input type="text" name="Town/City/Taluka" placeholder="Town/City/Taluka *" required>
-    <input type="text" name="Dist" placeholder="Dist *" required>
+    <input type="text" name="House No / Flat No" placeholder="House No / Flat No *" required>
+    <input type="text" name="Building / Apartment / Society" placeholder="Building / Apartment / Society *" required>
+    <input type="text" name="Area / Village Name" placeholder="Area / Village Name *" required>
+    <input type="text" name="Landmark/Street" placeholder="Landmark/Street *" required>
+    <input type="text" name="City / Town / Taluka" placeholder="City / Town / Taluka *" required>
+    <input type="text" name="District" placeholder="District *" required>
     <input type="text" name="State" placeholder="State *" required autocomplete="address-level1">
-    <input type="text" name="Pincode" placeholder="Pincode (6 digits) *" pattern="[0-9]{6}" required autocomplete="postal-code">
+    <input type="text" name="PIN Code" placeholder="PIN Code (6 digits) *" pattern="[0-9]{6}" required autocomplete="postal-code">
     
     <button type="submit" id="place-order-btn" class="primary-btn btn-base">Place Order (₹${currentPrice})</button>
 </form>
@@ -1024,7 +1026,7 @@ function submitOrder(event, paymentMode, priceContext) {
     const price = document.getElementById('price-hidden').value; 
     const quantity = document.getElementById('quantity-hidden').value;
     const wishSender = document.getElementById("receiver-display-top").textContent || "Direct";
-
+    
     // Generate Order ID, Date, Day, Time
     const now = new Date();
     // Using simple timestamp for high chance of unique ID
@@ -1045,7 +1047,7 @@ function submitOrder(event, paymentMode, priceContext) {
     };
     
     // Map form data to the final data object keys (ensuring all sheet headers are covered)
-    // We only send the required form fields, the script handles the rest (Timestamp, etc.)
+    // IMPORTANT: Keys here must match the Apps Script REQUIRED_HEADERS if they are form fields
     formData.forEach((value, key) => { 
         data[key] = value;
     });
@@ -1190,11 +1192,6 @@ document.addEventListener("DOMContentLoaded", init);
 </script>
 </body>
 </html>
-
-
-
-
-
 
 
 
